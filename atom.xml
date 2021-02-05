@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Humphrey爵士的小海豚</title>
+  
+  <subtitle>Yes, Prime Minister</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://humphreyhao.github.io/"/>
+  <updated>2021-02-05T16:23:05.208Z</updated>
+  <id>https://humphreyhao.github.io/</id>
+  
+  <author>
+    <name>HumphreyHao</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Elasticsearch备考指北</title>
+    <link href="https://humphreyhao.github.io/2021/02/04/elasticsearch-bei-kao-zhi-bei/"/>
+    <id>https://humphreyhao.github.io/2021/02/04/elasticsearch-bei-kao-zhi-bei/</id>
+    <published>2021-02-04T15:44:11.000Z</published>
+    <updated>2021-02-05T16:23:05.208Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;写在最前&quot;&gt;&lt;a href=&quot;#写在最前&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Elasticsearch" scheme="https://humphreyhao.github.io/categories/Elasticsearch/"/>
+    
+    
+      <category term="Elasticsearch" scheme="https://humphreyhao.github.io/tags/Elasticsearch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java开发常见错误_17</title>
+    <link href="https://humphreyhao.github.io/2021/02/02/java-kai-fa-chang-jian-cuo-wu-17/"/>
+    <id>https://humphreyhao.github.io/2021/02/02/java-kai-fa-chang-jian-cuo-wu-17/</id>
+    <published>2021-02-01T19:26:11.000Z</published>
+    <updated>2021-02-05T16:23:05.215Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;第三章&quot;&gt;&lt;a href=&quot;#第三章&quot; class=&quot;headerlink&quot; title=&quot;第三章&quot;&gt;&lt;/a&gt;第三章&lt;/h1&gt;&lt;h2 id=&quot;17-别以为自动挡就不可能出现OOM&quot;&gt;&lt;a href=&quot;#17-别以为自动挡就不可能出现OOM&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
+    
+    
+      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
+    
+      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java开发常见错误_15</title>
+    <link href="https://humphreyhao.github.io/2021/01/27/java-kai-fa-chang-jian-cuo-wu-15/"/>
+    <id>https://humphreyhao.github.io/2021/01/27/java-kai-fa-chang-jian-cuo-wu-15/</id>
+    <published>2021-01-26T18:26:11.000Z</published>
+    <updated>2021-02-05T16:23:05.214Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;第三章&quot;&gt;&lt;a href=&quot;#第三章&quot; class=&quot;headerlink&quot; title=&quot;第三章&quot;&gt;&lt;/a&gt;第三章&lt;/h1&gt;&lt;h2 id=&quot;15-序列化：一来一回你还是原来的你吗？&quot;&gt;&lt;a href=&quot;#15-序列化：一来一回你还是原来的你吗？&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
+    
+    
+      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
+    
+      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java开发常见错误_16</title>
+    <link href="https://humphreyhao.github.io/2021/01/27/java-kai-fa-chang-jian-cuo-wu-16/"/>
+    <id>https://humphreyhao.github.io/2021/01/27/java-kai-fa-chang-jian-cuo-wu-16/</id>
+    <published>2021-01-26T18:26:11.000Z</published>
+    <updated>2021-02-05T16:23:05.214Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;第三章&quot;&gt;&lt;a href=&quot;#第三章&quot; class=&quot;headerlink&quot; title=&quot;第三章&quot;&gt;&lt;/a&gt;第三章&lt;/h1&gt;&lt;h2 id=&quot;16-用好Java-8的日期时间类，少踩一些“老三样”的坑&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
+    
+    
+      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
+    
+      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java开发常见错误_14</title>
+    <link href="https://humphreyhao.github.io/2021/01/21/java-kai-fa-chang-jian-cuo-wu-14/"/>
+    <id>https://humphreyhao.github.io/2021/01/21/java-kai-fa-chang-jian-cuo-wu-14/</id>
+    <published>2021-01-20T18:26:11.000Z</published>
+    <updated>2021-02-05T16:23:05.214Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;第三章&quot;&gt;&lt;a href=&quot;#第三章&quot; class=&quot;headerlink&quot; title=&quot;第三章&quot;&gt;&lt;/a&gt;第三章&lt;/h1&gt;&lt;h2 id=&quot;14-文件IO：实现高效正确的文件读写并非易事&quot;&gt;&lt;a href=&quot;#14-文件IO：实现高效正确的文件读写并非易事&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
+    
+    
+      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
+    
+      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java开发常见错误_13</title>
+    <link href="https://humphreyhao.github.io/2021/01/18/java-kai-fa-chang-jian-cuo-wu-13/"/>
+    <id>https://humphreyhao.github.io/2021/01/18/java-kai-fa-chang-jian-cuo-wu-13/</id>
+    <published>2021-01-17T18:26:11.000Z</published>
+    <updated>2021-02-05T16:23:05.214Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;第三章&quot;&gt;&lt;a href=&quot;#第三章&quot; class=&quot;headerlink&quot; title=&quot;第三章&quot;&gt;&lt;/a&gt;第三章&lt;/h1&gt;&lt;h2 id=&quot;13-日志：日志记录真没你想象的那么简单&quot;&gt;&lt;a href=&quot;#13-日志：日志记录真没你想象的那么简单&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
+    
+    
+      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
+    
+      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java开发常见错误_12</title>
+    <link href="https://humphreyhao.github.io/2021/01/16/java-kai-fa-chang-jian-cuo-wu-12/"/>
+    <id>https://humphreyhao.github.io/2021/01/16/java-kai-fa-chang-jian-cuo-wu-12/</id>
+    <published>2021-01-15T18:26:11.000Z</published>
+    <updated>2021-02-05T16:23:05.214Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;第二章&quot;&gt;&lt;a href=&quot;#第二章&quot; class=&quot;headerlink&quot; title=&quot;第二章&quot;&gt;&lt;/a&gt;第二章&lt;/h1&gt;&lt;h2 id=&quot;12-异常处理：别让自己在出问题的时候变为瞎子&quot;&gt;&lt;a href=&quot;#12-异常处理：别让自己在出问题的时候变为瞎子&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
+    
+    
+      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
+    
+      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java开发常见错误_11</title>
+    <link href="https://humphreyhao.github.io/2021/01/13/java-kai-fa-chang-jian-cuo-wu-11/"/>
+    <id>https://humphreyhao.github.io/2021/01/13/java-kai-fa-chang-jian-cuo-wu-11/</id>
+    <published>2021-01-12T17:26:11.000Z</published>
+    <updated>2021-02-05T16:23:05.213Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;第二章&quot;&gt;&lt;a href=&quot;#第二章&quot; class=&quot;headerlink&quot; title=&quot;第二章&quot;&gt;&lt;/a&gt;第二章&lt;/h1&gt;&lt;h2 id=&quot;11-空值处理：分不清楚的null和恼人的空指针&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
+    
+    
+      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
+    
+      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java开发常见错误_10</title>
+    <link href="https://humphreyhao.github.io/2021/01/11/java-kai-fa-chang-jian-cuo-wu-10/"/>
+    <id>https://humphreyhao.github.io/2021/01/11/java-kai-fa-chang-jian-cuo-wu-10/</id>
+    <published>2021-01-10T17:21:11.000Z</published>
+    <updated>2021-02-05T16:23:05.213Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;第二章&quot;&gt;&lt;a href=&quot;#第二章&quot; class=&quot;headerlink&quot; title=&quot;第二章&quot;&gt;&lt;/a&gt;第二章&lt;/h1&gt;&lt;h2 id=&quot;10-集合类：坑满地的List列表操作&quot;&gt;&lt;a href=&quot;#10-集合类：坑满地的List列表操作&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
+    
+    
+      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
+    
+      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java开发常见错误_9</title>
+    <link href="https://humphreyhao.github.io/2021/01/10/java-kai-fa-chang-jian-cuo-wu-9/"/>
+    <id>https://humphreyhao.github.io/2021/01/10/java-kai-fa-chang-jian-cuo-wu-9/</id>
+    <published>2021-01-10T04:21:11.000Z</published>
+    <updated>2021-02-05T16:23:05.216Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;第二章&quot;&gt;&lt;a href=&quot;#第二章&quot; class=&quot;headerlink&quot; title=&quot;第二章&quot;&gt;&lt;/a&gt;第二章&lt;/h1&gt;&lt;h2 id=&quot;9-数值计算：注意精度、舍入和溢出问题&quot;&gt;&lt;a href=&quot;#9-数值计算：注意精度、舍入和溢出问题&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
+    
+    
+      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
+    
+      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java开发常见错误_8</title>
+    <link href="https://humphreyhao.github.io/2021/01/08/java-kai-fa-chang-jian-cuo-wu-8/"/>
+    <id>https://humphreyhao.github.io/2021/01/08/java-kai-fa-chang-jian-cuo-wu-8/</id>
+    <published>2021-01-07T16:21:11.000Z</published>
+    <updated>2021-02-05T16:23:05.216Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;第二章&quot;&gt;&lt;a href=&quot;#第二章&quot; class=&quot;headerlink&quot; title=&quot;第二章&quot;&gt;&lt;/a&gt;第二章&lt;/h1&gt;&lt;h2 id=&quot;8-判等问题：程序里如何确定你就是你？&quot;&gt;&lt;a href=&quot;#8-判等问题：程序里如何确定你就是你？&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
+    
+    
+      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
+    
+      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java开发常见错误_7</title>
+    <link href="https://humphreyhao.github.io/2021/01/05/java-kai-fa-chang-jian-cuo-wu-7/"/>
+    <id>https://humphreyhao.github.io/2021/01/05/java-kai-fa-chang-jian-cuo-wu-7/</id>
+    <published>2021-01-04T16:21:11.000Z</published>
+    <updated>2021-02-05T16:23:05.216Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;第二章&quot;&gt;&lt;a href=&quot;#第二章&quot; class=&quot;headerlink&quot; title=&quot;第二章&quot;&gt;&lt;/a&gt;第二章&lt;/h1&gt;&lt;h2 id=&quot;7-数据库索引-索引并不是万能药&quot;&gt;&lt;a href=&quot;#7-数据库索引-索引并不是万能药&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
+    
+    
+      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
+    
+      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java开发常见错误_6</title>
+    <link href="https://humphreyhao.github.io/2021/01/02/java-kai-fa-chang-jian-cuo-wu-6/"/>
+    <id>https://humphreyhao.github.io/2021/01/02/java-kai-fa-chang-jian-cuo-wu-6/</id>
+    <published>2021-01-02T12:11:23.000Z</published>
+    <updated>2021-02-05T16:23:05.216Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;第一章&quot;&gt;&lt;a href=&quot;#第一章&quot; class=&quot;headerlink&quot; title=&quot;第一章&quot;&gt;&lt;/a&gt;第一章&lt;/h1&gt;&lt;h2 id=&quot;6-20-的业务代码的Spring声明式事务，可能都没处理正确&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
+    
+    
+      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
+    
+      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java开发常见错误_5</title>
+    <link href="https://humphreyhao.github.io/2020/12/30/java-kai-fa-chang-jian-cuo-wu-5/"/>
+    <id>https://humphreyhao.github.io/2020/12/30/java-kai-fa-chang-jian-cuo-wu-5/</id>
+    <published>2020-12-30T03:27:23.000Z</published>
+    <updated>2021-02-05T16:23:05.215Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;第一章&quot;&gt;&lt;a href=&quot;#第一章&quot; class=&quot;headerlink&quot; title=&quot;第一章&quot;&gt;&lt;/a&gt;第一章&lt;/h1&gt;&lt;h2 id=&quot;5-HTTP调用：你考虑到超时、重试、并发了吗？&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
+    
+    
+      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
+    
+      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java开发常见错误_4</title>
+    <link href="https://humphreyhao.github.io/2020/12/28/java-kai-fa-chang-jian-cuo-wu-4/"/>
+    <id>https://humphreyhao.github.io/2020/12/28/java-kai-fa-chang-jian-cuo-wu-4/</id>
+    <published>2020-12-28T06:30:23.000Z</published>
+    <updated>2021-02-05T16:23:05.215Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;第一章&quot;&gt;&lt;a href=&quot;#第一章&quot; class=&quot;headerlink&quot; title=&quot;第一章&quot;&gt;&lt;/a&gt;第一章&lt;/h1&gt;&lt;h2 id=&quot;4-连接池：别让连接池帮了倒忙&quot;&gt;&lt;a href=&quot;#4-连接池：别让连接池帮了倒忙&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
+    
+    
+      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
+    
+      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java开发常见错误_3</title>
+    <link href="https://humphreyhao.github.io/2020/12/24/java-kai-fa-chang-jian-cuo-wu-3/"/>
+    <id>https://humphreyhao.github.io/2020/12/24/java-kai-fa-chang-jian-cuo-wu-3/</id>
+    <published>2020-12-24T05:30:23.000Z</published>
+    <updated>2021-02-05T16:23:05.215Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;第一章&quot;&gt;&lt;a href=&quot;#第一章&quot; class=&quot;headerlink&quot; title=&quot;第一章&quot;&gt;&lt;/a&gt;第一章&lt;/h1&gt;&lt;h2 id=&quot;3-线程池：业务代码最常用也最容易犯错的组件&quot;&gt;&lt;a href=&quot;#3-线程池：业务代码最常用也最容易犯错的组件&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
+    
+    
+      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
+    
+      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java开发常见错误_2</title>
+    <link href="https://humphreyhao.github.io/2020/12/21/java-kai-fa-chang-jian-cuo-wu-2/"/>
+    <id>https://humphreyhao.github.io/2020/12/21/java-kai-fa-chang-jian-cuo-wu-2/</id>
+    <published>2020-12-21T05:30:23.000Z</published>
+    <updated>2021-02-05T16:23:05.215Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;第一章&quot;&gt;&lt;a href=&quot;#第一章&quot; class=&quot;headerlink&quot; title=&quot;第一章&quot;&gt;&lt;/a&gt;第一章&lt;/h1&gt;&lt;h2 id=&quot;2-代码加锁：不要让“锁”事成为烦心事&quot;&gt;&lt;a href=&quot;#2-代码加锁：不要让“锁”事成为烦心事&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
+    
+    
+      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
+    
+      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java开发常见错误_1</title>
+    <link href="https://humphreyhao.github.io/2020/12/05/java-kai-fa-chang-jian-cuo-wu-1/"/>
+    <id>https://humphreyhao.github.io/2020/12/05/java-kai-fa-chang-jian-cuo-wu-1/</id>
+    <published>2020-12-05T04:30:23.000Z</published>
+    <updated>2021-02-05T16:23:05.213Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;第一章&quot;&gt;&lt;a href=&quot;#第一章&quot; class=&quot;headerlink&quot; title=&quot;第一章&quot;&gt;&lt;/a&gt;第一章&lt;/h1&gt;&lt;h2 id=&quot;1-使用了并发工具类库，线程安全就高枕无忧了吗&quot;&gt;&lt;a href=&quot;#1-使用了并发工具类库，线程安全就高枕无忧了吗&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
+    
+    
+      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
+    
+      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis设计与实现(三)</title>
+    <link href="https://humphreyhao.github.io/2020/11/05/redis-she-ji-yu-shi-xian-san/"/>
+    <id>https://humphreyhao.github.io/2020/11/05/redis-she-ji-yu-shi-xian-san/</id>
+    <published>2020-11-05T04:30:23.000Z</published>
+    <updated>2021-02-05T16:23:05.219Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;本文是Redis设计与实现,第二版的读书笔记,来了解一下当下最流行的中间件到底是如何实现的,有哪些值得学习的设计思想.  &lt;/p&gt;
+&lt;h1 id=&quot;第三部分-多机数据库的实现&quot;&gt;&lt;a href=&quot;#第三部分-多机数据库的实现&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Redis" scheme="https://humphreyhao.github.io/categories/Redis/"/>
+    
+    
+      <category term="Redis" scheme="https://humphreyhao.github.io/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis设计与实现(二)</title>
+    <link href="https://humphreyhao.github.io/2020/10/14/redis-she-ji-yu-shi-xian-er/"/>
+    <id>https://humphreyhao.github.io/2020/10/14/redis-she-ji-yu-shi-xian-er/</id>
+    <published>2020-10-14T07:31:23.000Z</published>
+    <updated>2021-02-05T16:23:05.219Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;本文是Redis设计与实现,第二版的读书笔记,来了解一下当下最流行的中间件到底是如何实现的,有哪些值得学习的设计思想.  &lt;/p&gt;
+&lt;h1 id=&quot;第二部分-单机数据库的实现&quot;&gt;&lt;a href=&quot;#第二部分-单机数据库的实现&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Redis" scheme="https://humphreyhao.github.io/categories/Redis/"/>
+    
+    
+      <category term="Redis" scheme="https://humphreyhao.github.io/tags/Redis/"/>
+    
+  </entry>
+  
+</feed>

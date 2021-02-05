@@ -1,0 +1,1409 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Java基础, JAVA Python HumphreyHao 后端研发 海豚">
+    <meta name="baidu-site-verification" content="fmlEuI34ir">
+    <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
+    <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
+    <meta name="description" content="JAVA基础1.Java中的泛型有哪些应用?为什么要使用泛型.在没有使用泛型的情况下，如果要实现参数“任意化”，通常会定义成Object类型来接受，然后强制类型转换使用；而强制类型转换有明显的缺点，就是必须要知道实际参数的具体类型的情况才可">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Java基础 | Humphrey爵士的小海豚</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?46e79e71af0709a5b9106bf20cecc493";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+    
+        <script>
+            (function(){
+                var bp = document.createElement('script');
+                var curProtocol = window.location.protocol.split(':')[0];
+                if (curProtocol === 'https') {
+                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+                }
+                else {
+                    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+                }
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(bp, s);
+            })();
+        </script>
+    
+
+    <script>
+        (function(){
+        var src = "https://jspassport.ssl.qhimg.com/11.0.1.js?d182b3f28525f2db83acfaaf6e696dba";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+        })();
+    </script>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body>
+
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Humphrey爵士的小海豚</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/contact" class="waves-effect waves-light">
+            
+            <i class="fa fa-comments"></i>
+            
+            <span>留言板</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Humphrey爵士的小海豚</div>
+        <div class="logo-desc">
+            
+            后端开发
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        <li>
+            <a href="/contact" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-comments"></i>
+                
+                留言板
+            </a>
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Java基础
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                        <a href="/tags/Java基础/" target="_blank">
+                            <span class="chip bg-color">Java基础</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                        <a href="/categories/基础知识/" class="post-category" target="_blank">
+                            基础知识
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-08-06
+                </div>
+
+                <div class="post-author info-break-policy">
+                    <i class="fa fa-user-o fa-fw"></i>作者:&nbsp;&nbsp;
+                    
+                    HumphreyHao
+                    
+                </div>
+
+                
+                
+                <div class="info-break-policy">
+                    <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5.7k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    21 分
+                </div>
+                
+                
+
+                
+                <div id="busuanzi_container_page_pv" class="info-break-policy">
+                    <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                    <span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span> visits</span>
+                </div>
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="JAVA基础"><a href="#JAVA基础" class="headerlink" title="JAVA基础"></a>JAVA基础</h1><h2 id="1-Java中的泛型有哪些应用-为什么要使用泛型"><a href="#1-Java中的泛型有哪些应用-为什么要使用泛型" class="headerlink" title="1.Java中的泛型有哪些应用?为什么要使用泛型."></a>1.Java中的泛型有哪些应用?为什么要使用泛型.</h2><p>在没有使用泛型的情况下，如果要实现参数“任意化”，通常会定义成Object类型来接受，然后强制类型转换使用；而强制类型转换有明显的缺点，就是必须要知道实际参数的具体类型的情况才可以进行转换，同时在强制转换的过程中，编译器不会报错提示的，只有在运行阶段才会出现异常，一定程度上存在安全隐患。<br>主要是用于定义公共类,比如hashmap的源码中,集合类的源码中.泛型可以用到容器，方法，接口，内部类，抽象类</p>
+<h2 id="2-Java中的反射有哪些应用"><a href="#2-Java中的反射有哪些应用" class="headerlink" title="2.Java中的反射有哪些应用?"></a>2.Java中的反射有哪些应用?</h2><p>生成各种代理类,动态代理,调用不同的连接器等等.<br>JDBC数据库的连接:加载数据库驱动程序,根据地址用户和密码连接,使用connection接口接收连接.<br>xml的配置加载bean就是根据字符串获取class实例,动态配置实例属性.</p>
+<h2 id="3-内存泄漏是怎么回事"><a href="#3-内存泄漏是怎么回事" class="headerlink" title="3.内存泄漏是怎么回事?"></a>3.内存泄漏是怎么回事?</h2><p>生命周期长引用了生命周期短的实例.</p>
+<h2 id="4-final关键字"><a href="#4-final关键字" class="headerlink" title="4.final关键字"></a>4.final关键字</h2><p>当用final修饰一个类时，表明这个类不能被继承<br>修饰一个函数,不能被重写.<br>对于一个final变量，如果是基本数据类型的变量，则其数值一旦在初始化之后便不能更改；<br>如果是引用类型的变量，则在对其初始化之后便不能再让其指向另一个对象。</p>
+<h2 id="5-设计模式了解哪些"><a href="#5-设计模式了解哪些" class="headerlink" title="5.设计模式了解哪些"></a>5.设计模式了解哪些</h2><p><a href="https://www.jianshu.com/p/bdf65e4afbb0" target="_blank" rel="noopener">https://www.jianshu.com/p/bdf65e4afbb0</a><br>简单工厂模式:根据不同的条件,返回不同的对象.<br>工厂模式:不同的工厂类实现同一个工厂接口,返回不同的产品.<br>抽象工厂模式:应对产品族,当一个产品族中的多个对象被设计成一起工作时，它能保证客户端始终只使用同一个产品族中的对象。<br>装饰者模式:动态的给某对象添加一些额外的功能<br>代理模式:封装被代理对象,并且限制外界对被代理对象的访问<br>模板方法模式:定义一个操作的算法骨架,并且将一些步骤延迟到子类中<br>外观模式:为系统向外界提供一个统一的接口<br>适配器模式:类似于三足插头,提供统一的接口标准,比如一个类可能有10个私有方法,但是对外只有3个接口方法.<br>桥接模式:把原本要耦合的上下层抽象出来,上层和下层使用组合的方式连接,这样一来就只需要set方法即可切换不同的子类,类似于切换桥的方向.<br>建造者模式:把builder单独抽象出来,可以使用lombok的builder方法.<br>观察者模式:定义了一种1对多的依赖关系,当Observable状态改变时通知所有Observer<br>单例模式:保证本类只有一个实例,并且提供一个访问他的全局控制点<br>命令模式:封装一系列命令,通过重写命令可以实现指定命令集的运行.</p>
+<h3 id="6-如何实现多线程安全的单例模式"><a href="#6-如何实现多线程安全的单例模式" class="headerlink" title="6.如何实现多线程安全的单例模式:"></a>6.如何实现多线程安全的单例模式:</h3><p>直接放一个代码</p>
+<pre><code>private static volatile SettingsDbHelper sInst = null;
+public static SettingsDbHelper getInstance(Context context) {  
+    SettingsDbHelper inst = sInst;  // &lt;&lt;&lt; 在这里创建临时变量
+    if (inst == null) {
+        synchronized (SettingsDbHelper.class) {
+            inst = sInst;
+            if (inst == null) {
+                inst = new SettingsDbHelper(context);
+                sInst = inst;
+            }
+        }
+    }
+    return inst;  // &lt;&lt;&lt; 注意这里返回的是临时变量
+}</code></pre><p>这样一来,除了第一次访问,其他的访问单例都只会访问一次sInst变量</p>
+<p>再加一个延迟初始化的方式:</p>
+<pre><code>class Foo {  
+    private static class HelperHolder {
+       public static final Helper helper = new Helper();
+    }
+
+    public static Helper getHelper() {
+        return HelperHolder.helper;
+    }
+}</code></pre><p>这个方法也可以保证延迟初始化,并且多线程安全.</p>
+<p>或者更加粗暴一些:</p>
+<pre><code>public enum Foo {  
+    INSTANCE;
+}</code></pre><h2 id="7-设计原则了解哪些"><a href="#7-设计原则了解哪些" class="headerlink" title="7.设计原则了解哪些"></a>7.设计原则了解哪些</h2><p>1,单一职责原则:每个类只执行一个功能<br>2,里氏替换原则:父类出现的地方替换为子类必须可以出现<br>3,依赖倒置原则:类不应该从具体类派生出来,实现类之间没有依赖关系<br>4,接口隔离原则:类尽量实现接口<br>5,迪米特法则:一个对象应该对其他对象有最少的了解<br>6,开闭原则:软件实体应该对扩展开放,对修改关闭.</p>
+<h2 id="8-谈谈垃圾回收"><a href="#8-谈谈垃圾回收" class="headerlink" title="8.谈谈垃圾回收"></a>8.谈谈垃圾回收</h2><p>见另外一个博客:深入理解JAVA虚拟机</p>
+<h2 id="9-创建对象的方式"><a href="#9-创建对象的方式" class="headerlink" title="9.创建对象的方式"></a>9.创建对象的方式</h2><p>1,使用new关键字,调用任意的构造函数<br>2,使用反射</p>
+<pre><code>//创建方法1
+User user = (User)Class.forName(&quot;根路径.User&quot;).newInstance();　
+//创建方法2（用这个最好）
+User user = User.class.newInstance();
+
+Constructor&lt;User&gt; constructor = User.class.getConstructor();
+User user = constructor.newInstance();</code></pre><p>3,实现Cloneable接口并且实现定义的clone方法</p>
+<p>4,使用反序列化读出一个对象</p>
+<h2 id="10-类初始化和加载的顺序"><a href="#10-类初始化和加载的顺序" class="headerlink" title="10.类初始化和加载的顺序"></a>10.类初始化和加载的顺序</h2><p>父类的静态变量&gt;子类静态变量&gt;父类的变量&gt;子类变量</p>
+<h2 id="11-垃圾回收只回收堆中对象吗"><a href="#11-垃圾回收只回收堆中对象吗" class="headerlink" title="11.垃圾回收只回收堆中对象吗?"></a>11.垃圾回收只回收堆中对象吗?</h2><p>基本上是的,大部分对象都存在堆内存中</p>
+<h2 id="12-如何保证不同线程之间隔离-同一线程共享"><a href="#12-如何保证不同线程之间隔离-同一线程共享" class="headerlink" title="12.如何保证不同线程之间隔离,同一线程共享"></a>12.如何保证不同线程之间隔离,同一线程共享</h2><p> ThreadLocal不是用于解决多线程共享资源的问题，因为每个线程都会备份ThreadLocal变量的副本，相当于对线程自身局部变量的操作，所以不存在资源同步的问题。ThreadLocal主要解决变量需要在线程内方法之间传递但在不同线程间隔离的问题。<br>每个访问 ThreadLocal 变量的线程都有自己的一个“本地”实例副本</p>
+<h2 id="13-引用顺序"><a href="#13-引用顺序" class="headerlink" title="13.引用顺序"></a>13.引用顺序</h2><p>强引用:绝不会被回收<br>软引用:内存空间不足就会被回收<br>弱引用:一旦被发现就被回收<br>虚引用:被回收的时候会发一个消息</p>
+<h2 id="14-说一下内存泄漏的场景"><a href="#14-说一下内存泄漏的场景" class="headerlink" title="14.说一下内存泄漏的场景"></a>14.说一下内存泄漏的场景</h2><p>应用程序不再使用对象，但是垃圾回收器无法删除它们，因为它们已被引用。</p>
+<pre><code>class stack{    
+    Object data[1000];    
+    int top = -1;    
+    public void push(Object o){        
+        top++;        
+        data[top] = o;    
+        }    
+    public Object pop(Object o){        
+        top--;        
+        return data[top+1];    
+        }
+    }</code></pre><h2 id="15-如何防止基础类被破坏"><a href="#15-如何防止基础类被破坏" class="headerlink" title="15.如何防止基础类被破坏"></a>15.如何防止基础类被破坏</h2><p>双亲委派模型。<br>具体实现：<br><img src="https://s1.ax1x.com/2020/08/19/dlgQyT.png" alt="dlgQyT.png"></p>
+<p>一个类在加载时会优先让父类加载器去加载，如果不行再使用自定义加载器加载。</p>
+<h2 id="16-动态加载"><a href="#16-动态加载" class="headerlink" title="16.动态加载"></a>16.动态加载</h2><p>动态加载是使用反射实现的，而静态加载是使用new关键字，在编译期实现的。</p>
+<h2 id="17-手写一下快排的代码"><a href="#17-手写一下快排的代码" class="headerlink" title="17.手写一下快排的代码"></a>17.手写一下快排的代码</h2><p>快速排序是挖坑填数+分治来实现的<br>快速排序的基本思想:<br>1．先从数列中取出一个数作为基准数。</p>
+<p>2．分区过程，将比这个数大的数全放到它的右边，小于或等于它的数全放到它的左边。</p>
+<p>3．再对左右区间重复第二步，直到各区间只有一个数。</p>
+<p>挖坑法实现:</p>
+<pre><code>public static void pothlingSort(int[] arrays , int low , int high){
+    if(low &lt; high){
+        //求每次分治的分割线
+        int divideIndex = getDivideIndex(arrays,low,high);
+        //再递归分别对分割的俩个子数组进行递归排序
+        pothlingSort(arrays,low,divideIndex -1);
+        pothlingSort(arrays,divideIndex + 1, high);
+    }
+}
+
+private static int getDivideIndex(int[] arrays, int low, int high) {
+    // 将数组最左端arrays[0]作为默认的基准值,将最左端的值放至基准值的坑内。
+    // 此时arrays[0]没有值了，需要从最右端找到一个比基准值小的数填至[0]这个坑。
+    // 再从左到右找到一个比基准值大的数填到刚才的坑。循环进行直到low=high
+    // 将基准值填至刚才的low位置。再进行分治
+
+    int baseValue = arrays[low];
+    arrays[low] =0 ; //挖个坑
+
+    while(low &lt;high){
+        //从右往左,找第一个比坑数小的数字
+        while(low &lt; high &amp;&amp; arrays[high] &gt;= baseValue){
+                high--;
+            }
+
+        arrays[low] = arrays[high] ;
+        arrays[high] = 0 ;
+
+        //从左往右,找第一个比坑大的数字
+        while(low &lt; high &amp;&amp; arrays[low] &lt;= baseValue){
+                low++;
+            }
+            arrays[high] = arrays[low] ;
+            arrays[low] = 0 ;
+    }
+
+    if(low == high){
+            arrays[low] = baseValue;
+        }
+
+        return low;
+    //最后坑填完了,返回坑,或者不返回
+}</code></pre><h2 id="18-java的跨平台性如何理解"><a href="#18-java的跨平台性如何理解" class="headerlink" title="18.java的跨平台性如何理解"></a>18.java的跨平台性如何理解</h2><p>JVM会把.java文件翻译成.class字节码文件,然后虚拟机识别平台,对应不同的平台转换为机器码.<br>注意不同平台下需要安装不同版本的JVM.</p>
+<h2 id="19-String，StringBuilder，StringBuffer的区别，哪个是线程安全的"><a href="#19-String，StringBuilder，StringBuffer的区别，哪个是线程安全的" class="headerlink" title="19.String，StringBuilder，StringBuffer的区别，哪个是线程安全的"></a>19.String，StringBuilder，StringBuffer的区别，哪个是线程安全的</h2><p>String是不可变的常量.<br>StringBuffer是字符串变量（线程安全）,使用synchronized关键字来进行操作.<br>StringBuilder是字符串变量(线程不安全)但是快</p>
+<h2 id="20-ArrayList，LinkedList的区别，适用场景，线程安全，如果要实现线程安全怎么办"><a href="#20-ArrayList，LinkedList的区别，适用场景，线程安全，如果要实现线程安全怎么办" class="headerlink" title="20.ArrayList，LinkedList的区别，适用场景，线程安全，如果要实现线程安全怎么办"></a>20.ArrayList，LinkedList的区别，适用场景，线程安全，如果要实现线程安全怎么办</h2><ol>
+<li>ArrayList是实现了基于动态数组的数据结构，而LinkedList是基于链表的数据结构；</li>
+<li>对于随机访问get和set，ArrayList要优于LinkedList，因为LinkedList要移动指针；</li>
+</ol>
+<p>都是线程不安全的,如果要安全可以用两种方法:</p>
+<ol>
+<li>List<string> list = Collections.synchronizedList(new LinkedList<string>());<br>也就是使用Collections.synchronizedList这个方法包装一下</string></string></li>
+<li>或者用ConcurrentLinkedQueue代替linkedList<br>如果是要用Array的话,要使用CopyOnWriteArrayList,每次做更新操作都会做一次数组拷贝</li>
+</ol>
+<h2 id="21-TreeMap的线程安全问题"><a href="#21-TreeMap的线程安全问题" class="headerlink" title="21.TreeMap的线程安全问题"></a>21.TreeMap的线程安全问题</h2><p>线程不安全,也是同上两种方式:<br>Collections.synchronizedSortedSet/Collections.synchronizedSortedMap方法包装一下<br>ConcurrentSkipListMap/ConcurrentSkipListSet</p>
+<h2 id="22-讲讲动态代理"><a href="#22-讲讲动态代理" class="headerlink" title="22.讲讲动态代理"></a>22.讲讲动态代理</h2><p>静态代理:就是单纯的封装一层,类似装饰者模式,拓展一些功能.<br>缺点:写死的类,会有很多的代理类和重复代码.</p>
+<p>动态代理:使用反射来动态的获取不同的目标类,并且生成代理类<br>代理对象不需要实现接口,但是目标对象一定要实现接口,否则不能用动态代理<br>static Object newProxyInstance(ClassLoader loader, Class&lt;?&gt;[] interfaces,InvocationHandler h )使用这一行来实现代理<br>示例代码:</p>
+<pre><code>/**
+ * 创建动态代理对象
+ * 动态代理不需要实现接口,但是需要指定接口类型
+ */
+public class ProxyFactory{
+
+    //维护一个目标对象
+    private Object target;
+    public ProxyFactory(Object target){
+        this.target=target;
+    }
+
+   //给目标对象生成代理对象
+    public Object getProxyInstance(){
+        return Proxy.newProxyInstance(
+                target.getClass().getClassLoader(),
+                target.getClass().getInterfaces(),
+                new InvocationHandler() {
+                    @Override
+                    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                        System.out.println(&quot;开始事务2&quot;);
+                        //运用反射执行目标对象方法
+                        Object returnValue = method.invoke(target, args);
+                        System.out.println(&quot;提交事务2&quot;);
+                        return returnValue;
+                    }
+                }
+        );
+    }
+
+}</code></pre><p>如果目标对象只是一个单独的对象,并未实现接口,这时候就要用到子类代理.<br>Cglib代理,也叫作子类代理,它是在内存中构建一个子类对象从而实现对目标对象功能的扩展.<br>Cglib是一个强大的高性能的代码生成包,它可以在运行期扩展java类与实现java接口.它广泛的被许多AOP的框架使用,例如Spring AOP和synaop,为他们提供方法的interception(拦截)</p>
+<p>如果方法为private,static则无法进行代理.</p>
+<p>在spring AOP中往往使用代理模式来进行切面编程</p>
+<h2 id="23-介绍NIO"><a href="#23-介绍NIO" class="headerlink" title="23.介绍NIO"></a>23.介绍NIO</h2><p>NIO=Non-blocking I/O.是同步非阻塞的I/O模型<br>不同的IO模型:<br><img src="https://awps-assets.meituan.net/mit-x/blog-images-bundle-2016/77752ed5.jpg" alt><br>NIO一个重要的特点是：socket主要的读、写、注册和接收函数，在等待就绪阶段都是非阻塞的，真正的I/O操作是同步阻塞的（消耗CPU但性能非常高）</p>
+<h2 id="24-红黑树"><a href="#24-红黑树" class="headerlink" title="24.红黑树"></a>24.红黑树</h2><p>红黑树:二叉平衡搜索树<br>二叉排序树的性能取决于二叉树的层数,最好的情况是logn,完全二叉排序树,最差的情况是On,全部有序.</p>
+<p>红黑树是在二叉查找树的基础上额外添加了一个标记,和一些规则.<br>红黑树保证了一种平衡，插入、删除、查找的最坏时间复杂度都为 O(logn)。</p>
+<h3 id="黑色高度"><a href="#黑色高度" class="headerlink" title="黑色高度"></a>黑色高度</h3><p>从根节点到叶节点的路径上黑色节点的个数，叫做树的黑色高度。</p>
+<p>一些规则:<br>每个节点要么是红色，要么是黑色；<br>根节点永远是黑色的；<br>所有的叶节点都是是黑色的（注意这里说叶子节点其实是上图中的 NIL 节点）；<br>每个红色节点的两个子节点一定都是黑色；<br>从任一节点到其子树中每个叶子节点的路径都包含相同数量的黑色节点；</p>
+<p>性质 4 的意思是：从每个根到节点的路径上不会有两个连续的红色节点，但黑色节点是可以连续的。</p>
+<h3 id="左旋和右旋"><a href="#左旋和右旋" class="headerlink" title="左旋和右旋"></a>左旋和右旋</h3><p><img src="https://s1.ax1x.com/2020/08/19/dl2YDS.png" alt="dl2YDS.png"></p>
+<h3 id="红黑树的平衡插入"><a href="#红黑树的平衡插入" class="headerlink" title="红黑树的平衡插入"></a>红黑树的平衡插入</h3><p>红黑树的插入主要分两步：</p>
+<p>首先和二叉查找树的插入一样，查找、插入<br>然后调整结构，保证满足红黑树状态<br>对结点进行重新着色<br>以及对树进行相关的旋转操作</p>
+<p>前面说了，插入一个节点后要担心违反特征 4 和 5，数学里最常用的一个解题技巧就是把多个未知数化解成一个未知数。我们这里采用同样的技巧，把插入的节点直接染成红色，这样就不会影响特征 5，只要专心调整满足特征 4 就好了。这样比同时满足 4、5 要简单一些。</p>
+<p>染成红色后，我们只要关心父节点是否为红，如果是红的，就要把父节点进行变化，让父节点变成黑色，或者换一个黑色节点当父亲，这些操作的同时不能影响 不同路径上的黑色节点数一致的规则。</p>
+<h2 id="25-ConcurrentHashMap底层源码分析"><a href="#25-ConcurrentHashMap底层源码分析" class="headerlink" title="25.ConcurrentHashMap底层源码分析"></a>25.ConcurrentHashMap底层源码分析</h2><p>参考这篇文章:<br><a href="https://www.jasongj.com/java/concurrenthashmap/" target="_blank" rel="noopener">https://www.jasongj.com/java/concurrenthashmap/</a></p>
+<h2 id="26-单例模式"><a href="#26-单例模式" class="headerlink" title="26.单例模式"></a>26.单例模式</h2><p>饿汉模式:</p>
+<pre><code>public class Singleton{
+    private static Singleton instance = new Singleton();
+    private Singleton(){}
+    public static Singleton newInstance(){
+        return instance;
+    }
+}</code></pre><p>缺点:<br>从代码中我们看到，类的构造函数定义为private的，保证其他类不能实例化此类，然后提供了一个静态实例并返回给调用者。饿汉模式是最简单的一种实现方式，饿汉模式在类加载的时候就对实例进行创建，实例在整个程序周期都存在。<br>它的好处是只在类加载的时候创建一次实例，不会存在多个线程创建多个实例的情况，避免了多线程同步的问题。<br>它的缺点也很明显，即使这个单例没有用到也会被创建，而且在类加载之后就被创建，内存就被浪费了。<br>这种实现方式适合单例占用内存比较小，在初始化时就会被用到的情况。但是，如果单例占用的内存比较大，或单例只是在某个特定场景下才会用到，使用饿汉模式就不合适了，这时候就需要用到懒汉模式进行延迟加载。</p>
+<p>懒汉:</p>
+<pre><code>public class Singleton{
+    private static Singleton instance = null;
+    private Singleton(){}
+    public static Singleton newInstance(){
+        if(null == instance){
+            instance = new Singleton();
+        }
+        return instance;
+    }
+}</code></pre><p>好处：懒汉模式中单例是在需要的时候才去创建的，如果单例已经创建，再次调用获取接口将不会重新创建新的对象，而是直接返回之前创建的对象。<br>适用于：如果某个单例使用的次数少，并且创建单例消耗的资源较多，那么就需要实现单例的按需创建，这个时候使用懒汉模式就是一个不错的选择。<br>缺点：但是这里的懒汉模式并没有考虑线程安全问题，在多个线程可能会并发调用它的getInstance()方法，导致创建多个实例，因此需要加锁解决线程同步问题</p>
+<p>线程安全版本懒汉:</p>
+<pre><code>public class Singleton{
+    private static Singleton instance = null;
+    private Singleton(){}
+    public static synchronized Singleton newInstance(){
+        if(null == instance){  // Single Checked
+            instance = new Singleton();
+        }
+        return instance;
+    }
+}</code></pre><p>线程安全版本双重校验锁懒汉:</p>
+<pre><code>public class Singleton {
+    private static Singleton instance = null;
+    private Singleton(){}
+    public static Singleton getInstance() {
+        if (instance == null) {   // Single Checked
+            synchronized (Singleton.class) {
+                if (instance == null) { // Double checked
+                    instance = new Singleton();
+                }
+            }
+        }
+        return instance;
+    }
+}</code></pre><p>但是还是有隐患,因为指令重排序:导致初始化Singleton和将对象地址赋给instance字段.<br>所以1.5之后加了这个东西:volatile<br>volatile是一个特殊的修饰符，只有成员变量才能使用它。<br>在Java并发程序缺少同步类的情况下，多线程对成员变量的操作对其它线程是透明的。<br>volatile变量可以保证下一个读取操作会在前一个写操作之后发生<br>双重校验+volatile实现饿汉模式</p>
+<pre><code>public class Singleton {
+    private static volatile Singleton instance = null;
+    private Singleton(){}
+    public static Singleton getInstance() {
+        if (instance == null) { // Single Checked
+            synchronized (Singleton.class) {
+                if (instance == null) { // Double checked
+                    instance = new Singleton();
+                }
+
+            }
+        }
+        return instance;
+    }
+}</code></pre><p>静态内部类实现:</p>
+<pre><code>public class Singleton{
+    private static class SingletonHolder{
+        public static Singleton instance = new Singleton();
+    }
+    private Singleton(){}
+    public static Singleton newInstance(){
+        return SingletonHolder.instance;
+    }
+}</code></pre><p>相对于饿汉模式,静态内部类只有在第一次被用到的时候才会加载.所以同时实现了延迟加载和线程安全</p>
+<p>使用枚举类:</p>
+<pre><code>class Resource{
+}
+public enum SomeThing {
+    INSTANCE;
+    private Resource instance;
+    private SomeThing() {
+        instance = new Resource();
+    }
+    public Resource getInstance() {
+        return instance;
+    }
+}</code></pre><p>上面的类Resource是我们要应用单例模式的资源，具体可以表现为网络连接，数据库连接，线程池等等。<br>获取资源的方式很简单，只要 SomeThing.INSTANCE.getInstance() 即可获得所要实例。<br>下面我们来看看单例是如何被保证的：<br>首先，在枚举中我们明确了构造方法限制为私有，在我们访问枚举实例时会执行构造方法。<br>同时每个枚举实例都是static final类型的，也就表明只能被实例化一次。在调用构造方法时，我们的单例被实例化。<br>也就是说，因为enum中的实例被保证只会被实例化一次，所以我们的INSTANCE也被保证实例化一次。 </p>
+<p>缺点:<br>上面提到的四种实现单例的方式都有共同的缺点：<br>1）需要额外的工作来实现序列化，否则每次反序列化一个序列化的对象时都会创建一个新的实例。<br>2）可以使用反射强行调用私有构造器（如果要避免这种情况，可以修改构造器，让它在创建第二个实例的时候抛异常）</p>
+<p>而枚举类很好的解决了这两个问题，使用枚举除了线程安全和防止反射调用构造器之外，还提供了自动序列化机制，防止反序列化的时候创建新的对象。</p>
+<h2 id="27-讲讲happen-before"><a href="#27-讲讲happen-before" class="headerlink" title="27.讲讲happen-before"></a>27.讲讲happen-before</h2><p>如果一个操作happens-before另一个操作，那么第一个操作的执行结果将对第二个操作可见，而且第一个操作的执行顺序排在第二个操作之前。</p>
+<p>两个操作之间存在happens-before关系，并不意味着一定要按照happens-before原则制定的顺序来执行。如果重排序之后的执行结果与按照happens-before关系来执行的结果一致，那么这种重排序并不非法。</p>
+<h2 id="28-触发新生代GC，如果存活对象总量大于survivor区容量，咋办？"><a href="#28-触发新生代GC，如果存活对象总量大于survivor区容量，咋办？" class="headerlink" title="28.触发新生代GC，如果存活对象总量大于survivor区容量，咋办？"></a>28.触发新生代GC，如果存活对象总量大于survivor区容量，咋办？</h2><p>先放到老年代,类似于大对象，如果老年代可用空间小于新生代存活对象所占空间，如果没有开启空间担保参数会直接触发Full GC，新生代老年代都进行回收</p>
+<h2 id="29-如果任务很多，线程池的阻塞队列会撑爆内存的哪个区域？"><a href="#29-如果任务很多，线程池的阻塞队列会撑爆内存的哪个区域？" class="headerlink" title="29.如果任务很多，线程池的阻塞队列会撑爆内存的哪个区域？"></a>29.如果任务很多，线程池的阻塞队列会撑爆内存的哪个区域？</h2><p>堆，因为是存储的对象在堆上</p>
+<h2 id="30-JMM是什么？"><a href="#30-JMM是什么？" class="headerlink" title="30.JMM是什么？"></a>30.JMM是什么？</h2><p>java内存模型</p>
+<h2 id="31-GC-root有哪些？"><a href="#31-GC-root有哪些？" class="headerlink" title="31.GC root有哪些？"></a>31.GC root有哪些？</h2><p>1.虚拟机栈（栈帧中的本地变量表）中引用的对象；</p>
+<p>2.方法区中的类静态属性引用的对象；</p>
+<p>3.方法区中常量引用的对象；</p>
+<p>4.本地方法栈中JNI（即一般说的Native方法）中引用的对象</p>
+<h2 id="32-GC算法有哪些"><a href="#32-GC算法有哪些" class="headerlink" title="32.GC算法有哪些"></a>32.GC算法有哪些</h2><p>标记-清除，复制算法（新生代），标记-压缩（老年代），分代收集</p>
+<h2 id="33-Synchronized底层"><a href="#33-Synchronized底层" class="headerlink" title="33.Synchronized底层"></a>33.Synchronized底层</h2><p>可以看到锁信息也是存在于对象的mark word中的。当对象状态为偏向锁（biasable）时，mark word存储的是偏向的线程ID；当状态为轻量级锁（lightweight locked）时，mark word存储的是指向线程栈中Lock Record的指针；当状态为重量级锁（inflated）时，为指向堆中的monitor对象的指针。</p>
+<p>Java中的synchronized有偏向锁、轻量级锁、重量级锁三种形式，分别对应了锁只被一个线程持有、不同线程交替持有锁、多线程竞争锁三种情况。当条件不满足时，锁会按偏向锁-&gt;轻量级锁-&gt;重量级锁 的顺序升级。</p>
+<h2 id="34-JAVA中有哪些基本数据类型"><a href="#34-JAVA中有哪些基本数据类型" class="headerlink" title="34.JAVA中有哪些基本数据类型"></a>34.JAVA中有哪些基本数据类型</h2><p>字符类型char，布尔类型boolean以及数值类型byte、short、int、long、float、double</p>
+<h2 id="35-Integer包装类底层是怎么实现的"><a href="#35-Integer包装类底层是怎么实现的" class="headerlink" title="35.Integer包装类底层是怎么实现的?"></a>35.Integer包装类底层是怎么实现的?</h2><p>int 是基本数据类型，Integer是int的包装类，属于对象类型。<br>int类型的值直接储存在栈里，调用起来更效率。</p>
+<p>Integer类型的值储存在堆里，它有自己的方法可以调用，有些特定的地方只能接收Integer类型而不能接收int类型。</p>
+<p>例如集合的泛型，List<integer>,如果写List<int>会报错。往List<integer>里添加int类型数据也能成功是因为java从1.6开始提供了自动拆装箱的功能，所以不用我们手动去转换。</integer></int></integer></p>
+<h2 id="36-原子类了解吗"><a href="#36-原子类了解吗" class="headerlink" title="36.原子类了解吗?"></a>36.原子类了解吗?</h2><p>参考文章:<a href="https://juejin.im/post/6844903683268804622" target="_blank" rel="noopener">https://juejin.im/post/6844903683268804622</a><br>原子类的优点是更加方便的更新一个原子对象.<br>基本使用:</p>
+<pre><code>class AtomicDemo {
+    private AtomicInteger mAtomicInteger = new AtomicInteger();//如果没有指定值，默认是1
+
+    private void doAdd() {
+        for (int i = 0; i &lt; 5; i++) {
+            int value = mAtomicInteger.addAndGet(1);
+            System.out.println(Thread.currentThread().getName() + &quot;---&gt;&quot; + value);
+        }
+    }
+
+    public static void main(String[] args) {
+        AtomicDemo demo = new AtomicDemo();
+        new Thread(demo::doAdd, &quot;线程1&quot;).start();
+        new Thread(demo::doAdd, &quot;线程2&quot;).start();
+    }
+}
+//输出结果
+线程1---&gt;1
+线程1---&gt;2
+线程1---&gt;3
+线程2---&gt;4
+线程1---&gt;5
+线程2---&gt;6
+线程1---&gt;7
+线程2---&gt;8
+线程2---&gt;9
+线程2---&gt;10</code></pre><p>如何实现:<br>以AtomicInteger为原型来进行讲解:<br>比如getAndAdd这个方法,首先是获取内存中的值,最后会调用compareAndSetInt这个方法来完成最后的原子操作,使用CAS实现,如果不成功就一直循环.</p>
+<h2 id="37-哈希冲突算法"><a href="#37-哈希冲突算法" class="headerlink" title="37.哈希冲突算法"></a>37.哈希冲突算法</h2><p>TODO</p>
+
+            </div>
+            <hr />
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">创作不易，客官能否打赏一杯奶茶？</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                    《Java基础》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/06/java-ji-chu/" property="cc:attributionName"
+               rel="cc:attributionURL">
+                HumphreyHao
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+    <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '8221bd93c70d02bf9632',
+        clientSecret: '5872a9f8b83bde7975d28d99e18d2a3fed48824d',
+        repo: 'humphreyhao.github.io',
+        owner: 'humphreyhao',
+        admin: "humphreyhao",
+        id: '2019/08/06/java-ji-chu/',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/09/16/nosql/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="NoSQL">
+                        
+                        <span class="card-title">NoSQL</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本文整理了常见的NoSQL学习过程中会遇到的问题
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-16
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/数据库/" class="post-category" target="_blank">
+                                    数据库
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/NoSQL/" target="_blank">
+                        <span class="chip bg-color">NoSQL</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/07/04/linux/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Linux">
+                        
+                        <span class="card-title">Linux</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            linux服务器部分/操作系统1.怎么查看日志?如果只想看日志的最底端,用什么命令?如果想在日志里检索关键词,用什么命令?使用tail -f test.log,查看最底端正在改变的文件.
+head是查看前多少行日志.
+cat是查看关键字的日
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-04
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category" target="_blank">
+                                    Linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/" target="_blank">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('10')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Humphrey爵士的小海豚<br />'
+            + '作者: HumphreyHao<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () { bodyElement.removeChild(newdiv); }, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+<!-- 代码语言 -->
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+<!-- 代码块复制 -->
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+<script type="text/javascript" src="/libs/codeBlock/clipboard.min.js"></script>
+<!-- 代码块收缩 -->
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script> 
+<!-- 代码块折行 -->
+<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy; 2018-2020 HumphreyHao. 版权所有
+
+            
+            &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+            <span class="white-color">135.1k</span>
+            
+
+            <br>
+            <span id="sitetime"></span>
+
+            
+            
+            <br>
+            
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <i class="fa fa-heart-o"></i>
+                本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+            </span>
+            
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/humphreyhao" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:441736746@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://zhihu.com/people/天天神教" class="tooltipped" target="_blank" data-tooltip="访问我的知乎" data-position="top" data-delay="50">
+        <i class="fa fa-inverse">知</i>
+    </a>
+
+
+
+    <a href="http://wpa.qq.com/msgrd?v=3&uin=441736746&site=qq&menu=yes" class="tooltipped" target="_blank" data-tooltip="访问我的知乎" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+    $(document).ready(function () {
+
+        var int = setInterval(fixCount, 50);
+        var pvcountOffset = 0;
+        var uvcountOffset = 0;
+
+        function fixCount() {
+            if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset);
+                clearInterval(int);
+            }
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据 
+                clearInterval(int);
+            }
+        }
+    });
+</script>
+
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2018, 12, 11, 00, 00, 00); //北京时间2018-2-13 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已运行 " + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <script type="text/javascript"> var OriginTitile = document.title, st; document.addEventListener("visibilitychange", function () { document.hidden ? (document.title = "Σ(っ °Д °;)っ喔哟，崩溃啦！", clearTimeout(st)) : (document.title = "φ(゜▽゜*)♪咦，又好了！", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) })
+    </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', '');
+</script>
+
+
+
+    
+    <script src="/libs/others/clicklove.js"></script>
+    
+
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <!-- 雪花特效 -->
+    
+
+</body>
+
+</html>
