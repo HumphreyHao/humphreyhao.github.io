@@ -16,6 +16,13 @@
   </url>
   
   <url>
+    <loc>https://humphreyhao.github.io/categories/index.html</loc>
+    
+    <lastmod>2021-02-05T16:23:05.221Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://humphreyhao.github.io/contact/index.html</loc>
     
     <lastmod>2021-02-05T16:23:05.221Z</lastmod>
@@ -24,13 +31,6 @@
   
   <url>
     <loc>https://humphreyhao.github.io/friends/index.html</loc>
-    
-    <lastmod>2021-02-05T16:23:05.221Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://humphreyhao.github.io/categories/index.html</loc>
     
     <lastmod>2021-02-05T16:23:05.221Z</lastmod>
     
@@ -65,14 +65,14 @@
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2020/08/20/shu-ju-jie-gou-yu-suan-fa-zhi-mei-yi/</loc>
+    <loc>https://humphreyhao.github.io/2020/07/03/ji-suan-ji-wang-luo/</loc>
     
     <lastmod>2021-02-05T16:23:05.220Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2020/07/03/ji-suan-ji-wang-luo/</loc>
+    <loc>https://humphreyhao.github.io/2020/08/20/shu-ju-jie-gou-yu-suan-fa-zhi-mei-yi/</loc>
     
     <lastmod>2021-02-05T16:23:05.220Z</lastmod>
     
@@ -114,13 +114,6 @@
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2019/07/04/linux/</loc>
-    
-    <lastmod>2021-02-05T16:23:05.218Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://humphreyhao.github.io/2020/09/04/java-kai-fa-jin-jie-bi-ji-tong-yong-bian-cheng-gui-fan/</loc>
     
     <lastmod>2021-02-05T16:23:05.218Z</lastmod>
@@ -128,7 +121,7 @@
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2019/09/16/nosql/</loc>
+    <loc>https://humphreyhao.github.io/2019/07/04/linux/</loc>
     
     <lastmod>2021-02-05T16:23:05.218Z</lastmod>
     
@@ -142,14 +135,21 @@
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2020/04/02/redis/</loc>
+    <loc>https://humphreyhao.github.io/2020/02/24/nameserver/</loc>
     
     <lastmod>2021-02-05T16:23:05.218Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2020/02/24/nameserver/</loc>
+    <loc>https://humphreyhao.github.io/2019/09/16/nosql/</loc>
+    
+    <lastmod>2021-02-05T16:23:05.218Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://humphreyhao.github.io/2020/04/02/redis/</loc>
     
     <lastmod>2021-02-05T16:23:05.218Z</lastmod>
     
@@ -268,14 +268,14 @@
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2020/12/28/java-kai-fa-chang-jian-cuo-wu-4/</loc>
+    <loc>https://humphreyhao.github.io/2020/12/24/java-kai-fa-chang-jian-cuo-wu-3/</loc>
     
     <lastmod>2021-02-05T16:23:05.215Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2020/12/24/java-kai-fa-chang-jian-cuo-wu-3/</loc>
+    <loc>https://humphreyhao.github.io/2020/12/28/java-kai-fa-chang-jian-cuo-wu-4/</loc>
     
     <lastmod>2021-02-05T16:23:05.215Z</lastmod>
     
@@ -324,14 +324,14 @@
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2019/11/16/java-ji-chu-xi-lie-8-object-lei/</loc>
+    <loc>https://humphreyhao.github.io/2019/11/14/java-ji-chu-xi-lie-7-dai-ma-kuai-he-zhi-xing-shun-xu/</loc>
     
     <lastmod>2021-02-05T16:23:05.213Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2019/11/14/java-ji-chu-xi-lie-7-dai-ma-kuai-he-zhi-xing-shun-xu/</loc>
+    <loc>https://humphreyhao.github.io/2019/11/16/java-ji-chu-xi-lie-8-object-lei/</loc>
     
     <lastmod>2021-02-05T16:23:05.213Z</lastmod>
     
@@ -380,7 +380,7 @@
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2019/11/06/java-ji-chu-xi-lie-3-string-lei-xing-de-fen-xi/</loc>
+    <loc>https://humphreyhao.github.io/2019/11/04/java-ji-chu-xi-lie-2-zi-dong-zhuang-xiang-yu-chai-xiang/</loc>
     
     <lastmod>2021-02-05T16:23:05.212Z</lastmod>
     
@@ -394,7 +394,7 @@
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2019/11/04/java-ji-chu-xi-lie-2-zi-dong-zhuang-xiang-yu-chai-xiang/</loc>
+    <loc>https://humphreyhao.github.io/2019/11/06/java-ji-chu-xi-lie-3-string-lei-xing-de-fen-xi/</loc>
     
     <lastmod>2021-02-05T16:23:05.212Z</lastmod>
     
@@ -422,14 +422,14 @@
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2019/11/24/java-ji-chu-xi-lie-12-fan-xing/</loc>
+    <loc>https://humphreyhao.github.io/2019/11/26/java-ji-chu-xi-lie-13-mei-ju/</loc>
     
     <lastmod>2021-02-05T16:23:05.211Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2019/11/26/java-ji-chu-xi-lie-13-mei-ju/</loc>
+    <loc>https://humphreyhao.github.io/2019/11/24/java-ji-chu-xi-lie-12-fan-xing/</loc>
     
     <lastmod>2021-02-05T16:23:05.211Z</lastmod>
     
@@ -450,14 +450,14 @@
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2019/12/04/java-ji-chu-xi-lie-17-ji-he-lei/</loc>
+    <loc>https://humphreyhao.github.io/2019/12/02/java-ji-chu-xi-lie-16-nei-bu-lei/</loc>
     
     <lastmod>2021-02-05T16:23:05.211Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2019/12/02/java-ji-chu-xi-lie-16-nei-bu-lei/</loc>
+    <loc>https://humphreyhao.github.io/2019/12/04/java-ji-chu-xi-lie-17-ji-he-lei/</loc>
     
     <lastmod>2021-02-05T16:23:05.211Z</lastmod>
     
@@ -478,14 +478,14 @@
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2019/08/06/java-ji-chu/</loc>
+    <loc>https://humphreyhao.github.io/2019/11/02/java-ji-chu-xi-lie-1-san-da-te-xing/</loc>
     
     <lastmod>2021-02-05T16:23:05.210Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2019/11/02/java-ji-chu-xi-lie-1-san-da-te-xing/</loc>
+    <loc>https://humphreyhao.github.io/2019/08/06/java-ji-chu/</loc>
     
     <lastmod>2021-02-05T16:23:05.210Z</lastmod>
     
