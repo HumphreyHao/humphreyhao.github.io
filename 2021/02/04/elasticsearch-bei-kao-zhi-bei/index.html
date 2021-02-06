@@ -266,7 +266,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -421,7 +421,7 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    1.8k
                 </div>
                 
 
@@ -599,10 +599,17 @@ GET /test/_mget
 }</code></pre><p>msearch:<br>批量查询</p>
 <pre><code>### msearch 操作
 POST kibana_sample_data_ecommerce/_msearch
-{}
+{
 {&quot;query&quot; : {&quot;match_all&quot; : {}},&quot;size&quot;:1}
 {&quot;index&quot; : &quot;kibana_sample_data_flights&quot;}
-{&quot;query&quot; : {&quot;match_all&quot; : {}},&quot;size&quot;:2}</code></pre>
+{&quot;query&quot; : {&quot;match_all&quot; : {}},&quot;size&quot;:2}
+}</code></pre><p>Analysis:<br>文本分析,是把全文本转换为一系列单词的过程,也叫分词.<br>主要目的是为了给构造倒排索引做准备.<br>根据不同的Analyzer来进行处理会得到不同的分词结果.  </p>
+<p>对应的api:</p>
+<pre><code>POST _analyze
+{
+  &quot;analyzer&quot;: &quot;standard&quot;,
+  &quot;text&quot;: &quot;Elasticsearch Server&quot;
+}</code></pre>
             </div>
             <hr />
 
@@ -833,7 +840,7 @@ POST kibana_sample_data_ecommerce/_msearch
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Elasticsearch备考指北">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Elasticsearch备考指北">
                         
                         <span class="card-title">Elasticsearch备考指北</span>
                     </div>
@@ -883,7 +890,7 @@ POST kibana_sample_data_ecommerce/_msearch
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Java开发常见错误_17">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Java开发常见错误_17">
                         
                         <span class="card-title">Java开发常见错误_17</span>
                     </div>
@@ -1096,7 +1103,7 @@ POST kibana_sample_data_ecommerce/_msearch
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">136.3k</span>
+            <span class="white-color">136.4k</span>
             
 
             <br>
