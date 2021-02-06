@@ -421,14 +421,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    7 分
                 </div>
                 
                 
@@ -498,13 +498,111 @@ GET /_cat/indices?v&amp;h=i,tm&amp;s=tm:desc</code></pre><p>高可用：<br>允�
 <p>Coordinating Node:<br>负责接收Client的请求,将请求分发给合适的节点;<br>每个节点默认都起到了CN节点的职责;</p>
 <p>主分片:<br>在索引创建时指定,不允许修改;<br>通过主分片可以把数据分布到所有节点上;<br>分片的数量需要提前做好规划,数量过小会导致后续无法进行水平扩展,同时单个分片的数据量过大,导致数据重分配耗时;分片数量过多会影响结果的相关性打分,也会导致资源的浪费.</p>
 <p>副本:<br>副本是主分片的copy,可以动态调整;</p>
-<p>集群健康状况:<br>使用/_cluster/health来查看当前的健康状态</p>
+<p>集群健康状况:<br>使用/_cluster/health来查看当前的健康状态<br>或者使用cat api, /-cat/nodes</p>
 <ul>
 <li>green: 主分片和副本都正常分配</li>
 <li>yellow: 主分片正常,副本不正常</li>
 <li>red: 主分片分配失败</li>
 </ul>
+<p>一些关于节点和集群的常用命令:</p>
+<pre><code>get _cat/nodes 查看节点状态
+get _cat/shards 查看分片状态
+GET /_cat/nodes?v&amp;h=id,ip,port,v,m 查看各个节点的一些属性 </code></pre><p>CURD:<br>index和create:<br>都是创建,区别在于如果id已经存在,index会删除现有文档,然后创建新文档,<br>版本+1;但是create会直接失败;<br>这两者都是使用put字段,update是使用post字段.<br>index是_doc字段,create是_create字段</p>
+<p>update:<br>文档必须已经存在, 更新只会对相应字段增量修改;<br>必须要指定doc字段;<br>注意只有在真正更新的时候,update才会增加版本号;但是index即使不更新,也会增加版本号.</p>
+<p>get: 索引名/type类型/id, 获取一个指定的文档,会先返回所有的原始信息,_source中会返回所有保存的原始信息</p>
+<pre><code>#create document. 自动生成 _id
+POST users/_doc
+{
+    &quot;user&quot; : &quot;Mike&quot;,
+    &quot;post_date&quot; : &quot;2019-04-15T14:12:12&quot;,
+    &quot;message&quot; : &quot;trying out Kibana&quot;
+}
 
+#create document. 指定Id。如果id已经存在，报错
+PUT users/_doc/1?op_type=create
+{
+    &quot;user&quot; : &quot;Jack&quot;,
+    &quot;post_date&quot; : &quot;2019-05-15T14:12:12&quot;,
+    &quot;message&quot; : &quot;trying out Elasticsearch&quot;
+}
+
+#create document. 指定 ID 如果已经存在，就报错
+PUT users/_doc/1
+{
+     &quot;user&quot; : &quot;Jack&quot;,
+    &quot;post_date&quot; : &quot;2019-05-15T14:12:12&quot;,
+    &quot;message&quot; : &quot;trying out Elasticsearch&quot;
+}
+
+### Get Document by ID
+#Get the document by ID
+GET users/_doc/1
+
+
+###  Index &amp; Update
+#Update 指定 ID  (先删除，在写入)
+GET users/_doc/1
+
+PUT users/_doc/1
+{
+    &quot;user&quot; : &quot;Mike&quot;
+
+}
+
+
+#GET users/_doc/1
+#在原文档上增加字段
+POST users/_update/1/
+{
+    &quot;doc&quot;:{
+        &quot;post_date&quot; : &quot;2019-05-15T14:12:12&quot;,
+        &quot;message&quot; : &quot;trying out Elasticsearch-1&quot;
+    }
+}</code></pre><p>Bulk Api:<br>支持在一次api调用中,对不同的索引进行操作.<br>操作中单条失败不会影响其他操作.<br>返回的结果包含每一条执行结果. </p>
+<pre><code>#执行第1次
+POST _bulk
+{ &quot;index&quot; : { &quot;_index&quot; : &quot;test&quot;, &quot;_id&quot; : &quot;1&quot; } }
+{ &quot;field1&quot; : &quot;value1&quot; }
+{ &quot;delete&quot; : { &quot;_index&quot; : &quot;test&quot;, &quot;_id&quot; : &quot;2&quot; } }
+{ &quot;create&quot; : { &quot;_index&quot; : &quot;test2&quot;, &quot;_id&quot; : &quot;3&quot; } }
+{ &quot;field1&quot; : &quot;value3&quot; }
+{ &quot;update&quot; : {&quot;_id&quot; : &quot;1&quot;, &quot;_index&quot; : &quot;test&quot;} }
+{ &quot;doc&quot; : {&quot;field2&quot; : &quot;value2&quot;} }</code></pre><p>mget:<br>批量读取,降低网络开销</p>
+<pre><code>GET /_mget
+{
+    &quot;docs&quot; : [
+        {
+            &quot;_index&quot; : &quot;test&quot;,
+            &quot;_id&quot; : &quot;1&quot;
+        },
+        {
+            &quot;_index&quot; : &quot;test&quot;,
+            &quot;_id&quot; : &quot;2&quot;
+        }
+    ]
+}
+
+
+#URI中指定index
+GET /test/_mget
+{
+    &quot;docs&quot; : [
+        {
+
+            &quot;_id&quot; : &quot;1&quot;
+        },
+        {
+
+            &quot;_id&quot; : &quot;2&quot;
+        }
+    ]
+}</code></pre><p>msearch:<br>批量查询</p>
+<pre><code>### msearch 操作
+POST kibana_sample_data_ecommerce/_msearch
+{}
+{&quot;query&quot; : {&quot;match_all&quot; : {}},&quot;size&quot;:1}
+{&quot;index&quot; : &quot;kibana_sample_data_flights&quot;}
+{&quot;query&quot; : {&quot;match_all&quot; : {}},&quot;size&quot;:2}</code></pre>
             </div>
             <hr />
 
@@ -998,7 +1096,7 @@ GET /_cat/indices?v&amp;h=i,tm&amp;s=tm:desc</code></pre><p>高可用：<br>允�
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">135.6k</span>
+            <span class="white-color">136.3k</span>
             
 
             <br>
