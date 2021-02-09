@@ -266,7 +266,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -421,14 +421,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.6k
+                    2.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    12 分
                 </div>
                 
                 
@@ -626,7 +626,7 @@ POST kibana_sample_data_ecommerce/_msearch
 /index*/_search 在index开头的索引上查询</code></pre><p>如果使用URI查询,使用q来查询指定字段,比如:</p>
 <pre><code>_search?q=customer_first_name:Eddie 查询名叫Eddie的客户</code></pre><p>返回结果字段分析:<br>took: 花费的时间<br>total: 符合条件的总文档数<br>hits: 结果集,默认前十个文档</p>
 <h2 id="相关性衡量指标"><a href="#相关性衡量指标" class="headerlink" title="相关性衡量指标:"></a>相关性衡量指标:</h2><p>precision(查准率): 尽可能返回较少的无关文档,true positive/all positive<br>recall(查全率): 尽可能返回较多的相关文档, tP/TP+FN<br>ranking: 是否能够按照相关度进行排序</p>
-<h2 id="URI-Search"><a href="#URI-Search" class="headerlink" title="URI Search"></a>URI Search</h2><p>通过uri query实现搜索,<br>q指定查询语句,df指定字段,默认是所有字段,sort排序,from和size用于分页,profile用于查看查询是如何被执行的.<br>使用query string syntax语法格式,空格等于or,引号等于and,括号代表分组bool的概念,冒号字段和对应的条件.<br>布尔操作必须是大写.<br>“+”代表must,”-“代表must not.<br>范围查询仅限于数字使用.<br>模糊匹配是使用<del>1,代表允许出现一位的误差,比如us-&gt;use;<br>但是如果是引号</del>1,代表允许单词中插入一个单词,比如log of-&gt;log and of</p>
+<h2 id="URI-Search"><a href="#URI-Search" class="headerlink" title="URI Search"></a>URI Search</h2><p>通过uri query实现搜索,<br>q指定查询语句,df指定字段,默认是所有字段,sort排序,from和size用于分页,profile用于查看查询是如何被执行的.<br>使用query string syntax语法格式,空格等于or,引号等于and,括号代表分组bool的概念,冒号字段和对应的条件.<br>布尔操作必须是大写.<br>“+”代表must,”-“代表must not.<br>范围查询仅限于数字使用.<br>模糊匹配是使用<code>~1</code>,代表允许出现一位的误差,比如us-&gt;use;<br>但是如果是<code>引号~1</code>,代表允许单词中插入一个单词,比如log of-&gt;log and of</p>
 <pre><code>#基本查询
 GET /movies/_search?q=2012&amp;df=title&amp;sort=year:desc&amp;from=0&amp;size=10&amp;timeout=1s
 
@@ -717,6 +717,107 @@ GET /movies/_search?q=title:beautifl~1
 GET /movies/_search?q=title:&quot;Lord Rings&quot;~2
 {
     &quot;profile&quot;:&quot;true&quot;
+}</code></pre><h2 id="Query-DSL"><a href="#Query-DSL" class="headerlink" title="Query DSL"></a>Query DSL</h2><p>通过http的request body发送给Elasticsearch.<br>语句类似uri查询,但是使用json格式,更加清晰.<br>脚本字段: 使用painless字段去算出来一个我们需要的新字段出来.<br>query的match字段对应的是具体的查询条件.<br>如果需要更加详细的查询条件,可以在具体的字段查询中再使用query字段.<br>看下列demo:</p>
+<pre><code>#ignore_unavailable=true，可以忽略尝试访问不存在的索引“404_idx”导致的报错
+#查询movies分页
+POST /movies,404_idx/_search?ignore_unavailable=true
+{
+  &quot;profile&quot;: true,
+    &quot;query&quot;: {
+        &quot;match_all&quot;: {}
+    }
+}
+
+POST /kibana_sample_data_ecommerce/_search
+{
+  &quot;from&quot;:10,
+  &quot;size&quot;:20,
+  &quot;query&quot;:{
+    &quot;match_all&quot;: {}
+  }
+}
+
+#对日期排序
+POST kibana_sample_data_ecommerce/_search
+{
+  &quot;sort&quot;:[{&quot;order_date&quot;:&quot;desc&quot;}],
+  &quot;query&quot;:{
+    &quot;match_all&quot;: {}
+  }
+
+}
+
+#source filtering
+POST kibana_sample_data_ecommerce/_search
+{
+  &quot;_source&quot;:[&quot;order_date&quot;],
+  &quot;query&quot;:{
+    &quot;match_all&quot;: {}
+  }
+}
+
+
+#脚本字段
+GET kibana_sample_data_ecommerce/_search
+{
+  &quot;script_fields&quot;: {
+    &quot;new_field&quot;: {
+      &quot;script&quot;: {
+        &quot;lang&quot;: &quot;painless&quot;,
+        &quot;source&quot;: &quot;doc[&#39;order_date&#39;].value+&#39;hello&#39;&quot;
+      }
+    }
+  },
+  &quot;query&quot;: {
+    &quot;match_all&quot;: {}
+  }
+}
+
+
+POST movies/_search
+{
+  &quot;query&quot;: {
+    &quot;match&quot;: {
+      &quot;title&quot;: &quot;last christmas&quot;
+    }
+  }
+}
+
+POST movies/_search
+{
+  &quot;query&quot;: {
+    &quot;match&quot;: {
+      &quot;title&quot;: {
+        &quot;query&quot;: &quot;last christmas&quot;,
+        &quot;operator&quot;: &quot;and&quot;
+      }
+    }
+  }
+}
+
+POST movies/_search
+{
+  &quot;query&quot;: {
+    &quot;match_phrase&quot;: {
+      &quot;title&quot;:{
+        &quot;query&quot;: &quot;one love&quot;
+
+      }
+    }
+  }
+}
+
+# slop代表可以差一个词,模糊查询.
+POST movies/_search
+{
+  &quot;query&quot;: {
+    &quot;match_phrase&quot;: {
+      &quot;title&quot;:{
+        &quot;query&quot;: &quot;one love&quot;,
+        &quot;slop&quot;: 1
+      }
+    }
+  }
 }</code></pre>
             </div>
             <hr />
@@ -948,7 +1049,7 @@ GET /movies/_search?q=title:&quot;Lord Rings&quot;~2
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Elasticsearch备考指北">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Elasticsearch备考指北">
                         
                         <span class="card-title">Elasticsearch备考指北</span>
                     </div>
@@ -998,7 +1099,7 @@ GET /movies/_search?q=title:&quot;Lord Rings&quot;~2
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Java开发常见错误_17">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Java开发常见错误_17">
                         
                         <span class="card-title">Java开发常见错误_17</span>
                     </div>
@@ -1211,7 +1312,7 @@ GET /movies/_search?q=title:&quot;Lord Rings&quot;~2
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">137.2k</span>
+            <span class="white-color">137.5k</span>
             
 
             <br>
