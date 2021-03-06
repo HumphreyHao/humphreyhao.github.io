@@ -4,11 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Effective Java-创建和销毁对象, JAVA Python HumphreyHao 后端研发 海豚">
+    <meta name="keywords" content="Elasticsearch备考指北_2, JAVA Python HumphreyHao 后端研发 海豚">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
-    <meta name="description" content="第二章:创建和销毁对象1,用静态方法类替代构造器为什么要使用静态方法而不是public构造器:优点:1,静态方法是有名字的,构造器只能根据参数来决定返回实例的类型.但是通过静态工厂方法就可以避开这个过程.2,可以复用对象,不用每次都创建一个">
+    <meta name="description" content="写在最前本文主要是对极客时间阮一鸣老师的&amp;lt;&amp;lt;Elasticsearch核心技术与实战&amp;gt;&amp;gt;这个课的一个个人总结,EE这个证书目前在国内仅仅有70人拿到,还是非常有含金量的,预计考取收益为涨薪20k+从新P6跃迁到老P6">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Effective Java-创建和销毁对象 | Humphrey爵士的小海豚</title>
+    <title>Elasticsearch备考指北_2 | Humphrey爵士的小海豚</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -266,13 +266,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Effective Java-创建和销毁对象
+                        Elasticsearch备考指北_2
                     </div>
                 </div>
             </div>
@@ -383,8 +383,8 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/Effective-Java/" target="_blank">
-                            <span class="chip bg-color">Effective Java</span>
+                        <a href="/tags/Elasticsearch/" target="_blank">
+                            <span class="chip bg-color">Elasticsearch</span>
                         </a>
                         
                     </div>
@@ -395,8 +395,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/Effective-Java/" class="post-category" target="_blank">
-                            Effective Java
+                        <a href="/categories/Elasticsearch/" class="post-category" target="_blank">
+                            Elasticsearch
                         </a>
                         
                     </div>
@@ -407,7 +407,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-07-26
+                    2021-02-12
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -421,14 +421,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    7 分
                 </div>
                 
                 
@@ -444,23 +444,398 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="第二章-创建和销毁对象"><a href="#第二章-创建和销毁对象" class="headerlink" title="第二章:创建和销毁对象"></a>第二章:创建和销毁对象</h1><h2 id="1-用静态方法类替代构造器"><a href="#1-用静态方法类替代构造器" class="headerlink" title="1,用静态方法类替代构造器"></a>1,用静态方法类替代构造器</h2><p>为什么要使用静态方法而不是public构造器:<br>优点:<br>1,静态方法是有名字的,构造器只能根据参数来决定返回实例的类型.但是通过静态工厂方法就可以避开这个过程.<br>2,可以复用对象,不用每次都创建一个新的实例,而这个实例可以是提前构造好的,从而实现实例受控类.<br>3,返回原返回类型的任何子类的对象.<br>4,返回对象的类可以随着每次调用而发生变化,取决于参数值.<br>5,方法返回的对象的所属类,在编写包含该静态工厂方法的类时可以不存在</p>
-<p>缺点:<br>1,类如果不包含公有的或者protected的构造器,就不能被子类化.<br>2,程序员可能无法发现他们</p>
-<h2 id="2-遇到多个构造器参数时要考虑使用构造器"><a href="#2-遇到多个构造器参数时要考虑使用构造器" class="headerlink" title="2.遇到多个构造器参数时要考虑使用构造器"></a>2.遇到多个构造器参数时要考虑使用构造器</h2><p>因为静态工厂和构造器都有个共同的局限性,不能扩展到大量的可选参数.<br>一个替代的方法是用的javaBeans模式,先调用一个无参构造器来构造对象,然后使用setter方法来设置必要的参数.<br>但是这个办法也会有线程安全的问题,如果强行冻结的话就很笨拙.</p>
-<p>实际生产过程中是用的建造者模式来处理,使用lombok的builder方法,先使得客户端利用所有必要的参数调用构造器,得到一个builder对象,再在builder对象上调用build方法来生成不可变的对象.<br>builder一般是它构建的类的静态成员类.<br>优点是流式编程,而且模拟了具名的可选参数.</p>
-<p>一个大优点是便于扩展参数,对于之前的代码,可以保持原有的builder不变.</p>
-<h2 id="3-用私有构造器或者枚举类型强化Singleton属性"><a href="#3-用私有构造器或者枚举类型强化Singleton属性" class="headerlink" title="3.用私有构造器或者枚举类型强化Singleton属性"></a>3.用私有构造器或者枚举类型强化Singleton属性</h2><p>首先要注意私有方法还是可以被反射给调用,所以要在构造器中添加二次创建就报异常的机制.<br>有两种常见方法:<br>1.public静态成员,final域<br><img src="https://s1.ax1x.com/2020/07/27/aPEKMQ.png" alt="aPEKMQ.png"></p>
-<p>2,public获取方法,final成员<br><img src="https://s1.ax1x.com/2020/07/27/aPEMrj.png" alt="aPEMrj.png"></p>
-<p>方法2有3个好处:<br>1,便于修改,保持api不变.<br>2,简单,可以返回一个泛型Singleton工厂<br>3,可以通过方法引用来提供实例.</p>
-<p>注意还要声明所有实例域都是transient的,并且提供一个readResolve方法.</p>
-<p>3,声明一个包含单个元素的枚举类型<br><img src="https://s1.ax1x.com/2020/07/27/aPEeG8.png" alt="aPEeG8.png"><br>这是最好的方法.</p>
-<h2 id="4-通过私有构造器强化不可实例化的能力"><a href="#4-通过私有构造器强化不可实例化的能力" class="headerlink" title="4.通过私有构造器强化不可实例化的能力"></a>4.通过私有构造器强化不可实例化的能力</h2><p>对于一些只包含静态方法的类,实例化是毫无意义的,但是如果不包含构造器,系统会提供一个默认的无参构造器.所以需要给一个私有的构造器,这样就可以完全避免被实例化了.<br>私有构造器可以直接抛出一个异常,以防在内部被错误调用.<br>这样的一个问题就是该类不可被子类化,因为无法调用超类的构造器.</p>
-<h2 id="5-优先考虑使用依赖注入来引用资源"><a href="#5-优先考虑使用依赖注入来引用资源" class="headerlink" title="5.优先考虑使用依赖注入来引用资源"></a>5.优先考虑使用依赖注入来引用资源</h2><p>比如使用spring这种方法,定义依赖并且把依赖注入,从而进行使用.</p>
-<h2 id="6-避免创建不必要的对象"><a href="#6-避免创建不必要的对象" class="headerlink" title="6.避免创建不必要的对象"></a>6.避免创建不必要的对象</h2><p>多使用静态工厂方法避免使用构造器<br>比如创建string的时候,避免调用构造器,而是直接赋值.<br>以及使用基本变量类型的时候,尽可能避免自动装箱.<br>或者使用正则表达式的时候,先显式定义再进行调用.</p>
-<h2 id="7-消除过期的对象引用"><a href="#7-消除过期的对象引用" class="headerlink" title="7.消除过期的对象引用"></a>7.消除过期的对象引用</h2><p>过期引用: 永远不会再被解除的引用<br>往往发生在自己管理内存的类上</p>
-<h2 id="8-避免使用终结方法和清除方法"><a href="#8-避免使用终结方法和清除方法" class="headerlink" title="8.避免使用终结方法和清除方法"></a>8.避免使用终结方法和清除方法</h2><p>能不用就不用.<br>记得每次使用完资源都close一下;</p>
-<h2 id="9-try-with-resources-优先于try-finally"><a href="#9-try-with-resources-优先于try-finally" class="headerlink" title="9.try-with-resources 优先于try-finally"></a>9.try-with-resources 优先于try-finally</h2><p>实际使用就是在try的括号里打开资源,并且不需要使用finally这个方法来关闭资源了,从而避免异常覆盖.</p>
-<p><img src="https://s1.ax1x.com/2020/07/27/aPEQqs.png" alt="aPEQqs.png"></p>
+                <h1 id="写在最前"><a href="#写在最前" class="headerlink" title="写在最前"></a>写在最前</h1><p>本文主要是对极客时间阮一鸣老师的<code>&lt;&lt;Elasticsearch核心技术与实战&gt;&gt;</code>这个课的一个个人总结,EE这个证书目前在国内仅仅有70人拿到,还是非常有含金量的,预计考取收益为涨薪20k+从新P6跃迁到老P6,同时在国际上也非常有竞争力,对于肉身翻墙很有帮助.<br>这里是课程链接: <a href="https://time.geekbang.org/course/intro/197?utm_term=zeusD4TUB&amp;utm_source=website&amp;utm_medium=infoq&amp;utm_campaign=197-presell&amp;utm_content=articlelearningpath0703" target="_blank" rel="noopener">https://time.geekbang.org/course/intro/197?utm_term=zeusD4TUB&amp;utm_source=website&amp;utm_medium=infoq&amp;utm_campaign=197-presell&amp;utm_content=articlelearningpath0703</a></p>
+<h2 id="基于Term的查询和全文的查询"><a href="#基于Term的查询和全文的查询" class="headerlink" title="基于Term的查询和全文的查询"></a>基于Term的查询和全文的查询</h2><p>Term 是表达语义的最小单位,es在搜索的时候不会再对term做进一步拆分.<br>Term查询会直接查找倒排索引,然后根据算分公式计算出一个相关段算分.<br>注意索引都是小写的,直接查大写会无法命中索引.<br>对于有特殊符号的key,比如abc-edf,我们需要在mapping里设定使用keyword模式,或者直接转换为filter模式.<br>对于全文本的搜索,是会默认使用分词器的.<br>具体的演示demo:</p>
+<pre><code>DELETE products
+PUT products
+{
+  &quot;settings&quot;: {
+    &quot;number_of_shards&quot;: 1
+  }
+}
+
+
+POST /products/_bulk
+{ &quot;index&quot;: { &quot;_id&quot;: 1 }}
+{ &quot;productID&quot; : &quot;XHDK-A-1293-#fJ3&quot;,&quot;desc&quot;:&quot;iPhone&quot; }
+{ &quot;index&quot;: { &quot;_id&quot;: 2 }}
+{ &quot;productID&quot; : &quot;KDKE-B-9947-#kL5&quot;,&quot;desc&quot;:&quot;iPad&quot; }
+{ &quot;index&quot;: { &quot;_id&quot;: 3 }}
+{ &quot;productID&quot; : &quot;JODL-X-1937-#pV7&quot;,&quot;desc&quot;:&quot;MBP&quot; }
+
+GET /products
+
+POST /products/_search
+{
+  &quot;query&quot;: {
+    &quot;term&quot;: {
+      &quot;desc&quot;: {
+        //&quot;value&quot;: &quot;iPhone&quot;
+        &quot;value&quot;:&quot;iphone&quot;
+      }
+    }
+  }
+}
+
+POST /products/_search
+{
+  &quot;query&quot;: {
+    &quot;term&quot;: {
+      &quot;desc.keyword&quot;: {
+        //&quot;value&quot;: &quot;iPhone&quot;
+        //&quot;value&quot;:&quot;iphone&quot;
+      }
+    }
+  }
+}
+
+
+POST /products/_search
+{
+  &quot;query&quot;: {
+    &quot;term&quot;: {
+      &quot;productID&quot;: {
+        &quot;value&quot;: &quot;XHDK-A-1293-#fJ3&quot;
+      }
+    }
+  }
+}
+
+POST /products/_search
+{
+  //&quot;explain&quot;: true,
+  &quot;query&quot;: {
+    &quot;term&quot;: {
+      &quot;productID.keyword&quot;: {
+        &quot;value&quot;: &quot;XHDK-A-1293-#fJ3&quot;
+      }
+    }
+  }
+}
+
+
+
+
+POST /products/_search
+{
+  &quot;explain&quot;: true,
+  &quot;query&quot;: {
+    &quot;constant_score&quot;: {
+      &quot;filter&quot;: {
+        &quot;term&quot;: {
+          &quot;productID.keyword&quot;: &quot;XHDK-A-1293-#fJ3&quot;
+        }
+      }
+
+    }
+  }
+}
+
+
+#设置 position_increment_gap
+DELETE groups
+PUT groups
+{
+  &quot;mappings&quot;: {
+    &quot;properties&quot;: {
+      &quot;names&quot;:{
+        &quot;type&quot;: &quot;text&quot;,
+        &quot;position_increment_gap&quot;: 0
+      }
+    }
+  }
+}
+
+GET groups/_mapping
+
+POST groups/_doc
+{
+  &quot;names&quot;: [ &quot;John Water&quot;, &quot;Water Smith&quot;]
+}
+
+POST groups/_search
+{
+  &quot;query&quot;: {
+    &quot;match_phrase&quot;: {
+      &quot;names&quot;: {
+        &quot;query&quot;: &quot;Water Water&quot;,
+        &quot;slop&quot;: 100
+      }
+    }
+  }
+}
+
+
+POST groups/_search
+{
+  &quot;query&quot;: {
+    &quot;match_phrase&quot;: {
+      &quot;names&quot;: &quot;Water Smith&quot;
+    }
+  }
+} </code></pre><h2 id="结构化搜索"><a href="#结构化搜索" class="headerlink" title="结构化搜索"></a>结构化搜索</h2><p>结构化数据: 遵从一定的pattern的数据,这种情况下可以使用term查询来实现.<br>注意term查询的逻辑是包含而不是等于.  </p>
+<pre><code>#结构化搜索，精确匹配
+DELETE products
+POST /products/_bulk
+{ &quot;index&quot;: { &quot;_id&quot;: 1 }}
+{ &quot;price&quot; : 10,&quot;avaliable&quot;:true,&quot;date&quot;:&quot;2018-01-01&quot;, &quot;productID&quot; : &quot;XHDK-A-1293-#fJ3&quot; }
+{ &quot;index&quot;: { &quot;_id&quot;: 2 }}
+{ &quot;price&quot; : 20,&quot;avaliable&quot;:true,&quot;date&quot;:&quot;2019-01-01&quot;, &quot;productID&quot; : &quot;KDKE-B-9947-#kL5&quot; }
+{ &quot;index&quot;: { &quot;_id&quot;: 3 }}
+{ &quot;price&quot; : 30,&quot;avaliable&quot;:true, &quot;productID&quot; : &quot;JODL-X-1937-#pV7&quot; }
+{ &quot;index&quot;: { &quot;_id&quot;: 4 }}
+{ &quot;price&quot; : 30,&quot;avaliable&quot;:false, &quot;productID&quot; : &quot;QQPX-R-3956-#aD8&quot; }
+
+GET products/_mapping
+
+
+
+#对布尔值 match 查询，有算分
+POST products/_search
+{
+  &quot;profile&quot;: &quot;true&quot;,
+  &quot;explain&quot;: true,
+  &quot;query&quot;: {
+    &quot;term&quot;: {
+      &quot;avaliable&quot;: true
+    }
+  }
+}
+
+
+
+#对布尔值，通过constant score 转成 filtering，没有算分
+POST products/_search
+{
+  &quot;profile&quot;: &quot;true&quot;,
+  &quot;explain&quot;: true,
+  &quot;query&quot;: {
+    &quot;constant_score&quot;: {
+      &quot;filter&quot;: {
+        &quot;term&quot;: {
+          &quot;avaliable&quot;: true
+        }
+      }
+    }
+  }
+}
+
+
+#数字类型 Term
+POST products/_search
+{
+  &quot;profile&quot;: &quot;true&quot;,
+  &quot;explain&quot;: true,
+  &quot;query&quot;: {
+    &quot;term&quot;: {
+      &quot;price&quot;: 30
+    }
+  }
+}
+
+#数字类型 terms
+POST products/_search
+{
+  &quot;query&quot;: {
+    &quot;constant_score&quot;: {
+      &quot;filter&quot;: {
+        &quot;terms&quot;: {
+          &quot;price&quot;: [
+            &quot;20&quot;,
+            &quot;30&quot;
+          ]
+        }
+      }
+    }
+  }
+}
+
+#数字 Range 查询
+GET products/_search
+{
+    &quot;query&quot; : {
+        &quot;constant_score&quot; : {
+            &quot;filter&quot; : {
+                &quot;range&quot; : {
+                    &quot;price&quot; : {
+                        &quot;gte&quot; : 20,
+                        &quot;lte&quot;  : 30
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+# 日期 range
+POST products/_search
+{
+    &quot;query&quot; : {
+        &quot;constant_score&quot; : {
+            &quot;filter&quot; : {
+                &quot;range&quot; : {
+                    &quot;date&quot; : {
+                      &quot;gte&quot; : &quot;now-1y&quot;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+#exists查询
+POST products/_search
+{
+  &quot;query&quot;: {
+    &quot;constant_score&quot;: {
+      &quot;filter&quot;: {
+        &quot;exists&quot;: {
+          &quot;field&quot;: &quot;date&quot;
+        }
+      }
+    }
+  }
+}
+
+#处理多值字段
+POST /movies/_bulk
+{ &quot;index&quot;: { &quot;_id&quot;: 1 }}
+{ &quot;title&quot; : &quot;Father of the Bridge Part II&quot;,&quot;year&quot;:1995, &quot;genre&quot;:&quot;Comedy&quot;}
+{ &quot;index&quot;: { &quot;_id&quot;: 2 }}
+{ &quot;title&quot; : &quot;Dave&quot;,&quot;year&quot;:1993,&quot;genre&quot;:[&quot;Comedy&quot;,&quot;Romance&quot;] }
+
+
+#处理多值字段，term 查询是包含，而不是等于
+POST movies/_search
+{
+  &quot;query&quot;: {
+    &quot;constant_score&quot;: {
+      &quot;filter&quot;: {
+        &quot;term&quot;: {
+          &quot;genre.keyword&quot;: &quot;Comedy&quot;
+        }
+      }
+    }
+  }
+}
+
+
+#字符类型 terms
+POST products/_search
+{
+  &quot;query&quot;: {
+    &quot;constant_score&quot;: {
+      &quot;filter&quot;: {
+        &quot;terms&quot;: {
+          &quot;productID.keyword&quot;: [
+            &quot;QQPX-R-3956-#aD8&quot;,
+            &quot;JODL-X-1937-#pV7&quot;
+          ]
+        }
+      }
+    }
+  }
+}
+
+
+
+POST products/_search
+{
+  &quot;profile&quot;: &quot;true&quot;,
+  &quot;explain&quot;: true,
+  &quot;query&quot;: {
+    &quot;match&quot;: {
+      &quot;price&quot;: 30
+    }
+  }
+}
+
+
+POST products/_search
+{
+  &quot;profile&quot;: &quot;true&quot;,
+  &quot;explain&quot;: true,
+  &quot;query&quot;: {
+    &quot;term&quot;: {
+      &quot;date&quot;: &quot;2019-01-01&quot;
+    }
+  }
+}
+
+POST products/_search
+{
+  &quot;profile&quot;: &quot;true&quot;,
+  &quot;explain&quot;: true,
+  &quot;query&quot;: {
+    &quot;match&quot;: {
+      &quot;date&quot;: &quot;2019-01-01&quot;
+    }
+  }
+}
+
+
+
+
+POST products/_search
+{
+  &quot;profile&quot;: &quot;true&quot;,
+  &quot;explain&quot;: true,
+  &quot;query&quot;: {
+    &quot;constant_score&quot;: {
+      &quot;filter&quot;: {
+        &quot;term&quot;: {
+          &quot;productID.keyword&quot;: &quot;XHDK-A-1293-#fJ3&quot;
+        }
+      }
+    }
+  }
+}
+
+POST products/_search
+{
+  &quot;profile&quot;: &quot;true&quot;,
+  &quot;explain&quot;: true,
+  &quot;query&quot;: {
+    &quot;term&quot;: {
+      &quot;productID.keyword&quot;: &quot;XHDK-A-1293-#fJ3&quot;
+    }
+  }
+}
+
+#对布尔数值
+POST products/_search
+{
+  &quot;query&quot;: {
+    &quot;constant_score&quot;: {
+      &quot;filter&quot;: {
+        &quot;term&quot;: {
+          &quot;avaliable&quot;: &quot;false&quot;
+        }
+      }
+    }
+  }
+}
+
+POST products/_search
+{
+  &quot;query&quot;: {
+    &quot;constant_score&quot;: {
+      &quot;filter&quot;: {
+        &quot;bool&quot;: {
+          &quot;must_not&quot;: {
+            &quot;exists&quot;: {
+              &quot;field&quot;: &quot;date&quot;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre><h2 id="相关性和相关性算分"><a href="#相关性和相关性算分" class="headerlink" title="相关性和相关性算分"></a>相关性和相关性算分</h2><p>搜索结果中_score就是搜索的相关性算分, 现在使用的排序方法是BM 25.<br>词频Term Frequency: 检索词在一篇文档中出现的频率,等于检索词出现的次数除以文档的总字数.<br>一个简单的方法是,把搜索句子拆分出来的每个term的TF加起来.比如计算abc,就计算TF_a+TF_b+TF_c<br>文档频率DF: 检索词在所有文档中出现的频率<br>逆文档频率: <code>log(全部文档数/检索词出现过的文档总数)</code><br>TF-IDF: TF_A<em>IDC_A+TF_B</em>IDF_B+TF_C*IDF_C.<br>在查询中使用explain</p>
 
             </div>
             <hr />
@@ -619,9 +994,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Effective Java-创建和销毁对象》
+                    《Elasticsearch备考指北_2》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/07/26/java-kai-fa-jin-jie-bi-ji-chuang-jian-he-xiao-hui-dui-xiang/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/02/12/elasticsearch-bei-kao-zhi-bei-2/" property="cc:attributionName"
                rel="cc:attributionURL">
                 HumphreyHao
             </a> 采用
@@ -662,7 +1037,7 @@
         repo: 'humphreyhao.github.io',
         owner: 'humphreyhao',
         admin: "humphreyhao",
-        id: '2020/07/26/java-kai-fa-jin-jie-bi-ji-chuang-jian-he-xiao-hui-dui-xiang/',
+        id: '2021/02/12/elasticsearch-bei-kao-zhi-bei-2/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -683,50 +1058,48 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/08/01/spring-yuan-ma-jie-xi/">
+                <a href="/2021/02/12/elasticsearch-bei-kao-zhi-bei-2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Spring源码解析">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Elasticsearch备考指北_2">
                         
-                        <span class="card-title">Spring源码解析</span>
+                        <span class="card-title">Elasticsearch备考指北_2</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本文章是Spring源码阅读系列课程的笔记整理+一些思考
+                            本文章主要是为备考Elastic Engineer这个考试的一些同学提供一个便捷的复习方式
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-08-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Spring/" class="post-category" target="_blank">
-                                    Spring
+                            <a href="/categories/Elasticsearch/" class="post-category" target="_blank">
+                                    Elasticsearch
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Spring/" target="_blank">
-                        <span class="chip bg-color">Spring</span>
-                    </a>
-                    
-                    <a href="/tags/源码/" target="_blank">
-                        <span class="chip bg-color">源码</span>
+                    <a href="/tags/Elasticsearch/" target="_blank">
+                        <span class="chip bg-color">Elasticsearch</span>
                     </a>
                     
                 </div>
@@ -740,31 +1113,31 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/07/03/ji-suan-ji-wang-luo/">
+                <a href="/2021/02/04/elasticsearch-bei-kao-zhi-bei-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="计算机网络">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Elasticsearch备考指北_1">
                         
-                        <span class="card-title">计算机网络</span>
+                        <span class="card-title">Elasticsearch备考指北_1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本文是关于计算机网络的一些笔记
+                            本文章主要是为备考Elastic Engineer这个考试的一些同学提供一个便捷的复习方式
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-07-03
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-04
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/计算机网络/" class="post-category" target="_blank">
-                                    计算机网络
+                            <a href="/categories/Elasticsearch/" class="post-category" target="_blank">
+                                    Elasticsearch
                                 </a>
                             
                             
@@ -774,12 +1147,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/计算机网络/" target="_blank">
-                        <span class="chip bg-color">计算机网络</span>
-                    </a>
-                    
-                    <a href="/tags/http/" target="_blank">
-                        <span class="chip bg-color">http</span>
+                    <a href="/tags/Elasticsearch/" target="_blank">
+                        <span class="chip bg-color">Elasticsearch</span>
                     </a>
                     
                 </div>

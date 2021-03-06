@@ -266,7 +266,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -429,14 +429,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    974
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    5 分
                 </div>
                 
                 
@@ -483,6 +483,19 @@ log.info(&quot;autoCompleteIndex size:{} count:{}&quot;, autoCompleteIndex.size(
 那么这个案例中,有个快捷的修复方法: 使用name作为HashSet的去重字段,先把UserDTO加入HashSet去重再添加索引.
 回顾一下,这次OOM最主要的问题就是我们虽然定义了数据总量,却忽略了每一份数据在内存中可能被创建了多次,这也提醒我们要慎用new字段,多多复用对象.  
 再举一个类似的例子,一个后台程序需要从数据库加载大量信息用于数据导出，这些数据在数据库中占用 100M 内存，但是 1GB 的 JVM 堆却无法完成导出操作, 原因就是100M的数据加载到内存中,变为Java数据结构就占用了200M堆内存,这些数据经过 JDBC、MyBatis 等框架其实是加载了 2 份，然后领域模型、DTO 再进行转换可能又加载了 2 次；最终，占用的内存达到了 200M*4=800M。
+因此,在进行容量评估时, 不能轻易的认为一份数据在内存中也是一份,需要做好容量的备份工作.
+
+## 案例二: 使用WeakHashMap 不等于不会OOM
+- 问题描述
+WeakHashMap的特点是, Key在哈希表内部是弱引用的,当没有强引用指向这个key的时候,entry会被GC,即使我们一直在往Map里塞数据,只要Key不再使用, 就不会OOM.  
+回顾一下Java中引用类型和垃圾回收之间的关系:
+1. GC不回收有强引用的对象;
+2. 内存充足时不回收有软引用的对象;
+3. GC只要扫描到了具有弱引用的对象就会回收.
+
+接下来我们声明一个Key是User类型, Value是UserProfile类型的WeakHashMap,作为用户数据缓存, 往其中添加200w个entry,然后用ScheduledThreadPoolExecutor发起一个定时任务,每一秒输出entry个数:</code></pre><p>private Map&lt;User, UserProfile&gt; cache = new WeakHashMap&lt;&gt;();</p>
+<p>@GetMapping(“wrong”)<br>public void wrong() {<br>    String userName = “zhuye”;<br>    //间隔1秒定时输出缓存中的条目数<br>    Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(<br>            () -&gt; log.info(“cache size:{}”, cache.size()), 1, 1, TimeUnit.SECONDS);<br>    LongStream.rangeClosed(1, 2000000).forEach(i -&gt; {<br>        User user = new User(userName + i);<br>        cache.put(user, new UserProfile(user, “location” + i));<br>    });<br>}</p>
+<pre><code>
 
 
 </code></pre>
@@ -715,7 +728,7 @@ log.info(&quot;autoCompleteIndex size:{} count:{}&quot;, autoCompleteIndex.size(
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Elasticsearch备考指北_1">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Elasticsearch备考指北_1">
                         
                         <span class="card-title">Elasticsearch备考指北_1</span>
                     </div>
@@ -764,7 +777,7 @@ log.info(&quot;autoCompleteIndex size:{} count:{}&quot;, autoCompleteIndex.size(
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Java开发常见错误_15">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Java开发常见错误_15">
                         
                         <span class="card-title">Java开发常见错误_15</span>
                     </div>
@@ -977,7 +990,7 @@ log.info(&quot;autoCompleteIndex size:{} count:{}&quot;, autoCompleteIndex.size(
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">139.7k</span>
+            <span class="white-color">142.4k</span>
             
 
             <br>

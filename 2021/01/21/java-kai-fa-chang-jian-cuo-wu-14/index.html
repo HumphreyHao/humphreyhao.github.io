@@ -271,7 +271,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -434,14 +434,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    492
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    5 分
                 </div>
                 
                 
@@ -477,7 +477,59 @@ try (FileReader fileReader = new FileReader(&quot;hello.txt&quot;)) {
         content += new String(chars, 0, count);
     }
 }
-log.info(&quot;result:{}&quot;, content);</code></pre><p>很明显,是调用了fileReader类以字符的方式进行的文件读取,但是没有指定字符集,所以读出来的你好变成了乱码.在默认情况下,FileReader是以当前机器的默认字符集来读取文件的.如果希望指定字符集的话,需要直接使用InputStreamReader和FileInputStream.</p>
+log.info(&quot;result:{}&quot;, content);</code></pre><p>很明显,是调用了fileReader类以字符的方式进行的文件读取,但是没有指定字符集,所以读出来的你好变成了乱码.在默认情况下,FileReader是以当前机器的默认字符集来读取文件的.如果希望指定字符集的话,需要直接使用InputStreamReader和FileInputStream.<br>修复后的代码如下:</p>
+<pre><code>private static void right1() throws IOException {
+    char[] chars = new char[10];
+    String content = &quot;&quot;;
+    try (FileInputStream fileInputStream = new FileInputStream(&quot;hello.txt&quot;);
+        InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, Charset.forName(&quot;GBK&quot;))) {
+        int count;
+        while ((count = inputStreamReader.read(chars)) != -1) {
+            content += new String(chars, 0, count);
+        }
+    }
+    log.info(&quot;result: {}&quot;, content);
+}</code></pre><h3 id="案例二-使用Files类静态方法进行文件操作注意释放文件句柄"><a href="#案例二-使用Files类静态方法进行文件操作注意释放文件句柄" class="headerlink" title="案例二: 使用Files类静态方法进行文件操作注意释放文件句柄"></a>案例二: 使用Files类静态方法进行文件操作注意释放文件句柄</h3><ul>
+<li>问题描述</li>
+</ul>
+<p>在读取文件的时候,我们有两种读取方法,一种是使用Files的readAllLines方法,这个方法返回的是一个<code>List&lt;String&gt;</code>,本质是一次性把整个文件读取到内存中,所以存在OOM的风险;<br>第二种是Files的lines方法,这个方法返回的是<code>Stream&lt;String&gt;</code>,这个方法使得我们在使用的时候可以一边读取一边使用.<br>看起来第二种方法十分的好用,但是使用中经常会出现一个被忽略的问题,没有及时的释放文件句柄.<br>解决的办法也很简单,所有调用lines等stream流的方法都在try中调用,这是一种try-with-resource的语法,可以自动的关闭文件,释放文件句柄.<br>下面是lines方法的源码,我们来看一看他是怎么实现高效读写的:</p>
+<pre><code>
+public static Stream&lt;String&gt; lines(Path path, Charset cs) throws IOException {
+    BufferedReader br = Files.newBufferedReader(path, cs);
+    try {
+        return br.lines().onClose(asUncheckedRunnable(br));
+    } catch (Error|RuntimeException e) {
+        try {
+            br.close();
+        } catch (IOException ex) {
+            try {
+                e.addSuppressed(ex);
+            } catch (Throwable ignore) {}
+        }
+        throw e;
+    }
+}
+
+private static Runnable asUncheckedRunnable(Closeable c) {
+    return () -&gt; {
+        try {
+            c.close();
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+    };
+}</code></pre><p>从上面的代码中我们可以看出来,lines方法实际上注册了一个回调函数来关闭缓冲区,这里的缓冲区实际上就是每次把一部分的数据提前加载到内存中,从而大量减少IO次数,提高吞吐量.<br>除了缓存区,还有一种更快的方法,在高版本的UNIX和Linux操作系统上往往已经实现了DMA,也就是直接内存访问, 数据从磁盘经过总线直接发送到目标文件，无需经过内存和 CPU 进行数据中转.<br>在Java中使用FileChannel类的transferTo方法进行流的复制就是DMA操作,如下:</p>
+<pre><code>private static void fileChannelOperation() throws IOException {
+    FileChannel in = FileChannel.open(Paths.get(&quot;src.txt&quot;), StandardOpenOption.READ);
+    FileChannel out = FileChannel.open(Paths.get(&quot;dest.txt&quot;), CREATE, WRITE);
+    in.transferTo(0, in.size(), out);
+}</code></pre><p>这种方法相比于之前的不加缓存区大概快了3600倍左右.一个小的引申, Kafka的吞吐量大其实就是基于批处理的思想以及零拷贝.<br>批处理: Kafka往往不是消息来了立刻发送,而是攒一波之后一起发送,这样对于吞吐量有极大的提升,但是对于需要实时处理的一些场景就不是非常的有效了.<br>零拷贝: Kafka避免了从内存态到内核态以及网络的拷贝,直接读取文件发送给网络,减少了用户态到核心态的拷贝.  </p>
+<h3 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h3><ol>
+<li><p>Files.lines 方法进行流式处理，需要使用 try-with-resources 进行资源释放。那么，使用 Files 类中其他返回 Stream 包装对象的方法进行流式处理，比如 newDirectoryStream 方法返回 DirectoryStream，list、walk 和 find 方法返回 Stream，也同样有资源释放问题吗？<br>是需要手动关闭的,Files相关文档提到说: When not using the try-with-resources construct, then directory stream’s close method should be invoked after iteration is completed so as to free any resources held for the open directory.</p>
+</li>
+<li><p>Java 的 File 类和 Files 类提供的文件复制、重命名、删除等操作，是原子性的吗？<br>否.文件操作实际上是调度操作系统的文件系统操作的,所以保持原子性没有什么意义,不如直接依赖于文件系统进行原子性保证.  </p>
+</li>
+</ol>
 
             </div>
             <hr />
@@ -708,7 +760,7 @@ log.info(&quot;result:{}&quot;, content);</code></pre><p>很明显,是调用了f
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Java开发常见错误_16">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Java开发常见错误_16">
                         
                         <span class="card-title">Java开发常见错误_16</span>
                     </div>
@@ -765,7 +817,7 @@ log.info(&quot;result:{}&quot;, content);</code></pre><p>很明显,是调用了f
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Java开发常见错误_13">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Java开发常见错误_13">
                         
                         <span class="card-title">Java开发常见错误_13</span>
                     </div>
@@ -978,7 +1030,7 @@ log.info(&quot;result:{}&quot;, content);</code></pre><p>很明显,是调用了f
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">139.7k</span>
+            <span class="white-color">142.4k</span>
             
 
             <br>

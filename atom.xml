@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://humphreyhao.github.io/"/>
-  <updated>2021-02-12T02:48:23.160Z</updated>
+  <updated>2021-02-17T01:59:52.067Z</updated>
   <id>https://humphreyhao.github.io/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Elasticsearch备考指北_2</title>
+    <link href="https://humphreyhao.github.io/2021/02/12/elasticsearch-bei-kao-zhi-bei-2/"/>
+    <id>https://humphreyhao.github.io/2021/02/12/elasticsearch-bei-kao-zhi-bei-2/</id>
+    <published>2021-02-12T13:44:11.000Z</published>
+    <updated>2021-02-17T01:59:52.067Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;写在最前&quot;&gt;&lt;a href=&quot;#写在最前&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Elasticsearch" scheme="https://humphreyhao.github.io/categories/Elasticsearch/"/>
+    
+    
+      <category term="Elasticsearch" scheme="https://humphreyhao.github.io/tags/Elasticsearch/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Elasticsearch备考指北_1</title>
     <link href="https://humphreyhao.github.io/2021/02/04/elasticsearch-bei-kao-zhi-bei-1/"/>
     <id>https://humphreyhao.github.io/2021/02/04/elasticsearch-bei-kao-zhi-bei-1/</id>
     <published>2021-02-04T15:44:11.000Z</published>
-    <updated>2021-02-12T02:48:23.160Z</updated>
+    <updated>2021-02-12T03:00:36.024Z</updated>
     
     <summary type="html">
     
@@ -47,7 +73,7 @@
     <link href="https://humphreyhao.github.io/2021/02/02/java-kai-fa-chang-jian-cuo-wu-17/"/>
     <id>https://humphreyhao.github.io/2021/02/02/java-kai-fa-chang-jian-cuo-wu-17/</id>
     <published>2021-02-01T19:26:11.000Z</published>
-    <updated>2021-02-05T16:23:05.215Z</updated>
+    <updated>2021-03-06T14:32:43.526Z</updated>
     
     <summary type="html">
     
@@ -137,7 +163,7 @@
     <link href="https://humphreyhao.github.io/2021/01/21/java-kai-fa-chang-jian-cuo-wu-14/"/>
     <id>https://humphreyhao.github.io/2021/01/21/java-kai-fa-chang-jian-cuo-wu-14/</id>
     <published>2021-01-20T18:26:11.000Z</published>
-    <updated>2021-02-05T16:23:05.214Z</updated>
+    <updated>2021-03-06T13:39:52.687Z</updated>
     
     <summary type="html">
     
@@ -567,33 +593,6 @@
         
           &lt;p&gt;本文是Redis设计与实现,第二版的读书笔记,来了解一下当下最流行的中间件到底是如何实现的,有哪些值得学习的设计思想.  &lt;/p&gt;
 &lt;h1 id=&quot;第三部分-多机数据库的实现&quot;&gt;&lt;a href=&quot;#第三部分-多机数据库的实现&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Redis" scheme="https://humphreyhao.github.io/categories/Redis/"/>
-    
-    
-      <category term="Redis" scheme="https://humphreyhao.github.io/tags/Redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis设计与实现(二)</title>
-    <link href="https://humphreyhao.github.io/2020/10/14/redis-she-ji-yu-shi-xian-er/"/>
-    <id>https://humphreyhao.github.io/2020/10/14/redis-she-ji-yu-shi-xian-er/</id>
-    <published>2020-10-14T07:31:23.000Z</published>
-    <updated>2021-02-05T16:23:05.219Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;本文是Redis设计与实现,第二版的读书笔记,来了解一下当下最流行的中间件到底是如何实现的,有哪些值得学习的设计思想.  &lt;/p&gt;
-&lt;h1 id=&quot;第二部分-单机数据库的实现&quot;&gt;&lt;a href=&quot;#第二部分-单机数据库的实现&quot; class=&quot;headerlink&quot;
         
       
     
