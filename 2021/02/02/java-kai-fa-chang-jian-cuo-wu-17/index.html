@@ -429,14 +429,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    7 分
                 </div>
                 
                 
@@ -503,6 +503,30 @@ WeakHashMap的特点是, Key在哈希表内部是弱引用的,当没有强引用
 <pre><code>可以看到, UserProfile这个类持有了User类的强引用, 而Entry又持有了对这个value的强引用, entry又被weakHashMap引用,最后导致key无法被回收.  
 有两个解决办法,一个是用WeakReference包装一下UserProfile,使其变成弱引用. 一个是在每次创建一个新的UserProfile对象的时候都new一个新的User出来, 从而解除强引用关系.  
 因此,如果真的有弱引用的需求, 可以使用ConcurrentReferenceHashMap来缓存, 这个Map的key和value同时被软引用或者弱引用包裹,也能解决互相引用的数据不能被释放的问题,同时还能保证线程安全.  
+
+## 案例三: Tomcat参数配置不合理导致OOM
+- 问题描述
+
+之前有一个应用,在业务量大的情况下出现了假死,日志中有大量OOM异常, 通过MAT打开dump文件时, 我们发现有1.7GB的byte数组分配. 
+进一步查看引用发现,大部分都是Tomcat的工作线程,每个线程占用了10M的数组,这已经是非常大的了.  
+进一步分析,我们发现是Http11InputBuffer 和 Http11OutputBuffer的两个buffer分别占了10M, 那么为什么一个buffer会占用这么大呢?
+我们打开第一个inputBuffer的int方法来查看一下:</code></pre><p>void init(SocketWrapperBase&lt;?&gt; socketWrapper) {</p>
+<pre><code>wrapper = socketWrapper;
+wrapper.setAppReadBufHandler(this);
+
+int bufLength = headerBufferSize +
+        wrapper.getSocketBufferHandler().getReadBuffer().capacity();
+if (byteBuffer == null || byteBuffer.capacity() &lt; bufLength) {
+    byteBuffer = ByteBuffer.allocate(bufLength);
+    byteBuffer.position(0).limit(0);
+}</code></pre><p>}</p>
+<pre><code>后面一项的socket的读缓冲是固定的,所以问题就是headerBufferSize身上,向上继续定位初始化位置,发现是从配置中载入的MaxHttpHeaderSize.因此我们就知道,一定是同学把配置中的对应变量设的过大了.
+翻看了一下配置,果然如此,该同学之情是遇到了这个bug,上网随便搜了一下就改了参数,影响了整个系统的运行:</code></pre><p>server.max-http-header-size=10000000</p>
+<p>java.lang.IllegalArgumentException: Request header is too large</p>
+<pre><code>
+## 总结
+1. 为生产环境配置JVM参数启用详细的GC日志, 方便观察垃圾收集器的行为;
+2. 启动HeadDumpOnOutOfMemoryError, 以便在出现OOM时自动Dump,留下第一问题现场.
 
 
 
@@ -999,7 +1023,7 @@ WeakHashMap的特点是, Key在哈希表内部是弱引用的,当没有强引用
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">142.7k</span>
+            <span class="white-color">143k</span>
             
 
             <br>
