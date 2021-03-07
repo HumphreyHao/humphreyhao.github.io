@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://humphreyhao.github.io/"/>
-  <updated>2021-02-17T01:59:52.067Z</updated>
+  <updated>2021-03-07T01:30:56.243Z</updated>
   <id>https://humphreyhao.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java开发常见错误_18</title>
+    <link href="https://humphreyhao.github.io/2021/03/07/java-kai-fa-chang-jian-cuo-wu-18/"/>
+    <id>https://humphreyhao.github.io/2021/03/07/java-kai-fa-chang-jian-cuo-wu-18/</id>
+    <published>2021-03-06T19:26:11.000Z</published>
+    <updated>2021-03-07T01:30:56.243Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;第三章&quot;&gt;&lt;a href=&quot;#第三章&quot; class=&quot;headerlink&quot; title=&quot;第三章&quot;&gt;&lt;/a&gt;第三章&lt;/h1&gt;&lt;h2 id=&quot;18-当反射、注解和泛型遇到OOP时，会有哪些坑&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
+    
+    
+      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
+    
+      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
   
   <entry>
     <title>Elasticsearch备考指北_2</title>
@@ -73,7 +103,7 @@
     <link href="https://humphreyhao.github.io/2021/02/02/java-kai-fa-chang-jian-cuo-wu-17/"/>
     <id>https://humphreyhao.github.io/2021/02/02/java-kai-fa-chang-jian-cuo-wu-17/</id>
     <published>2021-02-01T19:26:11.000Z</published>
-    <updated>2021-03-07T01:05:35.937Z</updated>
+    <updated>2021-03-07T01:23:07.622Z</updated>
     
     <summary type="html">
     
@@ -575,33 +605,6 @@
       <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
       <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis设计与实现(三)</title>
-    <link href="https://humphreyhao.github.io/2020/11/05/redis-she-ji-yu-shi-xian-san/"/>
-    <id>https://humphreyhao.github.io/2020/11/05/redis-she-ji-yu-shi-xian-san/</id>
-    <published>2020-11-05T04:30:23.000Z</published>
-    <updated>2021-02-05T16:23:05.219Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;本文是Redis设计与实现,第二版的读书笔记,来了解一下当下最流行的中间件到底是如何实现的,有哪些值得学习的设计思想.  &lt;/p&gt;
-&lt;h1 id=&quot;第三部分-多机数据库的实现&quot;&gt;&lt;a href=&quot;#第三部分-多机数据库的实现&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Redis" scheme="https://humphreyhao.github.io/categories/Redis/"/>
-    
-    
-      <category term="Redis" scheme="https://humphreyhao.github.io/tags/Redis/"/>
     
   </entry>
   
