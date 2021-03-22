@@ -269,7 +269,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -432,14 +432,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    294
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    4 分
                 </div>
                 
                 
@@ -472,6 +472,49 @@ public class ReflectionIssueApplication {
 }</code></pre><p>如果直接调用,走哪个类是非常清晰的;但是如果使用反射,比如使用getDeclaredMethod来获取age方法,然后传入Integer后invoke:</p>
 <pre><code>
 getClass().getDeclaredMethod(&quot;age&quot;, Integer.TYPE).invoke(this, Integer.valueOf(&quot;36&quot;));</code></pre><p>结果表明,走的是int方法,这就很奇怪了.<br>问题其实出在getDeclaredMethod这个方法的参数传错了, 我们传入的是type, 也就是int;正确的调用方式是传入Integer.class.<br>因此在调用的时候,一定要准确传入方法名称和参数类型,否则会错误调用重载的不同方法.  </p>
+<h3 id="案例2-泛型经过类型擦除多出桥接方法的坑"><a href="#案例2-泛型经过类型擦除多出桥接方法的坑" class="headerlink" title="案例2: 泛型经过类型擦除多出桥接方法的坑"></a>案例2: 泛型经过类型擦除多出桥接方法的坑</h3><ul>
+<li>问题描述<br>有一个项目希望在类字段内容变动时记录日志，于是开发同学就想到定义一个泛型父类，并在父类中定义一个统一的日志记录方法，子类可以通过继承重用这个方法.<br>父类中有一个函数setValue:<pre><code>class Parent&lt;T&gt; {
+  //用于记录value更新的次数，模拟日志记录的逻辑
+  AtomicInteger updateCount = new AtomicInteger();
+  private T value;
+  //重写toString，输出值和值更新次数
+  @Override
+  public String toString() {
+      return String.format(&quot;value: %s updateCount: %d&quot;, value, updateCount.get());
+  }
+  //设置值
+  public void setValue(T value) {
+      this.value = value;
+      updateCount.incrementAndGet();
+  }
+}
+</code></pre></li>
+</ul>
+<p>这是他的子类:</p>
+<p>class Child1 extends Parent {<br>    public void setValue(String value) {<br>        System.out.println(“Child1.setValue called”);<br>        super.setValue(value);<br>    }<br>}</p>
+<p>在实现的时候，子类方法的调用是通过反射进行的。实例化 Child1 类型后，通过 getClass().getMethods 方法获得所有的方法；然后按照方法名过滤出 setValue 方法进行调用，传入字符串 test 作为参数：</p>
+<p>Child1 child1 = new Child1();<br>Arrays.stream(child1.getClass().getDeclaredMethods())<br>        .filter(method -&gt; method.getName().equals(“setValue”))<br>        .forEach(method -&gt; {<br>            try {<br>                method.invoke(child1, “test”);<br>            } catch (Exception e) {<br>                e.printStackTrace();<br>            }<br>        });<br>System.out.println(child1.toString());</p>
+<pre><code>结果在调用的时候,我们发现子类对父类的重写并没有成功,这是为什么呢?
+子类犯了两个错误:
+1. 继承父类的时候没有指定父类的泛型实现类型,这样父类的setValue方法在擦除类型之后会直接变成Object,而子类的类型是String, 自然就被看作是重载了.
+2. 没有使用@Override注解,因此编译器并没有发现这个问题.  
+
+修复后的子类如下:</code></pre><p>class Child2 extends Parent<string> {<br>    @Override<br>    public void setValue(String value) {<br>        System.out.println(“Child2.setValue called”);<br>        super.setValue(value);<br>    }<br>}</string></p>
+<pre><code>
+然而调试发现,Child类居然还是有两个set方法!
+其实,本质原因就是在泛型擦除的时候,编译器帮我们生成了一个入参为Object的桥接方法,使用 jclasslib 工具打开 Child2 类，同样可以看到入参为 Object 的桥接方法上标记了 public + synthetic + bridge 三个属性。synthetic 代表由编译器生成的不可见代码，bridge 代表这是泛型类型擦除后生成的桥接代码：
+![桥接方法](https://s3.ax1x.com/2021/03/09/63EnE9.png)
+
+知道了这个情况之后,我们在使用反射的时候,就可以使用 method 的 isBridge 方法，来判断方法是不是桥接方法</code></pre><p>Arrays.stream(child2.getClass().getDeclaredMethods())<br>        .filter(method -&gt; method.getName().equals(“setValue”) &amp;&amp; !method.isBridge())<br>        .findFirst().ifPresent(method -&gt; {<br>    try {<br>        method.invoke(chi2, “test”);<br>    } catch (Exception e) {<br>        e.printStackTrace();<br>    }<br>});<br>```</p>
+<h3 id="案例3-注解可以继承吗"><a href="#案例3-注解可以继承吗" class="headerlink" title="案例3: 注解可以继承吗?"></a>案例3: 注解可以继承吗?</h3><p>自定义注解可以通过标记元注解 @Inherited 实现注解的继承，不过这只适用于类。<br>如果要继承定义在接口或方法上的注解，可以使用 Spring 的工具类 AnnotatedElementUtils，并注意各种 getXXX 方法和 findXXX 方法的区别，详情查看Spring的文档.  </p>
+<h3 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h3><ol>
+<li>泛型类型擦除后会生成一个 bridge 方法，这个方法同时又是 synthetic 方法。除了泛型类型擦除，你知道还有什么情况编译器会生成 synthetic 方法吗？</li>
+</ol>
+<p>答: 内部类会使用,在内部类被编译之后,会生成一个单独的文件,这个时候就需要使用synthetic标识位来寻找内部类</p>
+<ol start="2">
+<li>关于注解继承问题，你觉得 Spring 的常用注解 @Service、@Controller 是否支持继承呢？</li>
+</ol>
+<p>不支持,这几个注解都是单例的,而且Controller如果支持继承url访问的时候就会很麻烦.  </p>
 
             </div>
             <hr />
@@ -694,18 +737,17 @@ getClass().getDeclaredMethod(&quot;age&quot;, Integer.TYPE).invoke(this, Integer
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/03/07/java-kai-fa-chang-jian-cuo-wu-18/">
+                <a href="/2021/03/09/java-kai-fa-chang-jian-cuo-wu-19/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Java开发常见错误_18">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Java开发常见错误_19">
                         
-                        <span class="card-title">Java开发常见错误_18</span>
+                        <span class="card-title">Java开发常见错误_19</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -715,9 +757,9 @@ getClass().getDeclaredMethod(&quot;age&quot;, Integer.TYPE).invoke(this, Integer
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-03-07
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-03-09
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -730,7 +772,6 @@ getClass().getDeclaredMethod(&quot;age&quot;, Integer.TYPE).invoke(this, Integer
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -761,7 +802,7 @@ getClass().getDeclaredMethod(&quot;age&quot;, Integer.TYPE).invoke(this, Integer
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Elasticsearch备考指北_2">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Elasticsearch备考指北_2">
                         
                         <span class="card-title">Elasticsearch备考指北_2</span>
                     </div>
@@ -966,7 +1007,7 @@ getClass().getDeclaredMethod(&quot;age&quot;, Integer.TYPE).invoke(this, Integer
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">143.5k</span>
+            <span class="white-color">145.4k</span>
             
 
             <br>

@@ -4,11 +4,69 @@
   
     
     <entry>
+      <title>Java开发常见错误_20</title>
+      <link href="/2021/03/22/java-kai-fa-chang-jian-cuo-wu-20/"/>
+      <url>/2021/03/22/java-kai-fa-chang-jian-cuo-wu-20/</url>
+      
+        <content type="html"><![CDATA[<h1 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h1><h2 id="20-Spring框架：框架帮我们做了很多工作也带来了复杂度"><a href="#20-Spring框架：框架帮我们做了很多工作也带来了复杂度" class="headerlink" title="20. Spring框架：框架帮我们做了很多工作也带来了复杂度"></a>20. Spring框架：框架帮我们做了很多工作也带来了复杂度</h2><p>Spring框架内部的复杂表现为3点:</p><ol><li>真正的代码不是串行的</li><li>Spring Boot实现了自动配置Bean,但是也带来的一部分的不可操作性,加大了学习成本.</li><li>版本迭代很多,二次开发要考虑兼容性.  </li></ol><h3 id="案例一-Feign-AOP切不到"><a href="#案例一-Feign-AOP切不到" class="headerlink" title="案例一: Feign AOP切不到"></a>案例一: Feign AOP切不到</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> 常见业务错误 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 集合类 </tag>
+            
+            <tag> 多线程 </tag>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java开发常见错误_19</title>
+      <link href="/2021/03/09/java-kai-fa-chang-jian-cuo-wu-19/"/>
+      <url>/2021/03/09/java-kai-fa-chang-jian-cuo-wu-19/</url>
+      
+        <content type="html"><![CDATA[<h1 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h1><h2 id="19-Spring框架：IoC和AOP是扩展的核心"><a href="#19-Spring框架：IoC和AOP是扩展的核心" class="headerlink" title="19. Spring框架：IoC和AOP是扩展的核心"></a>19. Spring框架：IoC和AOP是扩展的核心</h2><p>IoC其实是一种设计思想, 使用Spring来实现IoC,意味着将你设计好的对象交给Spring容器控制,而不是直接在对象内部控制,这样就可以无侵入的调整对象之间的关系, 随时调整对象的属性,甚至实现对象的替换.而且我们也可以方便的实现对Bean的监控.<br>AOP更多的应用在缓存,权限,日志等方面, 在切面集中实现横切关注点,然后通过切点配置把代码注入合适的地方.为了方便理解,朱老师给了这么一个图:<br><img src="https://s3.ax1x.com/2021/03/10/6JbZtg.png" alt="aop图解"></p><pre><code>1. 首先，我们要提醒他，只能往蛋糕胚子里面加奶油，而不能上面或下面加奶油。这就是连接点（Join point），对于 Spring AOP 来说，连接点就是方法执行。2. 然后，我们要告诉他，在什么点切开蛋糕加奶油。比如，可以在蛋糕坯子中间加入一层奶油，在中间切一次；也可以在中间加两层奶油，在 1/3 和 2/3 的地方切两次。这就是切点（Pointcut），Spring AOP 中默认使用 AspectJ 查询表达式，通过在连接点运行查询表达式来匹配切入点。3. 接下来也是最重要的，我们要告诉他，切开蛋糕后要做什么，也就是加入奶油。这就是增强（Advice），也叫作通知，定义了切入切点后增强的方式，包括前、后、环绕等。Spring AOP 中，把增强定义为拦截器。4. 最后，我们要告诉他，找到蛋糕胚子中要加奶油的地方并加入奶油。为蛋糕做奶油夹层的操作，对 Spring AOP 来说就是切面（Aspect），也叫作方面。切面 = 切点 + 增强。</code></pre><h3 id="案例1-单例的-Bean-如何注入-Prototype-的-Bean？"><a href="#案例1-单例的-Bean-如何注入-Prototype-的-Bean？" class="headerlink" title="案例1: 单例的 Bean 如何注入 Prototype 的 Bean？"></a>案例1: 单例的 Bean 如何注入 Prototype 的 Bean？</h3><ul><li><p>问题描述<br>架构师一开始定义了这么一个 SayService 抽象类，其中维护了一个类型是 ArrayList 的字段 data，用于保存方法处理的中间数据。每次调用 say 方法都会往 data 加入新数据，可以认为 SayService 是有状态, 有状态的类是单例的话必然会引起内存泄漏(数组一直持有对象的引用无法释放);</p><pre><code>@Slf4jpublic abstract class SayService {  List&lt;String&gt; data = new ArrayList&lt;&gt;();  public void say() {      data.add(IntStream.rangeClosed(1, 1000000)              .mapToObj(__ -&gt; &quot;a&quot;)              .collect(Collectors.joining(&quot;&quot;)) + UUID.randomUUID().toString());      log.info(&quot;I&#39;m {} size:{}&quot;, this, data.size());  }}</code></pre></li></ul><p>之后实际开发的时候, 开发同学直接给两个子类SayHello 和 SayBye 类加上了 @Service 注解，让它们成为了 Bean，也没有考虑到父类是有状态的.</p><pre><code>@Service@Slf4jpublic class SayHello extends SayService {    @Override    public void say() {        super.say();        log.info(&quot;hello&quot;);    }}@Service@Slf4jpublic class SayBye extends SayService {    @Override    public void say() {        super.say();        log.info(&quot;bye&quot;);    }}@AutowiredList&lt;SayService&gt; sayServiceList;@GetMapping(&quot;test&quot;)public void test() {    log.info(&quot;====================&quot;);    sayServiceList.forEach(SayService::say);}</code></pre><p>但是这样一来,不同的子类实际上是共享父类的list的,也就是成为了单例,这也符合Service注解本来的设计理念.<br>这时候我们就想到,可以通过加上SCOPE注解来设置PROTOTYPE的生命周期, 也就是实现了多例:</p><pre><code>@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)</code></pre><p>然而这个注解并没有起到效果,究其原因, 还是因为Controller 标记了 @RestController 注解，而 @RestController 注解 =@Controller 注解 +@ResponseBody 注解，又因为 @Controller 标记了 @Component 元注解，所以 @RestController 注解其实也是一个 Spring Bean:</p><pre><code>//@RestController注解=@Controller注解+@ResponseBody注解@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Controller@ResponseBodypublic @interface RestController {}//@Controller又标记了@Component元注解@Target({ElementType.TYPE})@Retention(RetentionPolicy.RUNTIME)@Documented@Componentpublic @interface Controller {}</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 常见业务错误 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 集合类 </tag>
+            
+            <tag> 多线程 </tag>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java开发常见错误_18</title>
       <link href="/2021/03/07/java-kai-fa-chang-jian-cuo-wu-18/"/>
       <url>/2021/03/07/java-kai-fa-chang-jian-cuo-wu-18/</url>
       
-        <content type="html"><![CDATA[<h1 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h1><h2 id="18-当反射、注解和泛型遇到OOP时，会有哪些坑"><a href="#18-当反射、注解和泛型遇到OOP时，会有哪些坑" class="headerlink" title="18. 当反射、注解和泛型遇到OOP时，会有哪些坑"></a>18. 当反射、注解和泛型遇到OOP时，会有哪些坑</h2><h3 id="案例1-反射调用不是以传参决定重载"><a href="#案例1-反射调用不是以传参决定重载" class="headerlink" title="案例1: 反射调用不是以传参决定重载"></a>案例1: 反射调用不是以传参决定重载</h3><ul><li>问题描述</li></ul><p>反射: 在运行时动态获取类和类成员定义,以及动态读取属性调用方法.<br>我们先来看一个使用反射和使用传参调用的例子, 有一个类拥有两个重载的age方法, 传入参数分别是int以及包装类Integer:</p><pre><code>@Slf4jpublic class ReflectionIssueApplication {  private void age(int age) {      log.info(&quot;int age = {}&quot;, age);  }  private void age(Integer age) {      log.info(&quot;Integer age = {}&quot;, age);  }}</code></pre><p>如果直接调用,走哪个类是非常清晰的;但是如果使用反射,比如使用getDeclaredMethod来获取age方法,然后传入Integer后invoke:</p><pre><code>getClass().getDeclaredMethod(&quot;age&quot;, Integer.TYPE).invoke(this, Integer.valueOf(&quot;36&quot;));</code></pre><p>结果表明,走的是int方法,这就很奇怪了.<br>问题其实出在getDeclaredMethod这个方法的参数传错了, 我们传入的是type, 也就是int;正确的调用方式是传入Integer.class.<br>因此在调用的时候,一定要准确传入方法名称和参数类型,否则会错误调用重载的不同方法.  </p>]]></content>
+        <content type="html"><![CDATA[<h1 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h1><h2 id="18-当反射、注解和泛型遇到OOP时，会有哪些坑"><a href="#18-当反射、注解和泛型遇到OOP时，会有哪些坑" class="headerlink" title="18. 当反射、注解和泛型遇到OOP时，会有哪些坑"></a>18. 当反射、注解和泛型遇到OOP时，会有哪些坑</h2><h3 id="案例1-反射调用不是以传参决定重载"><a href="#案例1-反射调用不是以传参决定重载" class="headerlink" title="案例1: 反射调用不是以传参决定重载"></a>案例1: 反射调用不是以传参决定重载</h3><ul><li>问题描述</li></ul><p>反射: 在运行时动态获取类和类成员定义,以及动态读取属性调用方法.<br>我们先来看一个使用反射和使用传参调用的例子, 有一个类拥有两个重载的age方法, 传入参数分别是int以及包装类Integer:</p><pre><code>@Slf4jpublic class ReflectionIssueApplication {  private void age(int age) {      log.info(&quot;int age = {}&quot;, age);  }  private void age(Integer age) {      log.info(&quot;Integer age = {}&quot;, age);  }}</code></pre><p>如果直接调用,走哪个类是非常清晰的;但是如果使用反射,比如使用getDeclaredMethod来获取age方法,然后传入Integer后invoke:</p><pre><code>getClass().getDeclaredMethod(&quot;age&quot;, Integer.TYPE).invoke(this, Integer.valueOf(&quot;36&quot;));</code></pre><p>结果表明,走的是int方法,这就很奇怪了.<br>问题其实出在getDeclaredMethod这个方法的参数传错了, 我们传入的是type, 也就是int;正确的调用方式是传入Integer.class.<br>因此在调用的时候,一定要准确传入方法名称和参数类型,否则会错误调用重载的不同方法.  </p><h3 id="案例2-泛型经过类型擦除多出桥接方法的坑"><a href="#案例2-泛型经过类型擦除多出桥接方法的坑" class="headerlink" title="案例2: 泛型经过类型擦除多出桥接方法的坑"></a>案例2: 泛型经过类型擦除多出桥接方法的坑</h3><ul><li>问题描述<br>有一个项目希望在类字段内容变动时记录日志，于是开发同学就想到定义一个泛型父类，并在父类中定义一个统一的日志记录方法，子类可以通过继承重用这个方法.<br>父类中有一个函数setValue:<pre><code>class Parent&lt;T&gt; {  //用于记录value更新的次数，模拟日志记录的逻辑  AtomicInteger updateCount = new AtomicInteger();  private T value;  //重写toString，输出值和值更新次数  @Override  public String toString() {      return String.format(&quot;value: %s updateCount: %d&quot;, value, updateCount.get());  }  //设置值  public void setValue(T value) {      this.value = value;      updateCount.incrementAndGet();  }}</code></pre></li></ul><p>这是他的子类:</p><p>class Child1 extends Parent {<br>    public void setValue(String value) {<br>        System.out.println(“Child1.setValue called”);<br>        super.setValue(value);<br>    }<br>}</p><p>在实现的时候，子类方法的调用是通过反射进行的。实例化 Child1 类型后，通过 getClass().getMethods 方法获得所有的方法；然后按照方法名过滤出 setValue 方法进行调用，传入字符串 test 作为参数：</p><p>Child1 child1 = new Child1();<br>Arrays.stream(child1.getClass().getDeclaredMethods())<br>        .filter(method -&gt; method.getName().equals(“setValue”))<br>        .forEach(method -&gt; {<br>            try {<br>                method.invoke(child1, “test”);<br>            } catch (Exception e) {<br>                e.printStackTrace();<br>            }<br>        });<br>System.out.println(child1.toString());</p><pre><code>结果在调用的时候,我们发现子类对父类的重写并没有成功,这是为什么呢?子类犯了两个错误:1. 继承父类的时候没有指定父类的泛型实现类型,这样父类的setValue方法在擦除类型之后会直接变成Object,而子类的类型是String, 自然就被看作是重载了.2. 没有使用@Override注解,因此编译器并没有发现这个问题.  修复后的子类如下:</code></pre><p>class Child2 extends Parent<string> {<br>    @Override<br>    public void setValue(String value) {<br>        System.out.println(“Child2.setValue called”);<br>        super.setValue(value);<br>    }<br>}</string></p><pre><code>然而调试发现,Child类居然还是有两个set方法!其实,本质原因就是在泛型擦除的时候,编译器帮我们生成了一个入参为Object的桥接方法,使用 jclasslib 工具打开 Child2 类，同样可以看到入参为 Object 的桥接方法上标记了 public + synthetic + bridge 三个属性。synthetic 代表由编译器生成的不可见代码，bridge 代表这是泛型类型擦除后生成的桥接代码：![桥接方法](https://s3.ax1x.com/2021/03/09/63EnE9.png)知道了这个情况之后,我们在使用反射的时候,就可以使用 method 的 isBridge 方法，来判断方法是不是桥接方法</code></pre><p>Arrays.stream(child2.getClass().getDeclaredMethods())<br>        .filter(method -&gt; method.getName().equals(“setValue”) &amp;&amp; !method.isBridge())<br>        .findFirst().ifPresent(method -&gt; {<br>    try {<br>        method.invoke(chi2, “test”);<br>    } catch (Exception e) {<br>        e.printStackTrace();<br>    }<br>});<br>```</p><h3 id="案例3-注解可以继承吗"><a href="#案例3-注解可以继承吗" class="headerlink" title="案例3: 注解可以继承吗?"></a>案例3: 注解可以继承吗?</h3><p>自定义注解可以通过标记元注解 @Inherited 实现注解的继承，不过这只适用于类。<br>如果要继承定义在接口或方法上的注解，可以使用 Spring 的工具类 AnnotatedElementUtils，并注意各种 getXXX 方法和 findXXX 方法的区别，详情查看Spring的文档.  </p><h3 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h3><ol><li>泛型类型擦除后会生成一个 bridge 方法，这个方法同时又是 synthetic 方法。除了泛型类型擦除，你知道还有什么情况编译器会生成 synthetic 方法吗？</li></ol><p>答: 内部类会使用,在内部类被编译之后,会生成一个单独的文件,这个时候就需要使用synthetic标识位来寻找内部类</p><ol start="2"><li>关于注解继承问题，你觉得 Spring 的常用注解 @Service、@Controller 是否支持继承呢？</li></ol><p>不支持,这几个注解都是单例的,而且Controller如果支持继承url访问的时候就会很麻烦.  </p>]]></content>
       
       
       <categories>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://humphreyhao.github.io/"/>
-  <updated>2021-03-07T01:30:56.243Z</updated>
+  <updated>2021-03-22T01:31:03.297Z</updated>
   <id>https://humphreyhao.github.io/</id>
   
   <author>
@@ -17,11 +17,71 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Java开发常见错误_20</title>
+    <link href="https://humphreyhao.github.io/2021/03/22/java-kai-fa-chang-jian-cuo-wu-20/"/>
+    <id>https://humphreyhao.github.io/2021/03/22/java-kai-fa-chang-jian-cuo-wu-20/</id>
+    <published>2021-03-21T19:26:11.000Z</published>
+    <updated>2021-03-22T01:31:03.297Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;第三章&quot;&gt;&lt;a href=&quot;#第三章&quot; class=&quot;headerlink&quot; title=&quot;第三章&quot;&gt;&lt;/a&gt;第三章&lt;/h1&gt;&lt;h2 id=&quot;20-Spring框架：框架帮我们做了很多工作也带来了复杂度&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
+    
+    
+      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
+    
+      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java开发常见错误_19</title>
+    <link href="https://humphreyhao.github.io/2021/03/09/java-kai-fa-chang-jian-cuo-wu-19/"/>
+    <id>https://humphreyhao.github.io/2021/03/09/java-kai-fa-chang-jian-cuo-wu-19/</id>
+    <published>2021-03-08T19:26:11.000Z</published>
+    <updated>2021-03-22T01:25:45.489Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;第三章&quot;&gt;&lt;a href=&quot;#第三章&quot; class=&quot;headerlink&quot; title=&quot;第三章&quot;&gt;&lt;/a&gt;第三章&lt;/h1&gt;&lt;h2 id=&quot;19-Spring框架：IoC和AOP是扩展的核心&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
+    
+    
+      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
+    
+      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java开发常见错误_18</title>
     <link href="https://humphreyhao.github.io/2021/03/07/java-kai-fa-chang-jian-cuo-wu-18/"/>
     <id>https://humphreyhao.github.io/2021/03/07/java-kai-fa-chang-jian-cuo-wu-18/</id>
     <published>2021-03-06T19:26:11.000Z</published>
-    <updated>2021-03-07T01:30:56.243Z</updated>
+    <updated>2021-03-20T06:27:29.949Z</updated>
     
     <summary type="html">
     
@@ -532,66 +592,6 @@
         
         
           &lt;h1 id=&quot;第一章&quot;&gt;&lt;a href=&quot;#第一章&quot; class=&quot;headerlink&quot; title=&quot;第一章&quot;&gt;&lt;/a&gt;第一章&lt;/h1&gt;&lt;h2 id=&quot;3-线程池：业务代码最常用也最容易犯错的组件&quot;&gt;&lt;a href=&quot;#3-线程池：业务代码最常用也最容易犯错的组件&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
-    
-    
-      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
-    
-      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
-      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java开发常见错误_2</title>
-    <link href="https://humphreyhao.github.io/2020/12/21/java-kai-fa-chang-jian-cuo-wu-2/"/>
-    <id>https://humphreyhao.github.io/2020/12/21/java-kai-fa-chang-jian-cuo-wu-2/</id>
-    <published>2020-12-21T05:30:23.000Z</published>
-    <updated>2021-02-05T16:23:05.215Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;第一章&quot;&gt;&lt;a href=&quot;#第一章&quot; class=&quot;headerlink&quot; title=&quot;第一章&quot;&gt;&lt;/a&gt;第一章&lt;/h1&gt;&lt;h2 id=&quot;2-代码加锁：不要让“锁”事成为烦心事&quot;&gt;&lt;a href=&quot;#2-代码加锁：不要让“锁”事成为烦心事&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
-    
-    
-      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
-    
-      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
-      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java开发常见错误_1</title>
-    <link href="https://humphreyhao.github.io/2020/12/05/java-kai-fa-chang-jian-cuo-wu-1/"/>
-    <id>https://humphreyhao.github.io/2020/12/05/java-kai-fa-chang-jian-cuo-wu-1/</id>
-    <published>2020-12-05T04:30:23.000Z</published>
-    <updated>2021-02-05T16:23:05.213Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;第一章&quot;&gt;&lt;a href=&quot;#第一章&quot; class=&quot;headerlink&quot; title=&quot;第一章&quot;&gt;&lt;/a&gt;第一章&lt;/h1&gt;&lt;h2 id=&quot;1-使用了并发工具类库，线程安全就高枕无忧了吗&quot;&gt;&lt;a href=&quot;#1-使用了并发工具类库，线程安全就高枕无忧了吗&quot;
         
       
     
