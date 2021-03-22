@@ -8,7 +8,7 @@
       <link href="/2021/03/22/java-kai-fa-chang-jian-cuo-wu-20/"/>
       <url>/2021/03/22/java-kai-fa-chang-jian-cuo-wu-20/</url>
       
-        <content type="html"><![CDATA[<h1 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h1><h2 id="20-Spring框架：框架帮我们做了很多工作也带来了复杂度"><a href="#20-Spring框架：框架帮我们做了很多工作也带来了复杂度" class="headerlink" title="20. Spring框架：框架帮我们做了很多工作也带来了复杂度"></a>20. Spring框架：框架帮我们做了很多工作也带来了复杂度</h2><p>Spring框架内部的复杂表现为3点:</p><ol><li>真正的代码不是串行的</li><li>Spring Boot实现了自动配置Bean,但是也带来的一部分的不可操作性,加大了学习成本.</li><li>版本迭代很多,二次开发要考虑兼容性.  </li></ol><h3 id="案例一-Feign-AOP切不到"><a href="#案例一-Feign-AOP切不到" class="headerlink" title="案例一: Feign AOP切不到"></a>案例一: Feign AOP切不到</h3>]]></content>
+        <content type="html"><![CDATA[<h1 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h1><h2 id="20-Spring框架：框架帮我们做了很多工作也带来了复杂度"><a href="#20-Spring框架：框架帮我们做了很多工作也带来了复杂度" class="headerlink" title="20. Spring框架：框架帮我们做了很多工作也带来了复杂度"></a>20. Spring框架：框架帮我们做了很多工作也带来了复杂度</h2><p>Spring框架内部的复杂表现为3点:</p><ol><li>真正的代码不是串行的</li><li>Spring Boot实现了自动配置Bean,但是也带来的一部分的不可操作性,加大了学习成本.</li><li>版本迭代很多,二次开发要考虑兼容性.  </li></ol><h3 id="案例一-Feign-AOP切不到"><a href="#案例一-Feign-AOP切不到" class="headerlink" title="案例一: Feign AOP切不到"></a>案例一: Feign AOP切不到</h3><ul><li>案例复现</li></ul>]]></content>
       
       
       <categories>
