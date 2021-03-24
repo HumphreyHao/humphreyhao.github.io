@@ -270,7 +270,7 @@ Spring Boot实现了自动配置Bean,但是也带来的一部分的不可操作�
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -433,14 +433,14 @@ Spring Boot实现了自动配置Bean,但是也带来的一部分的不可操作�
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    106
+                    745
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
                 
@@ -463,8 +463,20 @@ Spring Boot实现了自动配置Bean,但是也带来的一部分的不可操作�
 <li>版本迭代很多,二次开发要考虑兼容性.  </li>
 </ol>
 <h3 id="案例一-Feign-AOP切不到"><a href="#案例一-Feign-AOP切不到" class="headerlink" title="案例一: Feign AOP切不到"></a>案例一: Feign AOP切不到</h3><ul>
-<li>案例复现</li>
+<li>案例复现<br>先配置一个Feign接口,发送一个get(GET <a href="http://client/feignaop/server" target="_blank" rel="noopener">http://client/feignaop/server</a> HTTP/1.1)请求, 然后使用within指示器匹配feign.Client接口<pre><code>//测试Feign
+@FeignClient(name = &quot;client&quot;)
+public interface Client {
+  @GetMapping(&quot;/feignaop/server&quot;)
+  String api();
+}
+</code></pre></li>
 </ul>
+<p>//AOP切入feign.Client的实现<br>@Aspect<br>@Slf4j<br>@Component<br>public class WrongAspect {<br>    @Before(“within(feign.Client+)”)<br>    public void before(JoinPoint pjp) {<br>        log.info(“within(feign.Client+) pjp {}, args:{}”, pjp, pjp.getArgs());<br>    }<br>}</p>
+<p>//配置扫描Feign<br>@Configuration<br>@EnableFeignClients(basePackages = “org.geekbang.time.commonmistakes.spring.demo4.feign”)<br>public class Config {<br>}</p>
+<pre><code>本来这个服务是使用的客户端负载均衡,也就是Ribbon, 代码没有什么问题.  
+但是后续由于改为了使用Nginx进行负载均衡, 所以加上了一个固定的url属性:</code></pre><p>@FeignClient(name = “anotherClient”,url = “<a href="http://localhost:45678&quot;" target="_blank" rel="noopener">http://localhost:45678&quot;</a>)<br>public interface ClientWithUrl {<br>    @GetMapping(“/feignaop/server”)<br>    String api();<br>}</p>
+<pre><code>然后within(feign.Client+)就失效了.
+我们看下源码:</code></pre><p><t> T getTarget() {<br>  FeignContext context = this.applicationContext.getBean(FeignContext.class);<br>  Feign.Builder builder = feign(context);<br>  if (!StringUtils.hasText(this.url)) {<br>    …<br>    return (T) loadBalance(builder, context,<br>        new HardCodedTarget&lt;&gt;(this.type, this.name, this.url));<br>  }<br>  …<br>  String url = this.url + cleanPath();<br>  Client client = getOptional(context, Client.class);<br>  if (client != null) {<br>    if (client instanceof LoadBalancerFeignClient) {<br>      // not load balancing because we have a url,<br>      // but ribbon is on the classpath, so unwrap<br>      client = ((LoadBalancerFeignClient) client).getDelegate();<br>    }<br>    builder.client(client);<br>  }<br>  …<br>}<br>protected <t> T loadBalance(Feign.Builder builder, FeignContext context,<br>    HardCodedTarget<t> target) {<br>  Client client = getOptional(context, Client.class);<br>  if (client != null) {<br>    builder.client(client);<br>    Targeter targeter = get(context, Targeter.class);<br>    return targeter.target(this, builder, context, target);<br>  }<br>…<br>}<br>protected <t> T getOptional(FeignContext context, Class<t> type) {<br>  return context.getInstance(this.contextId, type);<br>}<br>```<br>在源码第四行,我们可以看到,当没有url的时候,Feign是调用了loadBalance方法,这个方法从上下文中获取一个client实例,通过调试可以看到这是一个Bean, 因此可以被within切入.<br>在源码第16行,我们可以看到,当有明确url的时候,我们不需要再通过Ribbon进行客户端负载均衡,但是ribbon的路径依旧在classpath中,所以需要从LoadBalancerFeignClient重新提取真正的Client.通过断点调试,我们可以发现这是一个ApacheHttpClient.<br>这里,朱老师讲了一个调试小技巧, 如果希望一个类是怎样调用栈初始化的, 可以在构造方法中设置一个断点,这样就可以在IDE栈窗口看到整个方法调用栈,然后点击每一个栈帧看到整个过程.<br>通过这样的方法,我们可以发现,这个对象是在HttpClientFeignLoadBalancedConfiguration类实例化的时候, LoadBalancerFeignClient这个Bean实例化的时候new出来的一个ApacheHttpClient.<br>简单来说,加url的是new出来的,不加url的是Bean.而Spring只能切入由自己管理的Bean,无法切入new出来的对象.<br>我们再进一步研读源码HttpClientFeignConfiguration, 发现注解上显示,只要没有LoadBalancerFeignClient</t></t></t></t></t></p>
 
             </div>
             <hr />
@@ -696,7 +708,7 @@ Spring Boot实现了自动配置Bean,但是也带来的一部分的不可操作�
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Java开发常见错误_20">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Java开发常见错误_20">
                         
                         <span class="card-title">Java开发常见错误_20</span>
                     </div>
@@ -754,7 +766,7 @@ Spring Boot实现了自动配置Bean,但是也带来的一部分的不可操作�
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Java开发常见错误_19">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Java开发常见错误_19">
                         
                         <span class="card-title">Java开发常见错误_19</span>
                     </div>
@@ -967,7 +979,7 @@ Spring Boot实现了自动配置Bean,但是也带来的一部分的不可操作�
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">145.4k</span>
+            <span class="white-color">146k</span>
             
 
             <br>

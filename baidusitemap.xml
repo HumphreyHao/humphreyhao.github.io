@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://humphreyhao.github.io/2021/03/22/java-kai-fa-chang-jian-cuo-wu-20/</loc>
-    <lastmod>2021-03-22</lastmod>
+    <lastmod>2021-03-24</lastmod>
   </url>  <url>
     <loc>https://humphreyhao.github.io/2021/03/09/java-kai-fa-chang-jian-cuo-wu-19/</loc>
     <lastmod>2021-03-22</lastmod>
@@ -157,10 +157,10 @@
     <loc>https://humphreyhao.github.io/2019/12/06/java-ji-chu-xi-lie-18-java8-xin-te-xing/</loc>
     <lastmod>2021-02-05</lastmod>
   </url>  <url>
-    <loc>https://humphreyhao.github.io/2019/12/08/java-ji-chu-xi-lie-19-java-xu-lie-hua-he-fan-xu-lie-hua/</loc>
+    <loc>https://humphreyhao.github.io/2019/11/04/java-ji-chu-xi-lie-2-zi-dong-zhuang-xiang-yu-chai-xiang/</loc>
     <lastmod>2021-02-05</lastmod>
   </url>  <url>
-    <loc>https://humphreyhao.github.io/2019/11/04/java-ji-chu-xi-lie-2-zi-dong-zhuang-xiang-yu-chai-xiang/</loc>
+    <loc>https://humphreyhao.github.io/2019/12/08/java-ji-chu-xi-lie-19-java-xu-lie-hua-he-fan-xu-lie-hua/</loc>
     <lastmod>2021-02-05</lastmod>
   </url>  <url>
     <loc>https://humphreyhao.github.io/2019/11/06/java-ji-chu-xi-lie-3-string-lei-xing-de-fen-xi/</loc>
@@ -226,10 +226,10 @@
     <loc>https://humphreyhao.github.io/2020/02/08/javaweb-xi-lie-4-spring/</loc>
     <lastmod>2021-02-05</lastmod>
   </url>  <url>
-    <loc>https://humphreyhao.github.io/2020/02/12/javaweb-xi-lie-6-maven/</loc>
+    <loc>https://humphreyhao.github.io/2020/02/10/javaweb-xi-lie-5-test/</loc>
     <lastmod>2021-02-05</lastmod>
   </url>  <url>
-    <loc>https://humphreyhao.github.io/2020/02/10/javaweb-xi-lie-5-test/</loc>
+    <loc>https://humphreyhao.github.io/2020/02/12/javaweb-xi-lie-6-maven/</loc>
     <lastmod>2021-02-05</lastmod>
   </url>  <url>
     <loc>https://humphreyhao.github.io/2020/09/27/go-ru-keng-bi-ji/</loc>
