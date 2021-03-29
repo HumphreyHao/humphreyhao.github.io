@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://humphreyhao.github.io/"/>
-  <updated>2021-03-29T00:50:50.214Z</updated>
+  <updated>2021-03-29T01:10:34.465Z</updated>
   <id>https://humphreyhao.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java开发常见错误_22</title>
+    <link href="https://humphreyhao.github.io/2021/03/29/new-article/"/>
+    <id>https://humphreyhao.github.io/2021/03/29/new-article/</id>
+    <published>2021-03-29T08:39:25.000Z</published>
+    <updated>2021-03-29T01:10:34.465Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;第四章&quot;&gt;&lt;a href=&quot;#第四章&quot; class=&quot;headerlink&quot; title=&quot;第四章&quot;&gt;&lt;/a&gt;第四章&lt;/h1&gt;&lt;h2 id=&quot;22-接口设计：系统间对话的语言，一定要统一&quot;&gt;&lt;a href=&quot;#22-接口设计：系统间对话的语言，一定要统一&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
+    
+    
+      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
+    
+      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
   
   <entry>
     <title>Java开发常见错误_21</title>
@@ -562,36 +592,6 @@
         
         
           &lt;h1 id=&quot;第一章&quot;&gt;&lt;a href=&quot;#第一章&quot; class=&quot;headerlink&quot; title=&quot;第一章&quot;&gt;&lt;/a&gt;第一章&lt;/h1&gt;&lt;h2 id=&quot;5-HTTP调用：你考虑到超时、重试、并发了吗？&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
-    
-    
-      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
-    
-      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
-      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java开发常见错误_4</title>
-    <link href="https://humphreyhao.github.io/2020/12/28/java-kai-fa-chang-jian-cuo-wu-4/"/>
-    <id>https://humphreyhao.github.io/2020/12/28/java-kai-fa-chang-jian-cuo-wu-4/</id>
-    <published>2020-12-28T06:30:23.000Z</published>
-    <updated>2021-02-05T16:23:05.215Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;第一章&quot;&gt;&lt;a href=&quot;#第一章&quot; class=&quot;headerlink&quot; title=&quot;第一章&quot;&gt;&lt;/a&gt;第一章&lt;/h1&gt;&lt;h2 id=&quot;4-连接池：别让连接池帮了倒忙&quot;&gt;&lt;a href=&quot;#4-连接池：别让连接池帮了倒忙&quot;
         
       
     

@@ -4,14 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Java开发常见错误_21, JAVA Python HumphreyHao 后端研发 海豚">
+    <meta name="keywords" content="Java开发常见错误_22, JAVA Python HumphreyHao 后端研发 海豚">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
-    <meta name="description" content="第四章21. 代码重复：搞定代码重复的三个绝招为什么要减少代码重复?
-
-如果多处重复代码实现完全相同的功能,比如不同渠道写入同一张表,有一些写死字段是1, 另一些写死是0, 后续更新之后要全写死为1, 这时候就会容易漏写导致出现bug;
-如">
+    <meta name="description" content="第四章22. 接口设计：系统间对话的语言，一定要统一">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Java开发常见错误_21 | Humphrey爵士的小海豚</title>
+    <title>Java开发常见错误_22 | Humphrey爵士的小海豚</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -269,13 +266,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Java开发常见错误_21
+                        Java开发常见错误_22
                     </div>
                 </div>
             </div>
@@ -418,7 +415,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-28
+                    2021-03-29
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -432,14 +429,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.5k
+                    21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    14 分
+                    1 分
                 </div>
                 
                 
@@ -455,297 +452,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h1><h2 id="21-代码重复：搞定代码重复的三个绝招"><a href="#21-代码重复：搞定代码重复的三个绝招" class="headerlink" title="21. 代码重复：搞定代码重复的三个绝招"></a>21. 代码重复：搞定代码重复的三个绝招</h2><p>为什么要减少代码重复?</p>
-<ol>
-<li>如果多处重复代码实现完全相同的功能,比如不同渠道写入同一张表,有一些写死字段是1, 另一些写死是0, 后续更新之后要全写死为1, 这时候就会容易漏写导致出现bug;</li>
-<li>如果有一些代码不是完成重复,但是相似度非常高,就像上面的0和1,只有这一个字段不同.修改这些代码的时候就容易复制, 导致影响原有业务.  </li>
-</ol>
-<h3 id="案例一-利用工厂模式-模板方法模式，消除-if…else-和重复代码"><a href="#案例一-利用工厂模式-模板方法模式，消除-if…else-和重复代码" class="headerlink" title="案例一: 利用工厂模式 + 模板方法模式，消除 if…else 和重复代码"></a>案例一: 利用工厂模式 + 模板方法模式，消除 if…else 和重复代码</h3><ul>
-<li>案例描述:</li>
-</ul>
-<p>假设开发一个购物车下单的功能, 针对不同用户进行不同处理:</p>
-<ul>
-<li>普通用户需要收取运费，运费是商品价格的 10%，无商品折扣；</li>
-<li>VIP 用户同样需要收取商品价格 10% 的快递费，但购买两件以上相同商品时，第三件开始享受一定折扣；</li>
-<li>内部用户可以免运费，无商品折扣。</li>
-</ul>
-<p>目标是实现三种购物车业务逻辑, 把入参Map对象(key是商品id,value是商品数量)转换为出参类型购物车类Cart.<br>错误的写法: 写三个processor, 然后使用ifelse来实现对不同类型的用户调用不同的购物车</p>
-<pre><code>@GetMapping(&quot;wrong&quot;)
-public Cart wrong(@RequestParam(&quot;userId&quot;) int userId) {
-    //根据用户ID获得用户类型
-    String userCategory = Db.getUserCategory(userId);
-    //普通用户处理逻辑
-    if (userCategory.equals(&quot;Normal&quot;)) {
-        NormalUserCart normalUserCart = new NormalUserCart();
-        return normalUserCart.process(userId, items);
-    }
-    //VIP用户处理逻辑
-    if (userCategory.equals(&quot;Vip&quot;)) {
-        VipUserCart vipUserCart = new VipUserCart();
-        return vipUserCart.process(userId, items);
-    }
-    //内部用户处理逻辑
-    if (userCategory.equals(&quot;Internal&quot;)) {
-        InternalUserCart internalUserCart = new InternalUserCart();
-        return internalUserCart.process(userId, items);
-    }
-
-    return null;
-}</code></pre><p>这样写当然没什么问题,但是电商营销的用户区分可不仅仅是普通内部vip, 多的情况下可能有上百种, 需要单独外部加一个配置文件来自动扩展,这时候要怎么办呢, 每次都重头写一个类出来吗?<br>正确的做法是使用<strong>模板方法模式</strong>, 我们在父类中定义通用的整个流程,把需要通用的模块在父类中实现,而把需要改动的地方在子类中重写, 在父类中留一个抽象方法定义. 注意因为父类的逻辑是不完整的, 因此需要定义为抽象类从而避免父类被实例化的问题.<br>如下所示:</p>
-<pre><code>
-public abstract class AbstractCart {
-    //处理购物车的大量重复逻辑在父类实现
-    public Cart process(long userId, Map&lt;Long, Integer&gt; items) {
-
-        Cart cart = new Cart();
-
-        List&lt;Item&gt; itemList = new ArrayList&lt;&gt;();
-        items.entrySet().stream().forEach(entry -&gt; {
-            Item item = new Item();
-            item.setId(entry.getKey());
-            item.setPrice(Db.getItemPrice(entry.getKey()));
-            item.setQuantity(entry.getValue());
-            itemList.add(item);
-        });
-        cart.setItems(itemList);
-        //让子类处理每一个商品的优惠
-        itemList.stream().forEach(item -&gt; {
-            processCouponPrice(userId, item);
-            processDeliveryPrice(userId, item);
-        });
-        //计算商品总价
-        cart.setTotalItemPrice(cart.getItems().stream().map(item -&gt; item.getPrice().multiply(BigDecimal.valueOf(item.getQuantity()))).reduce(BigDecimal.ZERO, BigDecimal::add));
-        //计算总运费
-cart.setTotalDeliveryPrice(cart.getItems().stream().map(Item::getDeliveryPrice).reduce(BigDecimal.ZERO, BigDecimal::add));
-        //计算总折扣
-cart.setTotalDiscount(cart.getItems().stream().map(Item::getCouponPrice).reduce(BigDecimal.ZERO, BigDecimal::add));
-        //计算应付价格
-cart.setPayPrice(cart.getTotalItemPrice().add(cart.getTotalDeliveryPrice()).subtract(cart.getTotalDiscount()));
-        return cart;
-    }
-
-    //处理商品优惠的逻辑留给子类实现
-    protected abstract void processCouponPrice(long userId, Item item);
-    //处理配送费的逻辑留给子类实现
-    protected abstract void processDeliveryPrice(long userId, Item item);
-}</code></pre><p>但是这样依旧有个问题, 100个用户类型的时候,我们难道要写100个if…else来选择不同的子类实现吗?<br>这样当然可以,但是就会很难维护, 造成代码的不易理解, 常见的办法有两种:</p>
-<ol>
-<li>在定义类的时候, 使用用户类型标识对应的字段+统一的后缀来命名, 这样就可以利用Spring的IOC容器,通过Bean的名称来直接获取到对应的实现子类,然后再调用其process方法. 通俗的讲就是先根据名字找工厂,然后让对应的工厂进行生产, 这就是<strong>工厂模式</strong>. </li>
-<li>或者,如果不想这样命名, 也可以构造一个Map, 每个具体实现类维护一个唯一标识的getInstance方法,然后调用spring搜索所有继承父类的子类,构造一个&lt;instance名,实例&gt;的类, 再根据传入的具体类型获取实例, 这样的好处是命名比较灵活, 坏处是无法快速索引到某个类型对应的子类是什么.</li>
-</ol>
-<p>这样我们就使用工厂模式+模板方法模式消除了重复代码,还避免了修改既有代码的风险,这就是我们常说的开闭原则: 对修改关闭,对扩展开放.</p>
-<h3 id="案例二-使用注解-反射消除重复代码"><a href="#案例二-使用注解-反射消除重复代码" class="headerlink" title="案例二: 使用注解+反射消除重复代码"></a>案例二: 使用注解+反射消除重复代码</h3><ul>
-<li>案例描述</li>
-</ul>
-<p>假设现在有一个银行,提供的API接口对参数的序列化比较特殊,不是使用JSON而是把参数按照某个顺序拼在一起构成一个大字符串.  </p>
-<ul>
-<li>按照银行提供的 API 文档的顺序，把所有参数构成定长的数据，然后拼接在一起作为整个字符串。</li>
-<li>因为每一种参数都有固定长度，未达到长度时需要做填充处理：</li>
-<li>字符串类型的参数不满长度部分需要以下划线右填充，也就是字符串内容靠左；</li>
-<li>数字类型的参数不满长度部分以 0 左填充，也就是实际数字靠右；</li>
-<li>货币类型的表示需要把金额向下舍入 2 位到分，以分为单位，作为数字类型同样进行左填充。</li>
-<li>对所有参数做 MD5 操作作为签名</li>
-</ul>
-<p>这里提供一个新人容易写出来的代码实现:</p>
-<pre><code>public class BankService {
-
-    //创建用户方法
-    public static String createUser(String name, String identity, String mobile, int age) throws IOException {
-        StringBuilder stringBuilder = new StringBuilder();
-        //字符串靠左，多余的地方填充_
-        stringBuilder.append(String.format(&quot;%-10s&quot;, name).replace(&#39; &#39;, &#39;_&#39;));
-        //字符串靠左，多余的地方填充_
-        stringBuilder.append(String.format(&quot;%-18s&quot;, identity).replace(&#39; &#39;, &#39;_&#39;));
-        //数字靠右，多余的地方用0填充
-        stringBuilder.append(String.format(&quot;%05d&quot;, age));
-        //字符串靠左，多余的地方用_填充
-        stringBuilder.append(String.format(&quot;%-11s&quot;, mobile).replace(&#39; &#39;, &#39;_&#39;));
-        //最后加上MD5作为签名
-        stringBuilder.append(DigestUtils.md2Hex(stringBuilder.toString()));
-        return Request.Post(&quot;http://localhost:45678/reflection/bank/createUser&quot;)
-                .bodyString(stringBuilder.toString(), ContentType.APPLICATION_JSON)
-                .execute().returnContent().asString();
-    }
-
-    //支付方法
-    public static String pay(long userId, BigDecimal amount) throws IOException {
-        StringBuilder stringBuilder = new StringBuilder();
-        //数字靠右，多余的地方用0填充
-        stringBuilder.append(String.format(&quot;%020d&quot;, userId));
-        //金额向下舍入2位到分，以分为单位，作为数字靠右，多余的地方用0填充
-        stringBuilder.append(String.format(&quot;%010d&quot;, amount.setScale(2, RoundingMode.DOWN).multiply(new BigDecimal(&quot;100&quot;)).longValue()));
-        //最后加上MD5作为签名
-        stringBuilder.append(DigestUtils.md2Hex(stringBuilder.toString()));
-        return Request.Post(&quot;http://localhost:45678/reflection/bank/pay&quot;)
-                .bodyString(stringBuilder.toString(), ContentType.APPLICATION_JSON)
-                .execute().returnContent().asString();
-    }
-}</code></pre><p>以上这段代码在cr时百分百会被打回, 有如下缺点:</p>
-<ol>
-<li>标准数据类型处理的逻辑是有重复的, 稍有不慎就会有bug.</li>
-<li>字符串拼接,加签名和发请求的逻辑重复</li>
-<li>代码层面对参数进行了硬编码, 如果设计参数为上百个, 传参和校验异常困难.  </li>
-</ol>
-<p>这个时候就要使用注解和反射来实现将接口逻辑和逻辑实现的剥离了.<br>第一步,先定义一个POJO类(只包含属性,没有任何业务逻辑的数据类)定义所有接口需要的参数.</p>
-<pre><code>@Data
-public class CreateUserAPI {
-    private String name;
-    private String identity;
-    private String mobile;
-    private int age;
-}</code></pre><p>然后我们还需要一个注解来为接口和参数增加一些原数据, 比如我们可以定义一个包含url和接口说明的注解类:</p>
-<pre><code>@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-@Documented
-@Inherited
-public @interface BankAPI {
-    String desc() default &quot;&quot;;
-    String url() default &quot;&quot;;
-}</code></pre><p>我们还需要一个用于描述接口每一个字段规范,包含参数的次序,类型和长度三个属性的注解.</p>
-<pre><code>@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
-@Documented
-@Inherited
-public @interface BankAPIField {
-    int order() default -1;
-    int length() default -1;
-    String type() default &quot;&quot;;
-}</code></pre><p>然后我们正式开始调用这个接口, 为类加上url和desc, 为每一个参数加上顺序和类型等.</p>
-<pre><code>@BankAPI(url = &quot;/bank/createUser&quot;, desc = &quot;创建用户接口&quot;)
-@Data
-public class CreateUserAPI extends AbstractAPI {
-    @BankAPIField(order = 1, type = &quot;S&quot;, length = 10)
-    private String name;
-    @BankAPIField(order = 2, type = &quot;S&quot;, length = 18)
-    private String identity;
-    @BankAPIField(order = 4, type = &quot;S&quot;, length = 11) //注意这里的order需要按照API表格中的顺序
-    private String mobile;
-    @BankAPIField(order = 3, type = &quot;N&quot;, length = 5)
-    private int age;
-}</code></pre><p>另一个类也是类似的实现</p>
-<pre><code>@BankAPI(url = &quot;/bank/pay&quot;, desc = &quot;支付接口&quot;)
-@Data
-public class PayAPI extends AbstractAPI {
-    @BankAPIField(order = 1, type = &quot;N&quot;, length = 20)
-    private long userId;
-    @BankAPIField(order = 2, type = &quot;M&quot;, length = 10)
-    private BigDecimal amount;
-}</code></pre><p>通过这两个类,我们可以快速完成和API清单的核对, 避免出现漏传或者错传, 或者是顺序出现错误.<br>即使是接口升级,顺序发生变化, 我们依旧可以在不改动业务代码的情况下完成适配升级. </p>
-<p>接下来,我们看一下如何使用反射来读取注解中配置的参数,实现动态的接口参数组装:</p>
-<pre><code>private static String remoteCall(AbstractAPI api) throws IOException {
-    //从BankAPI注解获取请求地址
-    BankAPI bankAPI = api.getClass().getAnnotation(BankAPI.class);
-    bankAPI.url();
-    StringBuilder stringBuilder = new StringBuilder();
-    Arrays.stream(api.getClass().getDeclaredFields()) //获得所有字段
-            .filter(field -&gt; field.isAnnotationPresent(BankAPIField.class)) //查找标记了注解的字段
-            .sorted(Comparator.comparingInt(a -&gt; a.getAnnotation(BankAPIField.class).order())) //根据注解中的order对字段排序
-            .peek(field -&gt; field.setAccessible(true)) //设置可以访问私有字段
-            .forEach(field -&gt; {
-                //获得注解
-                BankAPIField bankAPIField = field.getAnnotation(BankAPIField.class);
-                Object value = &quot;&quot;;
-                try {
-                    //反射获取字段值
-                    value = field.get(api);
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-                //根据字段类型以正确的填充方式格式化字符串
-                switch (bankAPIField.type()) {
-                    case &quot;S&quot;: {
-                        stringBuilder.append(String.format(&quot;%-&quot; + bankAPIField.length() + &quot;s&quot;, value.toString()).replace(&#39; &#39;, &#39;_&#39;));
-                        break;
-                    }
-                    case &quot;N&quot;: {
-                        stringBuilder.append(String.format(&quot;%&quot; + bankAPIField.length() + &quot;s&quot;, value.toString()).replace(&#39; &#39;, &#39;0&#39;));
-                        break;
-                    }
-                    case &quot;M&quot;: {
-                        if (!(value instanceof BigDecimal))
-                            throw new RuntimeException(String.format(&quot;{} 的 {} 必须是BigDecimal&quot;, api, field));
-                        stringBuilder.append(String.format(&quot;%0&quot; + bankAPIField.length() + &quot;d&quot;, ((BigDecimal) value).setScale(2, RoundingMode.DOWN).multiply(new BigDecimal(&quot;100&quot;)).longValue()));
-                        break;
-                    }
-                    default:
-                        break;
-                }
-            });
-    //签名逻辑
-   stringBuilder.append(DigestUtils.md2Hex(stringBuilder.toString()));
-    String param = stringBuilder.toString();
-    long begin = System.currentTimeMillis();
-    //发请求
-    String result = Request.Post(&quot;http://localhost:45678/reflection&quot; + bankAPI.url())
-            .bodyString(param, ContentType.APPLICATION_JSON)
-            .execute().returnContent().asString();
-    log.info(&quot;调用银行API {} url:{} 参数:{} 耗时:{}ms&quot;, bankAPI.desc(), bankAPI.url(), param, System.currentTimeMillis() - begin);
-    return result;
-}</code></pre><ul>
-<li>代码第三行从类上加载了BankApi注解,然后拿到其Url属性, 供后续进行远程调用.</li>
-<li>第6行开始,使用stream快速获取了所有被标记的字段,并按照order进行了排序.</li>
-<li>第12行开始,用反射获取了字段的值, 然后根据注解的参数类型进行格式化, 把所有的格式化逻辑集中在了这里.</li>
-<li>第41行开始,实现了对所有参数的加签名和调用</li>
-</ul>
-<p>这样我们在调用API的时候,就无需再重复写加签名和序列化的操作了, 只需要构造对应的类,打上注解然后调用这个方法即可.</p>
-<p>总结,<strong>反射给了我们在不知晓类的内部结构的时候, 按照固定逻辑处理类成员的能力; 而注解给了我们为成员补充元数据的能力, 使得我们可以动态配置对应的属性</strong>.</p>
-<h3 id="案例三-利用属性拷贝工具消除重复代码"><a href="#案例三-利用属性拷贝工具消除重复代码" class="headerlink" title="案例三: 利用属性拷贝工具消除重复代码"></a>案例三: 利用属性拷贝工具消除重复代码</h3><p>对于三层架构,往往有Vo, 实体, Do三层, 其中大部分字段是完全重复的,只有少数是独有的, 比如Vo有一些后端计算值, 实体有一些中间变量, Do有日期创建者等等.<br>对于一个复杂的业务系统,实体类有几十个属性实属正常,如果我们手动赋值字段,势必要写几十行, 比如下面这个新人写的程序:</p>
-<pre><code>ComplicatedOrderDTO orderDTO = new ComplicatedOrderDTO();
-ComplicatedOrderDO orderDO = new ComplicatedOrderDO();
-orderDO.setAcceptDate(orderDTO.getAcceptDate());
-orderDO.setAddress(orderDTO.getAddress());
-orderDO.setAddressId(orderDTO.getAddressId());
-orderDO.setCancelable(orderDTO.isCancelable());
-orderDO.setCommentable(orderDTO.isComplainable()); //属性错误
-orderDO.setComplainable(orderDTO.isCommentable()); //属性错误
-orderDO.setCancelable(orderDTO.isCancelable());
-orderDO.setCouponAmount(orderDTO.getCouponAmount());
-orderDO.setCouponId(orderDTO.getCouponId());
-orderDO.setCreateDate(orderDTO.getCreateDate());
-orderDO.setDirectCancelable(orderDTO.isDirectCancelable());
-orderDO.setDeliverDate(orderDTO.getDeliverDate());
-orderDO.setDeliverGroup(orderDTO.getDeliverGroup());
-orderDO.setDeliverGroupOrderStatus(orderDTO.getDeliverGroupOrderStatus());
-orderDO.setDeliverMethod(orderDTO.getDeliverMethod());
-orderDO.setDeliverPrice(orderDTO.getDeliverPrice());
-orderDO.setDeliveryManId(orderDTO.getDeliveryManId());
-orderDO.setDeliveryManMobile(orderDO.getDeliveryManMobile()); //对象错误
-orderDO.setDeliveryManName(orderDTO.getDeliveryManName());
-orderDO.setDistance(orderDTO.getDistance());
-orderDO.setExpectDate(orderDTO.getExpectDate());
-orderDO.setFirstDeal(orderDTO.isFirstDeal());
-orderDO.setHasPaid(orderDTO.isHasPaid());
-orderDO.setHeadPic(orderDTO.getHeadPic());
-orderDO.setLongitude(orderDTO.getLongitude());
-orderDO.setLatitude(orderDTO.getLongitude()); //属性赋值错误
-orderDO.setMerchantAddress(orderDTO.getMerchantAddress());
-orderDO.setMerchantHeadPic(orderDTO.getMerchantHeadPic());
-orderDO.setMerchantId(orderDTO.getMerchantId());
-orderDO.setMerchantAddress(orderDTO.getMerchantAddress());
-orderDO.setMerchantName(orderDTO.getMerchantName());
-orderDO.setMerchantPhone(orderDTO.getMerchantPhone());
-orderDO.setOrderNo(orderDTO.getOrderNo());
-orderDO.setOutDate(orderDTO.getOutDate());
-orderDO.setPayable(orderDTO.isPayable());
-orderDO.setPaymentAmount(orderDTO.getPaymentAmount());
-orderDO.setPaymentDate(orderDTO.getPaymentDate());
-orderDO.setPaymentMethod(orderDTO.getPaymentMethod());
-orderDO.setPaymentTimeLimit(orderDTO.getPaymentTimeLimit());
-orderDO.setPhone(orderDTO.getPhone());
-orderDO.setRefundable(orderDTO.isRefundable());
-orderDO.setRemark(orderDTO.getRemark());
-orderDO.setStatus(orderDTO.getStatus());
-orderDO.setTotalQuantity(orderDTO.getTotalQuantity());
-orderDO.setUpdateTime(orderDTO.getUpdateTime());
-orderDO.setName(orderDTO.getName());
-orderDO.setUid(orderDTO.getUid());</code></pre><p>如果没有注释,很容易就传错数据了, 对于一些名称相近的字段, 也很容易互相传.<br>又或者,有一些字段是无需赋值的,有一些是必须赋值的, 靠人力和注释都很难维护.<br>一个好的方式, 使用BeanUtils.copyProperties来实现, 不但可以自动按照名字对应,还可以指名独有的字段, 从而便于扩展.</p>
-<h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><ol>
-<li><p>观察者模式也常用于减少代码重复, 有哪些应用场景?<br>spring的事件驱动模型, 其实也就是回调模式的一个应用, 每次添加商品的时候都需要重新更新商品索引.</p>
-</li>
-<li><p>对于Bean复制工具, 除了BeanUtils你还知道哪些呢?<br>比较常用的就是Mapstruct和hutool了, 核心问题是对于同名不同类型的字段的如何设置, 建议是手动设置以提高可读性.</p>
-</li>
-</ol>
-
+                <h1 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h1><h2 id="22-接口设计：系统间对话的语言，一定要统一"><a href="#22-接口设计：系统间对话的语言，一定要统一" class="headerlink" title="22. 接口设计：系统间对话的语言，一定要统一"></a>22. 接口设计：系统间对话的语言，一定要统一</h2>
             </div>
             <hr />
 
@@ -903,9 +610,9 @@ orderDO.setUid(orderDTO.getUid());</code></pre><p>如果没有注释,很容易�
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Java开发常见错误_21》
+                    《Java开发常见错误_22》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/03/28/java-kai-fa-chang-jian-cuo-wu-21/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/03/29/new-article/" property="cc:attributionName"
                rel="cc:attributionURL">
                 HumphreyHao
             </a> 采用
@@ -946,7 +653,7 @@ orderDO.setUid(orderDTO.getUid());</code></pre><p>如果没有注释,很容易�
         repo: 'humphreyhao.github.io',
         owner: 'humphreyhao',
         admin: "humphreyhao",
-        id: '2021/03/28/java-kai-fa-chang-jian-cuo-wu-21/',
+        id: '2021/03/29/new-article/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -967,9 +674,10 @@ orderDO.setUid(orderDTO.getUid());</code></pre><p>如果没有注释,很容易�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/03/29/new-article/">
                     <div class="card-image">
@@ -987,9 +695,9 @@ orderDO.setUid(orderDTO.getUid());</code></pre><p>如果没有注释,很容易�
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-03-29
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-03-29
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -1002,6 +710,7 @@ orderDO.setUid(orderDTO.getUid());</code></pre><p>如果没有注释,很容易�
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1028,13 +737,13 @@ orderDO.setUid(orderDTO.getUid());</code></pre><p>如果没有注释,很容易�
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/03/22/java-kai-fa-chang-jian-cuo-wu-20/">
+                <a href="/2021/03/28/java-kai-fa-chang-jian-cuo-wu-21/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Java开发常见错误_20">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Java开发常见错误_21">
                         
-                        <span class="card-title">Java开发常见错误_20</span>
+                        <span class="card-title">Java开发常见错误_21</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1045,7 +754,7 @@ orderDO.setUid(orderDTO.getUid());</code></pre><p>如果没有注释,很容易�
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-03-22
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-03-28
                             </span>
                         <span class="publish-author">
                             

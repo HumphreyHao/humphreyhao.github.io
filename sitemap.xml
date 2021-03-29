@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://humphreyhao.github.io/2021/03/29/new-article/</loc>
+    
+    <lastmod>2021-03-29T01:10:34.465Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://humphreyhao.github.io/2021/03/28/java-kai-fa-chang-jian-cuo-wu-21/</loc>
     
     <lastmod>2021-03-29T00:50:50.214Z</lastmod>
@@ -100,13 +107,6 @@
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/contact/index.html</loc>
-    
-    <lastmod>2021-02-05T16:23:05.221Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://humphreyhao.github.io/categories/index.html</loc>
     
     <lastmod>2021-02-05T16:23:05.221Z</lastmod>
@@ -114,7 +114,7 @@
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/friends/index.html</loc>
+    <loc>https://humphreyhao.github.io/contact/index.html</loc>
     
     <lastmod>2021-02-05T16:23:05.221Z</lastmod>
     
@@ -122,6 +122,13 @@
   
   <url>
     <loc>https://humphreyhao.github.io/tags/index.html</loc>
+    
+    <lastmod>2021-02-05T16:23:05.221Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://humphreyhao.github.io/friends/index.html</loc>
     
     <lastmod>2021-02-05T16:23:05.221Z</lastmod>
     
@@ -170,14 +177,14 @@
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2019/06/25/spring/</loc>
+    <loc>https://humphreyhao.github.io/2020/06/13/rocketmq/</loc>
     
     <lastmod>2021-02-05T16:23:05.219Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2020/06/13/rocketmq/</loc>
+    <loc>https://humphreyhao.github.io/2019/06/25/spring/</loc>
     
     <lastmod>2021-02-05T16:23:05.219Z</lastmod>
     

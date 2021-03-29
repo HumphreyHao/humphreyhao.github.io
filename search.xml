@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Java开发常见错误_22</title>
+      <link href="/2021/03/29/new-article/"/>
+      <url>/2021/03/29/new-article/</url>
+      
+        <content type="html"><![CDATA[<h1 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h1><h2 id="22-接口设计：系统间对话的语言，一定要统一"><a href="#22-接口设计：系统间对话的语言，一定要统一" class="headerlink" title="22. 接口设计：系统间对话的语言，一定要统一"></a>22. 接口设计：系统间对话的语言，一定要统一</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> 常见业务错误 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 集合类 </tag>
+            
+            <tag> 多线程 </tag>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java开发常见错误_21</title>
       <link href="/2021/03/28/java-kai-fa-chang-jian-cuo-wu-21/"/>
       <url>/2021/03/28/java-kai-fa-chang-jian-cuo-wu-21/</url>
