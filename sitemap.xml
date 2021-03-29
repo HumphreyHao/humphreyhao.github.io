@@ -86,13 +86,6 @@
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/archives/index.html</loc>
-    
-    <lastmod>2021-02-05T16:23:05.221Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://humphreyhao.github.io/about/index.html</loc>
     
     <lastmod>2021-02-05T16:23:05.221Z</lastmod>
@@ -100,7 +93,7 @@
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/categories/index.html</loc>
+    <loc>https://humphreyhao.github.io/archives/index.html</loc>
     
     <lastmod>2021-02-05T16:23:05.221Z</lastmod>
     
@@ -108,6 +101,13 @@
   
   <url>
     <loc>https://humphreyhao.github.io/contact/index.html</loc>
+    
+    <lastmod>2021-02-05T16:23:05.221Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://humphreyhao.github.io/categories/index.html</loc>
     
     <lastmod>2021-02-05T16:23:05.221Z</lastmod>
     
@@ -170,14 +170,14 @@
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2020/06/13/rocketmq/</loc>
+    <loc>https://humphreyhao.github.io/2019/06/25/spring/</loc>
     
     <lastmod>2021-02-05T16:23:05.219Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2019/06/25/spring/</loc>
+    <loc>https://humphreyhao.github.io/2020/06/13/rocketmq/</loc>
     
     <lastmod>2021-02-05T16:23:05.219Z</lastmod>
     
@@ -198,14 +198,14 @@
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2020/02/24/nameserver/</loc>
+    <loc>https://humphreyhao.github.io/2020/05/19/mysql/</loc>
     
     <lastmod>2021-02-05T16:23:05.218Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2020/05/19/mysql/</loc>
+    <loc>https://humphreyhao.github.io/2020/02/24/nameserver/</loc>
     
     <lastmod>2021-02-05T16:23:05.218Z</lastmod>
     
@@ -345,14 +345,14 @@
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2021/01/18/java-kai-fa-chang-jian-cuo-wu-13/</loc>
+    <loc>https://humphreyhao.github.io/2021/01/16/java-kai-fa-chang-jian-cuo-wu-12/</loc>
     
     <lastmod>2021-02-05T16:23:05.214Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://humphreyhao.github.io/2021/01/16/java-kai-fa-chang-jian-cuo-wu-12/</loc>
+    <loc>https://humphreyhao.github.io/2021/01/18/java-kai-fa-chang-jian-cuo-wu-13/</loc>
     
     <lastmod>2021-02-05T16:23:05.214Z</lastmod>
     
