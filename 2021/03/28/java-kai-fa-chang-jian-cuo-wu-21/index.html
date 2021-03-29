@@ -4,13 +4,14 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Java基础系列17: 集合类, JAVA Python HumphreyHao 后端研发 海豚">
+    <meta name="keywords" content="Java开发常见错误_21, JAVA Python HumphreyHao 后端研发 海豚">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
-    <meta name="description" content="Java基础系列17: 集合类本文是作者的读书笔记和心得整理，部分内容来源于网络，如有侵权，请联系作者。
-Collection接口最基本的集合接口,并不提供类的实现,有List和Set两个子接口(不包含Map!)
-在Java中所有实现了Co">
+    <meta name="description" content="第四章21. 代码重复：搞定代码重复的三个绝招为什么要减少代码重复?
+
+如果多处重复代码实现完全相同的功能,比如不同渠道写入同一张表,有一些写死字段是1, 另一些写死是0, 后续更新之后要全写死为1, 这时候就会容易漏写导致出现bug;
+如">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +19,7 @@ Collection接口最基本的集合接口,并不提供类的实现,有List和Set�
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Java基础系列17: 集合类 | Humphrey爵士的小海豚</title>
+    <title>Java开发常见错误_21 | Humphrey爵士的小海豚</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -268,13 +269,13 @@ Collection接口最基本的集合接口,并不提供类的实现,有List和Set�
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/24.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Java基础系列17: 集合类
+                        Java开发常见错误_21
                     </div>
                 </div>
             </div>
@@ -385,12 +386,16 @@ Collection接口最基本的集合接口,并不提供类的实现,有List和Set�
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/Java基础/" target="_blank">
-                            <span class="chip bg-color">Java基础</span>
-                        </a>
-                        
                         <a href="/tags/集合类/" target="_blank">
                             <span class="chip bg-color">集合类</span>
+                        </a>
+                        
+                        <a href="/tags/多线程/" target="_blank">
+                            <span class="chip bg-color">多线程</span>
+                        </a>
+                        
+                        <a href="/tags/数据库/" target="_blank">
+                            <span class="chip bg-color">数据库</span>
                         </a>
                         
                     </div>
@@ -401,8 +406,8 @@ Collection接口最基本的集合接口,并不提供类的实现,有List和Set�
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/基础知识/" class="post-category" target="_blank">
-                            基础知识
+                        <a href="/categories/常见业务错误/" class="post-category" target="_blank">
+                            常见业务错误
                         </a>
                         
                     </div>
@@ -413,7 +418,7 @@ Collection接口最基本的集合接口,并不提供类的实现,有List和Set�
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-12-04
+                    2021-03-28
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -427,14 +432,14 @@ Collection接口最基本的集合接口,并不提供类的实现,有List和Set�
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.9k
+                    3.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    14 分
                 </div>
                 
                 
@@ -450,92 +455,296 @@ Collection接口最基本的集合接口,并不提供类的实现,有List和Set�
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Java基础系列17-集合类"><a href="#Java基础系列17-集合类" class="headerlink" title="Java基础系列17: 集合类"></a>Java基础系列17: 集合类</h1><p>本文是作者的读书笔记和心得整理，部分内容来源于网络，如有侵权，请联系作者。</p>
-<h2 id="Collection接口"><a href="#Collection接口" class="headerlink" title="Collection接口"></a>Collection接口</h2><p>最基本的集合接口,并不提供类的实现,有List和Set两个子接口(不包含Map!)</p>
-<p>在Java中所有实现了Collection接口的类都必须提供两套标准的构造函数，一个是无参，用于创建一个空的Collection，一个是带有Collection参数的有参构造函数，用于创建一个新的Collection，这个新的Collection与传入进来的Collection具备相同的元素。</p>
-<h2 id="List接口"><a href="#List接口" class="headerlink" title="List接口"></a>List接口</h2><p>List代表的是有序的,以某种特定的插入顺序来维护元素顺序,根据整数索引来搜索和访问元素.</p>
-<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p>这是一个动态数组,有add,size,get,set,isEmpty,iterator等方法.适合随机访问,同时是非同步的.</p>
-<h3 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h3><p>这是一个双向链表,提供了get,remove,insert等方法.<br>强行索引的话会从近的一端开始遍历,插入是O(1),查询O(n)</p>
-<p>也是不同步的,一种可行的解决方法:</p>
-<pre><code>List list = Collections.synchronizedList(new LinkedList(…));</code></pre><h3 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h3><p>和ArrayList几乎一样,但是是同步的,所以效率低.</p>
-<h3 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h3><p>Stack继承自Vector，实现一个后进先出的堆栈。Stack提供5个额外的方法使得Vector得以被当作堆栈使用。基本的push和pop 方法，还有peek方法得到栈顶的元素，empty方法测试堆栈是否为空，search方法检测一个元素在堆栈中的位置(O(n))。Stack刚创建后是空栈。。</p>
-<h2 id="Set接口"><a href="#Set接口" class="headerlink" title="Set接口"></a>Set接口</h2><p>不可随机访问，维持自己的内部排序</p>
-<h2 id="Map接口"><a href="#Map接口" class="headerlink" title="Map接口"></a>Map接口</h2><p>元素都是键值对</p>
-<p>以下部分引用自<a href="https://how2playlife.com/2019/09/19/19%E3%80%81Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E6%A2%B3%E7%90%86/" target="_blank" rel="noopener">https://how2playlife.com/2019/09/19/19%E3%80%81Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E6%A2%B3%E7%90%86/</a>, 背熟就完事了.</p>
-<h1 id="List"><a href="#List" class="headerlink" title="List"></a>List</h1><h2 id="ArrayList-1"><a href="#ArrayList-1" class="headerlink" title="ArrayList"></a>ArrayList</h2><p>以数组实现。节约空间，但数组有容量限制。超出限制时会增加50%容量，用System.arraycopy（）复制到新的数组。因此最好能给出数组大小的预估值。默认第一次插入元素时创建大小为10的数组。</p>
-<p>按数组下标访问元素－get（i）、set（i,e） 的性能很高，这是数组的基本优势。</p>
-<p>如果按下标插入元素、删除元素－add（i,e）、 remove（i）、remove（e），则要用System.arraycopy（）来复制移动部分受影响的元素，性能就变差了。</p>
-<p>越是前面的元素，修改时要移动的元素越多。直接在数组末尾加入元素－常用的add（e），删除最后一个元素则无影响。</p>
-<h2 id="LinkedList-1"><a href="#LinkedList-1" class="headerlink" title="LinkedList"></a>LinkedList</h2><p>以双向链表实现。链表无容量限制，但双向链表本身使用了更多空间，每插入一个元素都要构造一个额外的Node对象，也需要额外的链表指针操作。</p>
-<p>按下标访问元素－get（i）、set（i,e） 要悲剧的部分遍历链表将指针移动到位 （如果i&gt;数组大小的一半，会从末尾移起）。</p>
-<p>插入、删除元素时修改前后节点的指针即可，不再需要复制移动。但还是要部分遍历链表的指针才能移动到下标所指的位置。</p>
-<p>只有在链表两头的操作－add（）、addFirst（）、removeLast（）或用iterator（）上的remove（）倒能省掉指针的移动。</p>
-<p>Apache Commons 有个TreeNodeList，里面是棵二叉树，可以快速移动指针到位。</p>
-<h2 id="CopyOnWriteArrayList"><a href="#CopyOnWriteArrayList" class="headerlink" title="CopyOnWriteArrayList"></a>CopyOnWriteArrayList</h2><p>并发优化的ArrayList。基于不可变对象策略，在修改时先复制出一个数组快照来修改，改好了，再让内部指针指向新数组。</p>
-<p>因为对快照的修改对读操作来说不可见，所以读读之间不互斥，读写之间也不互斥，只有写写之间要加锁互斥。但复制快照的成本昂贵，典型的适合读多写少的场景。</p>
-<p>虽然增加了addIfAbsent（e）方法，会遍历数组来检查元素是否已存在，性能可想像的不会太好。</p>
-<h2 id="遗憾"><a href="#遗憾" class="headerlink" title="遗憾"></a>遗憾</h2><p>无论哪种实现，按值返回下标contains（e）, indexOf（e）, remove（e） 都需遍历所有元素进行比较，性能可想像的不会太好。</p>
-<p>没有按元素值排序的SortedList。</p>
-<p>除了CopyOnWriteArrayList，再没有其他线程安全又并发优化的实现如ConcurrentLinkedList。凑合着用Set与Queue中的等价类时，会缺少一些List特有的方法如get（i）。如果更新频率较高，或数组较大时，还是得用Collections.synchronizedList（list），对所有操作用同一把锁来保证线程安全。</p>
-<h1 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h1><h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><p>以Entry[]数组实现的哈希桶数组，用Key的哈希值取模桶数组的大小可得到数组下标。</p>
-<p>插入元素时，如果两条Key落在同一个桶（比如哈希值1和17取模16后都属于第一个哈希桶），我们称之为哈希冲突。</p>
-<p>JDK的做法是链表法，Entry用一个next属性实现多个Entry以单向链表存放。查找哈希值为17的key时，先定位到哈希桶，然后链表遍历桶里所有元素，逐个比较其Hash值然后key值。</p>
-<p>在JDK8里，新增默认为8的阈值，当一个桶里的Entry超过閥值，就不以单向链表而以红黑树来存放以加快Key的查找速度。</p>
-<p>当然，最好还是桶里只有一个元素，不用去比较。所以默认当Entry数量达到桶数量的75%时，哈希冲突已比较严重，就会成倍扩容桶数组，并重新分配所有原来的Entry。扩容成本不低，所以也最好有个预估值。</p>
-<p>取模用与操作（hash &amp; （arrayLength-1））会比较快，所以数组的大小永远是2的N次方， 你随便给一个初始值比如17会转为32。默认第一次放入元素时的初始值是16。</p>
-<p>iterator（）时顺着哈希桶数组来遍历，看起来是个乱序。</p>
-<h2 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h2><p>扩展HashMap，每个Entry增加双向链表，号称是最占内存的数据结构。</p>
-<p>支持iterator（）时按Entry的插入顺序来排序（如果设置accessOrder属性为true，则所有读写访问都排序）。</p>
-<p>插入时，Entry把自己加到Header Entry的前面去。如果所有读写访问都要排序，还要把前后Entry的before/after拼接起来以在链表中删除掉自己，所以此时读操作也是线程不安全的了。</p>
-<h2 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h2><p>以红黑树实现，红黑树又叫自平衡二叉树：</p>
-<p>对于任一节点而言，其到叶节点的每一条路径都包含相同数目的黑结点。<br>上面的规定，使得树的层数不会差的太远，使得所有操作的复杂度不超过 O（lgn），但也使得插入，修改时要复杂的左旋右旋来保持树的平衡。</p>
-<p>支持iterator（）时按Key值排序，可按实现了Comparable接口的Key的升序排序，或由传入的Comparator控制。可想象的，在树上插入/删除元素的代价一定比HashMap的大。</p>
-<p>支持SortedMap接口，如firstKey（），lastKey（）取得最大最小的key，或sub（fromKey, toKey）, tailMap（fromKey）剪取Map的某一段。</p>
-<h2 id="EnumMap"><a href="#EnumMap" class="headerlink" title="EnumMap"></a>EnumMap</h2><p>EnumMap的原理是，在构造函数里要传入枚举类，那它就构建一个与枚举的所有值等大的数组，按Enum. ordinal（）下标来访问数组。性能与内存占用俱佳。</p>
-<p>美中不足的是，因为要实现Map接口，而 V get（Object key）中key是Object而不是泛型K，所以安全起见，EnumMap每次访问都要先对Key进行类型判断，在JMC里录得不低的采样命中频率。</p>
-<h2 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h2><p>并发优化的HashMap。</p>
-<p>在JDK5里的经典设计，默认16把写锁（可以设置更多），有效分散了阻塞的概率。数据结构为Segment[]，每个Segment一把锁。Segment里面才是哈希桶数组。Key先算出它在哪个Segment里，再去算它在哪个哈希桶里。</p>
-<p>也没有读锁，因为put/remove动作是个原子动作（比如put的整个过程是一个对数组元素/Entry 指针的赋值操作），读操作不会看到一个更新动作的中间状态。</p>
-<p>但在JDK8里，Segment[]的设计被抛弃了，改为精心设计的，只在需要锁的时候加锁。</p>
-<p>支持ConcurrentMap接口，如putIfAbsent（key，value）与相反的replace（key，value）与以及实现CAS的replace（key, oldValue, newValue）。</p>
-<h3 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h3><p>指的是比较并替换,compare and swap<br>CAS需要有3个操作数：内存地址V，旧的预期值A，即将要更新的目标值B。<br>想把V和A对比,如果相同就换为B,否则就什么都不做.<br>这是个原子操作.</p>
-<p>主要有3个缺点:<br>循环时间长开销很大：<br>我们可以看到getAndAddInt方法执行时，如果CAS失败，会一直进行尝试。如果CAS长时间一直不成功，可能会给CPU带来很大的开销。</p>
-<p>只能保证一个共享变量的原子操作<br>：当对一个共享变量执行操作时，我们可以使用循环CAS的方式来保证原子操作，但是对多个共享变量操作时，循环CAS就无法保证操作的原子性，这个时候就可以用锁来保证原子性。</p>
-<p>什么是ABA问题？ABA问题怎么解决？</p>
-<p>如果内存地址V初次读取的值是A，并且在准备赋值的时候检查到它的值仍然为A，那我们就能说它的值没有被其他线程改变过了吗？<br>如果在这段期间它的值曾经被改成了B，后来又被改回为A，那CAS操作就会误认为它从来没有被改变过。这个漏洞称为CAS操作的“ABA”问题。Java并发包为了解决这个问题，提供了一个带有标记的原子引用类“AtomicStampedReference”，它可以通过控制变量值的版本来保证CAS的正确性。因此，在使用CAS前要考虑清楚“ABA”问题是否会影响程序并发的正确性，如果需要解决ABA问题，改用传统的互斥同步可能会比原子类更高效。</p>
-<h2 id="ConcurrentSkipListMap"><a href="#ConcurrentSkipListMap" class="headerlink" title="ConcurrentSkipListMap"></a>ConcurrentSkipListMap</h2><p>JDK6新增的并发优化的SortedMap，以SkipList结构实现。Concurrent包选用它是因为它支持基于CAS的无锁算法，而红黑树则没有好的无锁算法。</p>
-<p>原理上，可以想象为多个链表组成的N层楼，其中的元素从稀疏到密集，每个元素有往右与往下的指针。从第一层楼开始遍历，如果右端的值比期望的大，那就往下走一层，继续往前走。</p>
-<p>典型的空间换时间。每次插入，都要决定在哪几层插入，同时，要决定要不要多盖一层楼。</p>
-<p>它的size（）同样不能随便调，会遍历来统计。</p>
-<h1 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h1><p>所有Set几乎都是内部用一个Map来实现, 因为Map里的KeySet就是一个Set，而value是假值，全部使用同一个Object即可。</p>
-<p>Set的特征也继承了那些内部的Map实现的特征。</p>
-<p>HashSet：内部是HashMap。</p>
-<p>LinkedHashSet：内部是LinkedHashMap。</p>
-<p>TreeSet：内部是TreeMap的SortedSet。</p>
-<p>ConcurrentSkipListSet：内部是ConcurrentSkipListMap的并发优化的SortedSet。</p>
-<p>CopyOnWriteArraySet：内部是CopyOnWriteArrayList的并发优化的Set，利用其addIfAbsent（）方法实现元素去重，如前所述该方法的性能很一般。</p>
-<p>好像少了个ConcurrentHashSet，本来也该有一个内部用ConcurrentHashMap的简单实现，但JDK偏偏没提供。Jetty就自己简单封了一个，Guava则直接用java.util.Collections.newSetFromMap（new ConcurrentHashMap（）） 实现。</p>
-<h1 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h1><p>Queue是在两端出入的List，所以也可以用数组或链表来实现。</p>
-<h2 id="普通队列"><a href="#普通队列" class="headerlink" title="普通队列"></a>普通队列</h2><p>LinkedList<br>是的，以双向链表实现的LinkedList既是List，也是Queue。</p>
-<p>ArrayDeque<br>以循环数组实现的双向Queue。大小是2的倍数，默认是16。</p>
-<p>为了支持FIFO，即从数组尾压入元素（快），从数组头取出元素（超慢），就不能再使用普通ArrayList的实现了，改为使用循环数组。</p>
-<p>有队头队尾两个下标：弹出元素时，队头下标递增；加入元素时，队尾下标递增。如果加入元素时已到数组空间的末尾，则将元素赋值到数组[0]，同时队尾下标指向0，再插入下一个元素则赋值到数组[1]，队尾下标指向1。如果队尾的下标追上队头，说明数组所有空间已用完，进行双倍的数组扩容。</p>
-<p>PriorityQueue<br>用平衡二叉最小堆实现的优先级队列，不再是FIFO，而是按元素实现的Comparable接口或传入Comparator的比较结果来出队，数值越小，优先级越高，越先出队。但是注意其iterator（）的返回不会排序。</p>
-<p>平衡最小二叉堆，用一个简单的数组即可表达，可以快速寻址，没有指针什么的。最小的在queue[0] ，比如queue[4]的两个孩子，会在queue[24+1] 和 queue[2（4+1）]，即queue[9]和queue[10]。</p>
-<p>入队时，插入queue[size]，然后二叉地往上比较调整堆。</p>
-<p>出队时，弹出queue[0]，然后把queque[size]拿出来二叉地往下比较调整堆。</p>
-<p>初始大小为11，空间不够时自动50%扩容。</p>
-<h2 id="线程安全队列"><a href="#线程安全队列" class="headerlink" title="线程安全队列"></a>线程安全队列</h2><p>ConcurrentLinkedQueue/Deque<br>无界的并发优化的Queue，基于链表，实现了依赖于CAS的无锁算法。</p>
-<p>ConcurrentLinkedQueue的结构是单向链表和head/tail两个指针，因为入队时需要修改队尾元素的next指针，以及修改tail指向新入队的元素两个CAS动作无法原子，所以需要的特殊的算法。</p>
-<h2 id="线程安全的阻塞队列"><a href="#线程安全的阻塞队列" class="headerlink" title="线程安全的阻塞队列"></a>线程安全的阻塞队列</h2><p>BlockingQueue，一来如果队列已空不用重复的查看是否有新数据而会阻塞在那里，二来队列的长度受限，用以保证生产者与消费者的速度不会相差太远。当入队时队列已满，或出队时队列已空，不同函数的效果见下表</p>
-<p>ArrayBlockingQueue<br>定长的并发优化的BlockingQueue，也是基于循环数组实现。有一把公共的锁与notFull、notEmpty两个Condition管理队列满或空时的阻塞状态。</p>
-<p>LinkedBlockingQueue/Deque<br>可选定长的并发优化的BlockingQueue，基于链表实现，所以可以把长度设为Integer.MAX_VALUE成为无界无等待的。</p>
-<p>利用链表的特征，分离了takeLock与putLock两把锁，继续用notEmpty、notFull管理队列满或空时的阻塞状态。</p>
-<p>PriorityBlockingQueue<br>无界的PriorityQueue，也是基于数组存储的二叉堆（见前）。一把公共的锁实现线程安全。因为无界，空间不够时会自动扩容，所以入列时不会锁，出列为空时才会锁。</p>
-<p>DelayQueue<br>内部包含一个PriorityQueue，同样是无界的，同样是出列时才会锁。一把公共的锁实现线程安全。元素需实现Delayed接口，每次调用时需返回当前离触发时间还有多久，小于0表示该触发了。</p>
-<p>pull（）时会用peek（）查看队头的元素，检查是否到达触发时间。ScheduledThreadPoolExecutor用了类似的结构。</p>
-<h2 id="同步队列"><a href="#同步队列" class="headerlink" title="同步队列"></a>同步队列</h2><p>SynchronousQueue同步队列本身无容量，放入元素时，比如等待元素被另一条线程的消费者取走再返回。JDK线程池里用它。</p>
-<p>JDK7还有个LinkedTransferQueue，在普通线程安全的BlockingQueue的基础上，增加一个transfer（e） 函数，效果与SynchronousQueue一样。</p>
+                <h1 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h1><h2 id="21-代码重复：搞定代码重复的三个绝招"><a href="#21-代码重复：搞定代码重复的三个绝招" class="headerlink" title="21. 代码重复：搞定代码重复的三个绝招"></a>21. 代码重复：搞定代码重复的三个绝招</h2><p>为什么要减少代码重复?</p>
+<ol>
+<li>如果多处重复代码实现完全相同的功能,比如不同渠道写入同一张表,有一些写死字段是1, 另一些写死是0, 后续更新之后要全写死为1, 这时候就会容易漏写导致出现bug;</li>
+<li>如果有一些代码不是完成重复,但是相似度非常高,就像上面的0和1,只有这一个字段不同.修改这些代码的时候就容易复制, 导致影响原有业务.  </li>
+</ol>
+<h3 id="案例一-利用工厂模式-模板方法模式，消除-if…else-和重复代码"><a href="#案例一-利用工厂模式-模板方法模式，消除-if…else-和重复代码" class="headerlink" title="案例一: 利用工厂模式 + 模板方法模式，消除 if…else 和重复代码"></a>案例一: 利用工厂模式 + 模板方法模式，消除 if…else 和重复代码</h3><ul>
+<li>案例描述:</li>
+</ul>
+<p>假设开发一个购物车下单的功能, 针对不同用户进行不同处理:</p>
+<ul>
+<li>普通用户需要收取运费，运费是商品价格的 10%，无商品折扣；</li>
+<li>VIP 用户同样需要收取商品价格 10% 的快递费，但购买两件以上相同商品时，第三件开始享受一定折扣；</li>
+<li>内部用户可以免运费，无商品折扣。</li>
+</ul>
+<p>目标是实现三种购物车业务逻辑, 把入参Map对象(key是商品id,value是商品数量)转换为出参类型购物车类Cart.<br>错误的写法: 写三个processor, 然后使用ifelse来实现对不同类型的用户调用不同的购物车</p>
+<pre><code>@GetMapping(&quot;wrong&quot;)
+public Cart wrong(@RequestParam(&quot;userId&quot;) int userId) {
+    //根据用户ID获得用户类型
+    String userCategory = Db.getUserCategory(userId);
+    //普通用户处理逻辑
+    if (userCategory.equals(&quot;Normal&quot;)) {
+        NormalUserCart normalUserCart = new NormalUserCart();
+        return normalUserCart.process(userId, items);
+    }
+    //VIP用户处理逻辑
+    if (userCategory.equals(&quot;Vip&quot;)) {
+        VipUserCart vipUserCart = new VipUserCart();
+        return vipUserCart.process(userId, items);
+    }
+    //内部用户处理逻辑
+    if (userCategory.equals(&quot;Internal&quot;)) {
+        InternalUserCart internalUserCart = new InternalUserCart();
+        return internalUserCart.process(userId, items);
+    }
+
+    return null;
+}</code></pre><p>这样写当然没什么问题,但是电商营销的用户区分可不仅仅是普通内部vip, 多的情况下可能有上百种, 需要单独外部加一个配置文件来自动扩展,这时候要怎么办呢, 每次都重头写一个类出来吗?<br>正确的做法是使用<strong>模板方法模式</strong>, 我们在父类中定义通用的整个流程,把需要通用的模块在父类中实现,而把需要改动的地方在子类中重写, 在父类中留一个抽象方法定义. 注意因为父类的逻辑是不完整的, 因此需要定义为抽象类从而避免父类被实例化的问题.<br>如下所示:</p>
+<pre><code>
+public abstract class AbstractCart {
+    //处理购物车的大量重复逻辑在父类实现
+    public Cart process(long userId, Map&lt;Long, Integer&gt; items) {
+
+        Cart cart = new Cart();
+
+        List&lt;Item&gt; itemList = new ArrayList&lt;&gt;();
+        items.entrySet().stream().forEach(entry -&gt; {
+            Item item = new Item();
+            item.setId(entry.getKey());
+            item.setPrice(Db.getItemPrice(entry.getKey()));
+            item.setQuantity(entry.getValue());
+            itemList.add(item);
+        });
+        cart.setItems(itemList);
+        //让子类处理每一个商品的优惠
+        itemList.stream().forEach(item -&gt; {
+            processCouponPrice(userId, item);
+            processDeliveryPrice(userId, item);
+        });
+        //计算商品总价
+        cart.setTotalItemPrice(cart.getItems().stream().map(item -&gt; item.getPrice().multiply(BigDecimal.valueOf(item.getQuantity()))).reduce(BigDecimal.ZERO, BigDecimal::add));
+        //计算总运费
+cart.setTotalDeliveryPrice(cart.getItems().stream().map(Item::getDeliveryPrice).reduce(BigDecimal.ZERO, BigDecimal::add));
+        //计算总折扣
+cart.setTotalDiscount(cart.getItems().stream().map(Item::getCouponPrice).reduce(BigDecimal.ZERO, BigDecimal::add));
+        //计算应付价格
+cart.setPayPrice(cart.getTotalItemPrice().add(cart.getTotalDeliveryPrice()).subtract(cart.getTotalDiscount()));
+        return cart;
+    }
+
+    //处理商品优惠的逻辑留给子类实现
+    protected abstract void processCouponPrice(long userId, Item item);
+    //处理配送费的逻辑留给子类实现
+    protected abstract void processDeliveryPrice(long userId, Item item);
+}</code></pre><p>但是这样依旧有个问题, 100个用户类型的时候,我们难道要写100个if…else来选择不同的子类实现吗?<br>这样当然可以,但是就会很难维护, 造成代码的不易理解, 常见的办法有两种:</p>
+<ol>
+<li>在定义类的时候, 使用用户类型标识对应的字段+统一的后缀来命名, 这样就可以利用Spring的IOC容器,通过Bean的名称来直接获取到对应的实现子类,然后再调用其process方法. 通俗的讲就是先根据名字找工厂,然后让对应的工厂进行生产, 这就是<strong>工厂模式</strong>. </li>
+<li>或者,如果不想这样命名, 也可以构造一个Map, 每个具体实现类维护一个唯一标识的getInstance方法,然后调用spring搜索所有继承父类的子类,构造一个&lt;instance名,实例&gt;的类, 再根据传入的具体类型获取实例, 这样的好处是命名比较灵活, 坏处是无法快速索引到某个类型对应的子类是什么.</li>
+</ol>
+<p>这样我们就使用工厂模式+模板方法模式消除了重复代码,还避免了修改既有代码的风险,这就是我们常说的开闭原则: 对修改关闭,对扩展开放.</p>
+<h3 id="案例二-使用注解-反射消除重复代码"><a href="#案例二-使用注解-反射消除重复代码" class="headerlink" title="案例二: 使用注解+反射消除重复代码"></a>案例二: 使用注解+反射消除重复代码</h3><ul>
+<li>案例描述</li>
+</ul>
+<p>假设现在有一个银行,提供的API接口对参数的序列化比较特殊,不是使用JSON而是把参数按照某个顺序拼在一起构成一个大字符串.  </p>
+<ul>
+<li>按照银行提供的 API 文档的顺序，把所有参数构成定长的数据，然后拼接在一起作为整个字符串。</li>
+<li>因为每一种参数都有固定长度，未达到长度时需要做填充处理：</li>
+<li>字符串类型的参数不满长度部分需要以下划线右填充，也就是字符串内容靠左；</li>
+<li>数字类型的参数不满长度部分以 0 左填充，也就是实际数字靠右；</li>
+<li>货币类型的表示需要把金额向下舍入 2 位到分，以分为单位，作为数字类型同样进行左填充。</li>
+<li>对所有参数做 MD5 操作作为签名</li>
+</ul>
+<p>这里提供一个新人容易写出来的代码实现:</p>
+<pre><code>public class BankService {
+
+    //创建用户方法
+    public static String createUser(String name, String identity, String mobile, int age) throws IOException {
+        StringBuilder stringBuilder = new StringBuilder();
+        //字符串靠左，多余的地方填充_
+        stringBuilder.append(String.format(&quot;%-10s&quot;, name).replace(&#39; &#39;, &#39;_&#39;));
+        //字符串靠左，多余的地方填充_
+        stringBuilder.append(String.format(&quot;%-18s&quot;, identity).replace(&#39; &#39;, &#39;_&#39;));
+        //数字靠右，多余的地方用0填充
+        stringBuilder.append(String.format(&quot;%05d&quot;, age));
+        //字符串靠左，多余的地方用_填充
+        stringBuilder.append(String.format(&quot;%-11s&quot;, mobile).replace(&#39; &#39;, &#39;_&#39;));
+        //最后加上MD5作为签名
+        stringBuilder.append(DigestUtils.md2Hex(stringBuilder.toString()));
+        return Request.Post(&quot;http://localhost:45678/reflection/bank/createUser&quot;)
+                .bodyString(stringBuilder.toString(), ContentType.APPLICATION_JSON)
+                .execute().returnContent().asString();
+    }
+
+    //支付方法
+    public static String pay(long userId, BigDecimal amount) throws IOException {
+        StringBuilder stringBuilder = new StringBuilder();
+        //数字靠右，多余的地方用0填充
+        stringBuilder.append(String.format(&quot;%020d&quot;, userId));
+        //金额向下舍入2位到分，以分为单位，作为数字靠右，多余的地方用0填充
+        stringBuilder.append(String.format(&quot;%010d&quot;, amount.setScale(2, RoundingMode.DOWN).multiply(new BigDecimal(&quot;100&quot;)).longValue()));
+        //最后加上MD5作为签名
+        stringBuilder.append(DigestUtils.md2Hex(stringBuilder.toString()));
+        return Request.Post(&quot;http://localhost:45678/reflection/bank/pay&quot;)
+                .bodyString(stringBuilder.toString(), ContentType.APPLICATION_JSON)
+                .execute().returnContent().asString();
+    }
+}</code></pre><p>以上这段代码在cr时百分百会被打回, 有如下缺点:</p>
+<ol>
+<li>标准数据类型处理的逻辑是有重复的, 稍有不慎就会有bug.</li>
+<li>字符串拼接,加签名和发请求的逻辑重复</li>
+<li>代码层面对参数进行了硬编码, 如果设计参数为上百个, 传参和校验异常困难.  </li>
+</ol>
+<p>这个时候就要使用注解和反射来实现将接口逻辑和逻辑实现的剥离了.<br>第一步,先定义一个POJO类(只包含属性,没有任何业务逻辑的数据类)定义所有接口需要的参数.</p>
+<pre><code>@Data
+public class CreateUserAPI {
+    private String name;
+    private String identity;
+    private String mobile;
+    private int age;
+}</code></pre><p>然后我们还需要一个注解来为接口和参数增加一些原数据, 比如我们可以定义一个包含url和接口说明的注解类:</p>
+<pre><code>@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+@Documented
+@Inherited
+public @interface BankAPI {
+    String desc() default &quot;&quot;;
+    String url() default &quot;&quot;;
+}</code></pre><p>我们还需要一个用于描述接口每一个字段规范,包含参数的次序,类型和长度三个属性的注解.</p>
+<pre><code>@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.FIELD)
+@Documented
+@Inherited
+public @interface BankAPIField {
+    int order() default -1;
+    int length() default -1;
+    String type() default &quot;&quot;;
+}</code></pre><p>然后我们正式开始调用这个接口, 为类加上url和desc, 为每一个参数加上顺序和类型等.</p>
+<pre><code>@BankAPI(url = &quot;/bank/createUser&quot;, desc = &quot;创建用户接口&quot;)
+@Data
+public class CreateUserAPI extends AbstractAPI {
+    @BankAPIField(order = 1, type = &quot;S&quot;, length = 10)
+    private String name;
+    @BankAPIField(order = 2, type = &quot;S&quot;, length = 18)
+    private String identity;
+    @BankAPIField(order = 4, type = &quot;S&quot;, length = 11) //注意这里的order需要按照API表格中的顺序
+    private String mobile;
+    @BankAPIField(order = 3, type = &quot;N&quot;, length = 5)
+    private int age;
+}</code></pre><p>另一个类也是类似的实现</p>
+<pre><code>@BankAPI(url = &quot;/bank/pay&quot;, desc = &quot;支付接口&quot;)
+@Data
+public class PayAPI extends AbstractAPI {
+    @BankAPIField(order = 1, type = &quot;N&quot;, length = 20)
+    private long userId;
+    @BankAPIField(order = 2, type = &quot;M&quot;, length = 10)
+    private BigDecimal amount;
+}</code></pre><p>通过这两个类,我们可以快速完成和API清单的核对, 避免出现漏传或者错传, 或者是顺序出现错误.<br>即使是接口升级,顺序发生变化, 我们依旧可以在不改动业务代码的情况下完成适配升级. </p>
+<p>接下来,我们看一下如何使用反射来读取注解中配置的参数,实现动态的接口参数组装:</p>
+<pre><code>private static String remoteCall(AbstractAPI api) throws IOException {
+    //从BankAPI注解获取请求地址
+    BankAPI bankAPI = api.getClass().getAnnotation(BankAPI.class);
+    bankAPI.url();
+    StringBuilder stringBuilder = new StringBuilder();
+    Arrays.stream(api.getClass().getDeclaredFields()) //获得所有字段
+            .filter(field -&gt; field.isAnnotationPresent(BankAPIField.class)) //查找标记了注解的字段
+            .sorted(Comparator.comparingInt(a -&gt; a.getAnnotation(BankAPIField.class).order())) //根据注解中的order对字段排序
+            .peek(field -&gt; field.setAccessible(true)) //设置可以访问私有字段
+            .forEach(field -&gt; {
+                //获得注解
+                BankAPIField bankAPIField = field.getAnnotation(BankAPIField.class);
+                Object value = &quot;&quot;;
+                try {
+                    //反射获取字段值
+                    value = field.get(api);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+                //根据字段类型以正确的填充方式格式化字符串
+                switch (bankAPIField.type()) {
+                    case &quot;S&quot;: {
+                        stringBuilder.append(String.format(&quot;%-&quot; + bankAPIField.length() + &quot;s&quot;, value.toString()).replace(&#39; &#39;, &#39;_&#39;));
+                        break;
+                    }
+                    case &quot;N&quot;: {
+                        stringBuilder.append(String.format(&quot;%&quot; + bankAPIField.length() + &quot;s&quot;, value.toString()).replace(&#39; &#39;, &#39;0&#39;));
+                        break;
+                    }
+                    case &quot;M&quot;: {
+                        if (!(value instanceof BigDecimal))
+                            throw new RuntimeException(String.format(&quot;{} 的 {} 必须是BigDecimal&quot;, api, field));
+                        stringBuilder.append(String.format(&quot;%0&quot; + bankAPIField.length() + &quot;d&quot;, ((BigDecimal) value).setScale(2, RoundingMode.DOWN).multiply(new BigDecimal(&quot;100&quot;)).longValue()));
+                        break;
+                    }
+                    default:
+                        break;
+                }
+            });
+    //签名逻辑
+   stringBuilder.append(DigestUtils.md2Hex(stringBuilder.toString()));
+    String param = stringBuilder.toString();
+    long begin = System.currentTimeMillis();
+    //发请求
+    String result = Request.Post(&quot;http://localhost:45678/reflection&quot; + bankAPI.url())
+            .bodyString(param, ContentType.APPLICATION_JSON)
+            .execute().returnContent().asString();
+    log.info(&quot;调用银行API {} url:{} 参数:{} 耗时:{}ms&quot;, bankAPI.desc(), bankAPI.url(), param, System.currentTimeMillis() - begin);
+    return result;
+}</code></pre><ul>
+<li>代码第三行从类上加载了BankApi注解,然后拿到其Url属性, 供后续进行远程调用.</li>
+<li>第6行开始,使用stream快速获取了所有被标记的字段,并按照order进行了排序.</li>
+<li>第12行开始,用反射获取了字段的值, 然后根据注解的参数类型进行格式化, 把所有的格式化逻辑集中在了这里.</li>
+<li>第41行开始,实现了对所有参数的加签名和调用</li>
+</ul>
+<p>这样我们在调用API的时候,就无需再重复写加签名和序列化的操作了, 只需要构造对应的类,打上注解然后调用这个方法即可.</p>
+<p>总结,<strong>反射给了我们在不知晓类的内部结构的时候, 按照固定逻辑处理类成员的能力; 而注解给了我们为成员补充元数据的能力, 使得我们可以动态配置对应的属性</strong>.</p>
+<h3 id="案例三-利用属性拷贝工具消除重复代码"><a href="#案例三-利用属性拷贝工具消除重复代码" class="headerlink" title="案例三: 利用属性拷贝工具消除重复代码"></a>案例三: 利用属性拷贝工具消除重复代码</h3><p>对于三层架构,往往有Vo, 实体, Do三层, 其中大部分字段是完全重复的,只有少数是独有的, 比如Vo有一些后端计算值, 实体有一些中间变量, Do有日期创建者等等.<br>对于一个复杂的业务系统,实体类有几十个属性实属正常,如果我们手动赋值字段,势必要写几十行, 比如下面这个新人写的程序:</p>
+<pre><code>ComplicatedOrderDTO orderDTO = new ComplicatedOrderDTO();
+ComplicatedOrderDO orderDO = new ComplicatedOrderDO();
+orderDO.setAcceptDate(orderDTO.getAcceptDate());
+orderDO.setAddress(orderDTO.getAddress());
+orderDO.setAddressId(orderDTO.getAddressId());
+orderDO.setCancelable(orderDTO.isCancelable());
+orderDO.setCommentable(orderDTO.isComplainable()); //属性错误
+orderDO.setComplainable(orderDTO.isCommentable()); //属性错误
+orderDO.setCancelable(orderDTO.isCancelable());
+orderDO.setCouponAmount(orderDTO.getCouponAmount());
+orderDO.setCouponId(orderDTO.getCouponId());
+orderDO.setCreateDate(orderDTO.getCreateDate());
+orderDO.setDirectCancelable(orderDTO.isDirectCancelable());
+orderDO.setDeliverDate(orderDTO.getDeliverDate());
+orderDO.setDeliverGroup(orderDTO.getDeliverGroup());
+orderDO.setDeliverGroupOrderStatus(orderDTO.getDeliverGroupOrderStatus());
+orderDO.setDeliverMethod(orderDTO.getDeliverMethod());
+orderDO.setDeliverPrice(orderDTO.getDeliverPrice());
+orderDO.setDeliveryManId(orderDTO.getDeliveryManId());
+orderDO.setDeliveryManMobile(orderDO.getDeliveryManMobile()); //对象错误
+orderDO.setDeliveryManName(orderDTO.getDeliveryManName());
+orderDO.setDistance(orderDTO.getDistance());
+orderDO.setExpectDate(orderDTO.getExpectDate());
+orderDO.setFirstDeal(orderDTO.isFirstDeal());
+orderDO.setHasPaid(orderDTO.isHasPaid());
+orderDO.setHeadPic(orderDTO.getHeadPic());
+orderDO.setLongitude(orderDTO.getLongitude());
+orderDO.setLatitude(orderDTO.getLongitude()); //属性赋值错误
+orderDO.setMerchantAddress(orderDTO.getMerchantAddress());
+orderDO.setMerchantHeadPic(orderDTO.getMerchantHeadPic());
+orderDO.setMerchantId(orderDTO.getMerchantId());
+orderDO.setMerchantAddress(orderDTO.getMerchantAddress());
+orderDO.setMerchantName(orderDTO.getMerchantName());
+orderDO.setMerchantPhone(orderDTO.getMerchantPhone());
+orderDO.setOrderNo(orderDTO.getOrderNo());
+orderDO.setOutDate(orderDTO.getOutDate());
+orderDO.setPayable(orderDTO.isPayable());
+orderDO.setPaymentAmount(orderDTO.getPaymentAmount());
+orderDO.setPaymentDate(orderDTO.getPaymentDate());
+orderDO.setPaymentMethod(orderDTO.getPaymentMethod());
+orderDO.setPaymentTimeLimit(orderDTO.getPaymentTimeLimit());
+orderDO.setPhone(orderDTO.getPhone());
+orderDO.setRefundable(orderDTO.isRefundable());
+orderDO.setRemark(orderDTO.getRemark());
+orderDO.setStatus(orderDTO.getStatus());
+orderDO.setTotalQuantity(orderDTO.getTotalQuantity());
+orderDO.setUpdateTime(orderDTO.getUpdateTime());
+orderDO.setName(orderDTO.getName());
+orderDO.setUid(orderDTO.getUid());</code></pre><p>如果没有注释,很容易就传错数据了, 对于一些名称相近的字段, 也很容易互相传.<br>又或者,有一些字段是无需赋值的,有一些是必须赋值的, 靠人力和注释都很难维护.<br>一个好的方式, 使用BeanUtils.copyProperties来实现, 不但可以自动按照名字对应,还可以指名独有的字段, 从而便于扩展.</p>
+<h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><ol>
+<li><p>观察者模式也常用于减少代码重复, 有哪些应用场景?<br>spring的事件驱动模型, 其实也就是回调模式的一个应用, 每次添加商品的时候都需要重新更新商品索引.</p>
+</li>
+<li><p>对于Bean复制工具, 除了BeanUtils你还知道哪些呢?<br>比较常用的就是Mapstruct和hutool了, 核心问题是对于同名不同类型的字段的如何设置, 建议是手动设置以提高可读性.</p>
+</li>
+</ol>
 
             </div>
             <hr />
@@ -694,9 +903,9 @@ Collection接口最基本的集合接口,并不提供类的实现,有List和Set�
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Java基础系列17: 集合类》
+                    《Java开发常见错误_21》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/12/04/java-ji-chu-xi-lie-17-ji-he-lei/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/03/28/java-kai-fa-chang-jian-cuo-wu-21/" property="cc:attributionName"
                rel="cc:attributionURL">
                 HumphreyHao
             </a> 采用
@@ -737,7 +946,7 @@ Collection接口最基本的集合接口,并不提供类的实现,有List和Set�
         repo: 'humphreyhao.github.io',
         owner: 'humphreyhao',
         admin: "humphreyhao",
-        id: '2019/12/04/java-ji-chu-xi-lie-17-ji-he-lei/',
+        id: '2021/03/28/java-kai-fa-chang-jian-cuo-wu-21/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -758,46 +967,56 @@ Collection接口最基本的集合接口,并不提供类的实现,有List和Set�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/12/06/java-ji-chu-xi-lie-18-java8-xin-te-xing/">
+                <a href="/2021/03/28/java-kai-fa-chang-jian-cuo-wu-21/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Java基础系列18: Java8新特性">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Java开发常见错误_21">
                         
-                        <span class="card-title">Java基础系列18: Java8新特性</span>
+                        <span class="card-title">Java开发常见错误_21</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本系列文章是关于Java基础部分的博客阅读笔记
+                            本文是极客时间朱晔老师的<Java业务开发常见错误100例>实战课的笔记整理,每次一讲
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-03-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/基础知识/" class="post-category" target="_blank">
-                                    基础知识
+                            <a href="/categories/常见业务错误/" class="post-category" target="_blank">
+                                    常见业务错误
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java基础/" target="_blank">
-                        <span class="chip bg-color">Java基础</span>
+                    <a href="/tags/集合类/" target="_blank">
+                        <span class="chip bg-color">集合类</span>
+                    </a>
+                    
+                    <a href="/tags/多线程/" target="_blank">
+                        <span class="chip bg-color">多线程</span>
+                    </a>
+                    
+                    <a href="/tags/数据库/" target="_blank">
+                        <span class="chip bg-color">数据库</span>
                     </a>
                     
                 </div>
@@ -811,31 +1030,31 @@ Collection接口最基本的集合接口,并不提供类的实现,有List和Set�
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/02/java-ji-chu-xi-lie-16-nei-bu-lei/">
+                <a href="/2021/03/22/java-kai-fa-chang-jian-cuo-wu-20/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Java基础系列16: 内部类">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Java开发常见错误_20">
                         
-                        <span class="card-title">Java基础系列16: 内部类</span>
+                        <span class="card-title">Java开发常见错误_20</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本系列文章是关于Java基础部分的博客阅读笔记
+                            本文是极客时间朱晔老师的<Java业务开发常见错误100例>实战课的笔记整理,每次一讲
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-02
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-03-22
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/基础知识/" class="post-category" target="_blank">
-                                    基础知识
+                            <a href="/categories/常见业务错误/" class="post-category" target="_blank">
+                                    常见业务错误
                                 </a>
                             
                             
@@ -845,8 +1064,16 @@ Collection接口最基本的集合接口,并不提供类的实现,有List和Set�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java基础/" target="_blank">
-                        <span class="chip bg-color">Java基础</span>
+                    <a href="/tags/集合类/" target="_blank">
+                        <span class="chip bg-color">集合类</span>
+                    </a>
+                    
+                    <a href="/tags/多线程/" target="_blank">
+                        <span class="chip bg-color">多线程</span>
+                    </a>
+                    
+                    <a href="/tags/数据库/" target="_blank">
+                        <span class="chip bg-color">数据库</span>
                     </a>
                     
                 </div>

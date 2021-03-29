@@ -266,7 +266,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -429,14 +429,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    930
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    6 分
                 </div>
                 
                 
@@ -513,7 +513,55 @@ public @interface RestController {}
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Component
-public @interface Controller {}</code></pre>
+public @interface Controller {}</code></pre><p>Bean默认是单例的, 所以单例的Controller注入的Service也是一次性创建的, 即使Service本身标识了prototype的范围也没用.<br>因此,让Service以代理方式注入,这样Controller每次都需要从代理处获取Service, 所以prototype范围的配置才能生效.  </p>
+<pre><code>@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS)</code></pre><p>这样就解决默认单例的问题. 当然,其实还有一种办法,那就是不从容器中获取Bean,而是每次都从上下文中获取,这样当然每次都是一个新的.</p>
+<pre><code>@Autowired
+private ApplicationContext applicationContext;
+@GetMapping(&quot;test2&quot;)
+public void test2() {
+applicationContext.getBeansOfType(SayService.class).values().forEach(SayService::say);
+}</code></pre><h3 id="案例二-监控切面因为顺序问题导致Spring事务失效"><a href="#案例二-监控切面因为顺序问题导致Spring事务失效" class="headerlink" title="案例二: 监控切面因为顺序问题导致Spring事务失效"></a>案例二: 监控切面因为顺序问题导致Spring事务失效</h3><p>TODO: AOP这一块过于底层, 等后面职级高了再研究好啦</p>
+<h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题:"></a>思考题:</h2><ol>
+<li>除了使用@Autowired注入bean外, 还可以使用@Inject或者使用@Resource来注入Bean, 这三种有什么区别?<br>@Autowired<br>1、@Autowired是spring自带的注解，通过‘AutowiredAnnotationBeanPostProcessor’ 类实现的依赖注入；<br>2、@Autowired是根据类型进行自动装配的，如果需要按名称进行装配，则需要配合@Qualifier；<br>3、@Autowired有个属性为required，可以配置为false，如果配置为false之后，当没有找到相应bean的时候，系统不会抛错；<br>4、@Autowired可以作用在变量、setter方法、构造函数上。</li>
+</ol>
+<p>@Inject<br>1、@Inject是JSR330 (Dependency Injection for Java)中的规范，需要导入javax.inject.Inject;实现注入。<br>2、@Inject是根据类型进行自动装配的，如果需要按名称进行装配，则需要配合@Named；<br>3、@Inject可以作用在变量、setter方法、构造函数上。</p>
+<p>@Resource<br>1、@Resource是JSR250规范的实现，需要导入javax.annotation实现注入。<br>2、@Resource是根据名称进行自动装配的，一般会指定一个name属性<br>3、@Resource可以作用在变量、setter方法上。</p>
+<p>总结：<br>1、@Autowired是spring自带的，@Inject是JSR330规范实现的，@Resource是JSR250规范实现的，需要导入不同的包<br>2、@Autowired、@Inject用法基本一样，不同的是@Autowired有一个request属性<br>3、@Autowired、@Inject是默认按照类型匹配的，@Resource是按照名称匹配的<br>4、@Autowired如果需要按照名称匹配需要和@Qualifier一起使用，@Inject和@Name一起使用</p>
+<ol start="2">
+<li>当Bean产生循环依赖时, 比如BeanA的构造方法依赖BeanB作为成员需要注入, BeanB也依赖BeanA注入, 有哪些解决方案呢?<br><a href="https://www.baeldung.com/circular-dependencies-in-spring" target="_blank" rel="noopener">https://www.baeldung.com/circular-dependencies-in-spring</a><br>官网提供了3种可靠方式:</li>
+</ol>
+<ul>
+<li><p>使用Lazy注解: 这个注解会创建一个代理类然后注入到需要的Bean中,只有在真正被用到的时候才会完全初始化.</p>
+<pre><code>@Component
+public class CircularDependencyA {
+
+  private CircularDependencyB circB;
+
+  @Autowired
+  public CircularDependencyA(@Lazy CircularDependencyB circB) {
+      this.circB = circB;
+  }
+}</code></pre></li>
+<li><p>使用Setter方法注入来代替构造器注入: 也就是只注入,但是在set方法上标记@Autowired注解</p>
+</li>
+</ul>
+<pre><code>@Component
+public class CircularDependencyA {
+
+    private CircularDependencyB circB;
+
+    @Autowired
+    public void setCircB(CircularDependencyB circB) {
+        this.circB = circB;
+    }
+
+    public CircularDependencyB getCircB() {
+        return circB;
+    }
+}</code></pre><ul>
+<li>使用PostConstruct注解实现先注入后执行初始化.</li>
+</ul>
+
             </div>
             <hr />
 
@@ -743,7 +791,7 @@ public @interface Controller {}</code></pre>
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Java开发常见错误_20">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Java开发常见错误_20">
                         
                         <span class="card-title">Java开发常见错误_20</span>
                     </div>
@@ -800,7 +848,7 @@ public @interface Controller {}</code></pre>
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Java开发常见错误_18">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Java开发常见错误_18">
                         
                         <span class="card-title">Java开发常见错误_18</span>
                     </div>
@@ -1013,7 +1061,7 @@ public @interface Controller {}</code></pre>
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">146k</span>
+            <span class="white-color">150.5k</span>
             
 
             <br>

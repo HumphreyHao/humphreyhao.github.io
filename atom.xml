@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://humphreyhao.github.io/"/>
-  <updated>2021-03-24T01:44:24.656Z</updated>
+  <updated>2021-03-29T00:50:50.214Z</updated>
   <id>https://humphreyhao.github.io/</id>
   
   <author>
@@ -17,11 +17,41 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Java开发常见错误_21</title>
+    <link href="https://humphreyhao.github.io/2021/03/28/java-kai-fa-chang-jian-cuo-wu-21/"/>
+    <id>https://humphreyhao.github.io/2021/03/28/java-kai-fa-chang-jian-cuo-wu-21/</id>
+    <published>2021-03-28T08:39:25.000Z</published>
+    <updated>2021-03-29T00:50:50.214Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;第四章&quot;&gt;&lt;a href=&quot;#第四章&quot; class=&quot;headerlink&quot; title=&quot;第四章&quot;&gt;&lt;/a&gt;第四章&lt;/h1&gt;&lt;h2 id=&quot;21-代码重复：搞定代码重复的三个绝招&quot;&gt;&lt;a href=&quot;#21-代码重复：搞定代码重复的三个绝招&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
+    
+    
+      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
+    
+      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java开发常见错误_20</title>
     <link href="https://humphreyhao.github.io/2021/03/22/java-kai-fa-chang-jian-cuo-wu-20/"/>
     <id>https://humphreyhao.github.io/2021/03/22/java-kai-fa-chang-jian-cuo-wu-20/</id>
     <published>2021-03-21T19:26:11.000Z</published>
-    <updated>2021-03-24T01:44:24.656Z</updated>
+    <updated>2021-03-28T08:30:27.119Z</updated>
     
     <summary type="html">
     
@@ -51,7 +81,7 @@
     <link href="https://humphreyhao.github.io/2021/03/09/java-kai-fa-chang-jian-cuo-wu-19/"/>
     <id>https://humphreyhao.github.io/2021/03/09/java-kai-fa-chang-jian-cuo-wu-19/</id>
     <published>2021-03-08T19:26:11.000Z</published>
-    <updated>2021-03-22T01:25:45.489Z</updated>
+    <updated>2021-03-28T08:09:14.443Z</updated>
     
     <summary type="html">
     
@@ -493,7 +523,7 @@
     <link href="https://humphreyhao.github.io/2021/01/02/java-kai-fa-chang-jian-cuo-wu-6/"/>
     <id>https://humphreyhao.github.io/2021/01/02/java-kai-fa-chang-jian-cuo-wu-6/</id>
     <published>2021-01-02T12:11:23.000Z</published>
-    <updated>2021-02-05T16:23:05.216Z</updated>
+    <updated>2021-03-28T06:21:16.176Z</updated>
     
     <summary type="html">
     
@@ -562,36 +592,6 @@
         
         
           &lt;h1 id=&quot;第一章&quot;&gt;&lt;a href=&quot;#第一章&quot; class=&quot;headerlink&quot; title=&quot;第一章&quot;&gt;&lt;/a&gt;第一章&lt;/h1&gt;&lt;h2 id=&quot;4-连接池：别让连接池帮了倒忙&quot;&gt;&lt;a href=&quot;#4-连接池：别让连接池帮了倒忙&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="常见业务错误" scheme="https://humphreyhao.github.io/categories/%E5%B8%B8%E8%A7%81%E4%B8%9A%E5%8A%A1%E9%94%99%E8%AF%AF/"/>
-    
-    
-      <category term="集合类" scheme="https://humphreyhao.github.io/tags/%E9%9B%86%E5%90%88%E7%B1%BB/"/>
-    
-      <category term="多线程" scheme="https://humphreyhao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
-      <category term="数据库" scheme="https://humphreyhao.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java开发常见错误_3</title>
-    <link href="https://humphreyhao.github.io/2020/12/24/java-kai-fa-chang-jian-cuo-wu-3/"/>
-    <id>https://humphreyhao.github.io/2020/12/24/java-kai-fa-chang-jian-cuo-wu-3/</id>
-    <published>2020-12-24T05:30:23.000Z</published>
-    <updated>2021-02-05T16:23:05.215Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;第一章&quot;&gt;&lt;a href=&quot;#第一章&quot; class=&quot;headerlink&quot; title=&quot;第一章&quot;&gt;&lt;/a&gt;第一章&lt;/h1&gt;&lt;h2 id=&quot;3-线程池：业务代码最常用也最容易犯错的组件&quot;&gt;&lt;a href=&quot;#3-线程池：业务代码最常用也最容易犯错的组件&quot;
         
       
     
