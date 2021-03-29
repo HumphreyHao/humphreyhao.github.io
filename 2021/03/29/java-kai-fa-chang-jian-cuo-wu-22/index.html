@@ -4,12 +4,14 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Java基础系列10: 回调机制, JAVA Python HumphreyHao 后端研发 海豚">
+    <meta name="keywords" content="Java开发常见错误_22, JAVA Python HumphreyHao 后端研发 海豚">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
-    <meta name="description" content="Java基础系列10: 回调机制本文是作者的读书笔记和心得整理，部分内容来源于网络，如有侵权，请联系作者。
-几种调用机制同步调用同步调用是最基本并且最简单的一种调用方式，类A的方法a()调用类B的方法b()，一直等待b()方法执行完毕，a(">
+    <meta name="description" content="第四章22. 接口设计：系统间对话的语言，一定要统一对外提供的接口一般要考虑以下两个原则:
+
+对外隐藏内部实现, 即使内部调用了其他服务, 也不应该直接将其他服务的结果返回,而是应该加以包装.  
+必须明确每个字段的含义以及返回值, 以及客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +19,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Java基础系列10: 回调机制 | Humphrey爵士的小海豚</title>
+    <title>Java开发常见错误_22 | Humphrey爵士的小海豚</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -267,13 +269,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Java基础系列10: 回调机制
+                        Java开发常见错误_22
                     </div>
                 </div>
             </div>
@@ -384,8 +386,16 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/Java基础/" target="_blank">
-                            <span class="chip bg-color">Java基础</span>
+                        <a href="/tags/集合类/" target="_blank">
+                            <span class="chip bg-color">集合类</span>
+                        </a>
+                        
+                        <a href="/tags/多线程/" target="_blank">
+                            <span class="chip bg-color">多线程</span>
+                        </a>
+                        
+                        <a href="/tags/数据库/" target="_blank">
+                            <span class="chip bg-color">数据库</span>
                         </a>
                         
                     </div>
@@ -396,8 +406,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/基础知识/" class="post-category" target="_blank">
-                            基础知识
+                        <a href="/categories/常见业务错误/" class="post-category" target="_blank">
+                            常见业务错误
                         </a>
                         
                     </div>
@@ -408,7 +418,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-11-20
+                    2021-03-29
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -422,14 +432,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    108
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    1 分
                 </div>
                 
                 
@@ -445,105 +455,12 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Java基础系列10-回调机制"><a href="#Java基础系列10-回调机制" class="headerlink" title="Java基础系列10: 回调机制"></a>Java基础系列10: 回调机制</h1><p>本文是作者的读书笔记和心得整理，部分内容来源于网络，如有侵权，请联系作者。</p>
-<h2 id="几种调用机制"><a href="#几种调用机制" class="headerlink" title="几种调用机制"></a>几种调用机制</h2><h3 id="同步调用"><a href="#同步调用" class="headerlink" title="同步调用"></a>同步调用</h3><p>同步调用是最基本并且最简单的一种调用方式，类A的方法a()调用类B的方法b()，一直等待b()方法执行完毕，a()方法继续往下走。这种调用方式适用于方法b()执行时间不长的情况，因为b()方法执行时间一长或者直接阻塞的话，a()方法的余下代码是无法执行下去的，这样会造成整个流程的阻塞</p>
-<h3 id="异步调用"><a href="#异步调用" class="headerlink" title="异步调用"></a>异步调用</h3><p>类A的方法a()通过新建立一个线程的方式调用类B的方法b(),代码继续往后执行.</p>
-<p>这种方法不确定什么时候能拿到b返回的结果,所以需要监听b</p>
-<h3 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h3><p>回调的定义:A调用B执行一个任务,B执行完之后又调用A继续执行.</p>
-<p>往往使用在多线程中,可以使用callable和future或者futuretask结合来获取线程执行之后的返回值</p>
-<p>以下例子来源于<a href="https://how2playlife.com/2019/09/11/11%E8%A7%A3%E8%AF%BBJava%E4%B8%AD%E7%9A%84%E5%9B%9E%E8%B0%83/" target="_blank" rel="noopener">https://how2playlife.com/2019/09/11/11%E8%A7%A3%E8%AF%BBJava%E4%B8%AD%E7%9A%84%E5%9B%9E%E8%B0%83/</a><br>一个简单的例子:<br>小明和小李相约一起去吃早饭，但是小李起的有点晚要先洗漱，等小李洗漱完成后，通知小明再一起去吃饭。小明就是类A，小李就是类B。一起去吃饭这个事件就是方法a(),小李去洗漱就是方法b()。</p>
-<p>进阶例子:<br>小明和小李相约一起去吃早饭，但是小李起的有点晚要先洗漱，等小李洗漱完成后，通知小明再一起去吃饭,或者和小王去上网。小明就是类A，小李就是类B。不同的是我们新建一个吃饭的接口EatRice，接口中有个抽象方法eat()。在小明中调用这个接口，并实现eat()；小李声明这个接口对象，并且调用这个接口的抽象方法。<br>和小王去上网的代码</p>
-<pre><code>public class XiaoWang implements EatRice{//小王
+                <h1 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h1><h2 id="22-接口设计：系统间对话的语言，一定要统一"><a href="#22-接口设计：系统间对话的语言，一定要统一" class="headerlink" title="22. 接口设计：系统间对话的语言，一定要统一"></a>22. 接口设计：系统间对话的语言，一定要统一</h2><p>对外提供的接口一般要考虑以下两个原则:</p>
+<ol>
+<li>对外隐藏内部实现, 即使内部调用了其他服务, 也不应该直接将其他服务的结果返回,而是应该加以包装.  </li>
+<li>必须明确每个字段的含义以及返回值, 以及客户端的处理方式.  </li>
+</ol>
 
-   //小王和小李一起去上网
-   public void eatFood() {
-    XiaoLi xl = new XiaoLi();
-    //A调用B的方法
-    xl.washFace(&quot;轻舞飞扬上网&quot;, this);
-   }
-
-   @Override
-   public void eat(String bar) {
-    // TODO Auto-generated method stub
-    System.out.println(&quot;小王和小李一起去&quot; + bar);
-   }
-}</code></pre><p>再看一个学生做题的例子:<br>数学老师让Tom做一道题，并且Tom做题期间数学老师不用盯着Tom，而是在玩手机，等Tom把题目做完后再把答案告诉老师。</p>
-<p>这个过程可以分为3步:<br>数学老师使用Tom的引用,把题目发给tom<br>tom做题,然后使用老师的引用,调用老师的一个callback方法,把答案告诉这位老师,或者告诉其他老师.</p>
-<p>所以每位老师都需要实现一个callback接口,以便接收学生的答案</p>
-<pre><code>//回调指的是A调用B来做一件事，B做完以后将结果告诉给A，这期间A可以做别的事情。
-//这个接口中有一个方法，意为B做完题目后告诉A时使用的方法。
-//所以我们必须提供这个接口以便让B来回调。
-//回调接口，
-public interface CallBack {
-    void tellAnswer(int res);
-}</code></pre><p>老师代码:</p>
-<pre><code>   //老师类实例化回调接口，即学生写完题目之后通过老师的提供的方法进行回调。
-    //那么学生如何调用到老师的方法呢，只要在学生类的方法中传入老师的引用即可。
-    //而老师需要指定学生答题，所以也要传入学生的实例。
-public class Teacher implements CallBack{
-    private Student student;
-
-    Teacher(Student student) {
-        this.student = student;
-    }
-
-    void askProblem (Student student, Teacher teacher) {
-        //main方法是主线程运行，为了实现异步回调，这里开启一个线程来操作
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                student.resolveProblem(teacher);
-            }
-        }).start();
-        //老师让学生做题以后，等待学生回答的这段时间，可以做别的事，比如玩手机.\
-        //而不需要同步等待，这就是回调的好处。
-        //当然你可以说开启一个线程让学生做题就行了，但是这样无法让学生通知老师。
-        //需要另外的机制去实现通知过程。
-        // 当然，多线程中的future和callable也可以实现数据获取的功能。
-        for (int i = 1;i &lt; 4;i ++) {
-            System.out.println(&quot;等学生回答问题的时候老师玩了 &quot; + i + &quot;秒的手机&quot;);
-        }
-    }
-
-    @Override
-    public void tellAnswer(int res) {
-        System.out.println(&quot;the answer is &quot; + res);
-    }
-}</code></pre><p>学生代码:</p>
-<pre><code>   //学生的接口，解决问题的方法中要传入老师的引用，否则无法完成对具体实例的回调。
-    //写为接口的好处就是，很多个学生都可以实现这个接口，并且老师在提问题时可以通过
-    //传入List&lt;Student&gt;来聚合学生，十分方便。
-public interface Student {
-    void resolveProblem (Teacher teacher);
-}
-
-public class Tom implements Student{
-
-    @Override
-    public void resolveProblem(Teacher teacher) {
-        try {
-            //学生思考了3秒后得到了答案，通过老师提供的回调方法告诉老师。
-            Thread.sleep(3000);
-            System.out.println(&quot;work out&quot;);
-            teacher.tellAnswer(111);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }</code></pre><p>测试代码:</p>
-<pre><code>public class Test {
-    public static void main(String[] args) {
-        //测试
-        Student tom = new Tom();
-        Teacher lee = new Teacher(tom);
-        lee.askProblem(tom, lee);
-        //结果
-//        等学生回答问题的时候老师玩了 1秒的手机
-//        等学生回答问题的时候老师玩了 2秒的手机
-//        等学生回答问题的时候老师玩了 3秒的手机
-//        work out
-//        the answer is 111
-    }
-}</code></pre>
             </div>
             <hr />
 
@@ -701,9 +618,9 @@ public class Tom implements Student{
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Java基础系列10: 回调机制》
+                    《Java开发常见错误_22》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/11/20/java-ji-chu-xi-lie-10-hui-diao-ji-zhi/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/03/29/java-kai-fa-chang-jian-cuo-wu-22/" property="cc:attributionName"
                rel="cc:attributionURL">
                 HumphreyHao
             </a> 采用
@@ -744,7 +661,7 @@ public class Tom implements Student{
         repo: 'humphreyhao.github.io',
         owner: 'humphreyhao',
         admin: "humphreyhao",
-        id: '2019/11/20/java-ji-chu-xi-lie-10-hui-diao-ji-zhi/',
+        id: '2021/03/29/java-kai-fa-chang-jian-cuo-wu-22/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -765,46 +682,56 @@ public class Tom implements Student{
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/11/22/java-ji-chu-xi-lie-11-fan-she-ji-zhi/">
+                <a href="/2021/03/29/java-kai-fa-chang-jian-cuo-wu-22/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Java基础系列11: 反射机制">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Java开发常见错误_22">
                         
-                        <span class="card-title">Java基础系列11: 反射机制</span>
+                        <span class="card-title">Java开发常见错误_22</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本系列文章是关于Java基础部分的博客阅读笔记
+                            本文是极客时间朱晔老师的<Java业务开发常见错误100例>实战课的笔记整理,每次一讲
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-22
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-03-29
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/基础知识/" class="post-category" target="_blank">
-                                    基础知识
+                            <a href="/categories/常见业务错误/" class="post-category" target="_blank">
+                                    常见业务错误
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java基础/" target="_blank">
-                        <span class="chip bg-color">Java基础</span>
+                    <a href="/tags/集合类/" target="_blank">
+                        <span class="chip bg-color">集合类</span>
+                    </a>
+                    
+                    <a href="/tags/多线程/" target="_blank">
+                        <span class="chip bg-color">多线程</span>
+                    </a>
+                    
+                    <a href="/tags/数据库/" target="_blank">
+                        <span class="chip bg-color">数据库</span>
                     </a>
                     
                 </div>
@@ -818,31 +745,31 @@ public class Tom implements Student{
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/11/18/java-ji-chu-xi-lie-9-yi-chang-ti-xi/">
+                <a href="/2021/03/28/java-kai-fa-chang-jian-cuo-wu-21/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Java基础系列9: 异常体系">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Java开发常见错误_21">
                         
-                        <span class="card-title">Java基础系列9: 异常体系</span>
+                        <span class="card-title">Java开发常见错误_21</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本系列文章是关于Java基础部分的博客阅读笔记
+                            本文是极客时间朱晔老师的<Java业务开发常见错误100例>实战课的笔记整理,每次一讲
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-18
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-03-28
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/基础知识/" class="post-category" target="_blank">
-                                    基础知识
+                            <a href="/categories/常见业务错误/" class="post-category" target="_blank">
+                                    常见业务错误
                                 </a>
                             
                             
@@ -852,8 +779,16 @@ public class Tom implements Student{
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java基础/" target="_blank">
-                        <span class="chip bg-color">Java基础</span>
+                    <a href="/tags/集合类/" target="_blank">
+                        <span class="chip bg-color">集合类</span>
+                    </a>
+                    
+                    <a href="/tags/多线程/" target="_blank">
+                        <span class="chip bg-color">多线程</span>
+                    </a>
+                    
+                    <a href="/tags/数据库/" target="_blank">
+                        <span class="chip bg-color">数据库</span>
                     </a>
                     
                 </div>
